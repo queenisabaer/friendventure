@@ -6,10 +6,11 @@
 
 .NavLink {
     padding: 5px;
+    color: blue;
 }
 
-.Active i {
-    color: #ff3131;
+.active i {
+    color: #2F4858 !important;
 }
 
 .Logo {
