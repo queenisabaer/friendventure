@@ -1,0 +1,38 @@
+.App {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+  
+a {
+    color: #2F4858;
+    transition: color ease-in-out 0.3s;
+}
+  
+a:hover {
+    text-decoration: none;
+}
+  
+a:hover i {
+    color: #F1A99D;
+    transition: color ease-in-out 0.3s;
+}
+
+i {
+    color: #ff3131;
+    font-size: 1.25rem;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #F1A99D;
+}
