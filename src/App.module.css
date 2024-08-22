@@ -1,42 +1,94 @@
 .App {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  min-height: 100vh;
+}
+
+.Title {
+  font-family: "Shadows Into Light", sans-serif;
+  font-style: normal;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #008281;
 }
 
 .Main {
-    padding-top: 100px;
+  padding-top: 100px;
+}
+
+.Content {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #dadadf;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-  
+
 a {
-    color: #2F4858;
-    transition: color ease-in-out 0.3s;
+  color: #406277;
+  transition: color ease-in-out 0.3s;
 }
-  
+
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
-  
+
 a:hover i {
-    color: #F1A99D;
-    transition: color ease-in-out 0.3s;
+  color: #f1a99d;
+  transition: color ease-in-out 0.3s;
 }
 
 i {
-    color: #ff3131;
-    font-size: 1.25rem;
-    padding: 5px;
-    vertical-align: middle;
+  color: #ff3131;
+  font-size: 1.25rem;
+  padding: 5px;
+  vertical-align: middle;
 }
 
 i:hover {
-    cursor: pointer;
-    transition: color ease-in-out 0.3s;
-    color: #F1A99D;
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+  color: #f1a99d;
+}
+
+figure {
+  text-align: center;
+  display: inline-block;
+}
+
+/* scrollbar */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+*::-webkit-scrollbar-thumb {
+  background: #888;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.FillerImage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.Image {
+  max-height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.Upper{
+  text-transform: uppercase;
 }

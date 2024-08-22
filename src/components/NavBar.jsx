@@ -23,21 +23,21 @@ const NavBar = () => {
             <Nav.Link
               end
               as={NavLink}
-              className={({ isActive }) => isActive ? "active" : ""}
+              className={({ isActive }) => isActive ? `${styles.Active}` : ""}
               to="/"
             >
               <i className="fas fa-home"></i>Home
             </Nav.Link>
             <Nav.Link
               as={NavLink}
-              className={({ isActive }) => isActive ? "active" : ""}
+              className={({ isActive }) => isActive ? `${styles.Active}` : ""}
               to="/signup"
             >
               <i className="fa-solid fa-user-pen"></i>Sign Up
             </Nav.Link>
             <Nav.Link
               as={NavLink}
-              className={({ isActive }) => isActive ? "active" : ""}
+              className={({ isActive }) => isActive ? `${styles.Active}` : ""}
               to="/login"
             >
               <i className="fa-solid fa-right-to-bracket"></i>Log in
