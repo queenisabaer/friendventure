@@ -16,6 +16,12 @@
   color: #008281;
 }
 
+.Alert {
+  background-color: #EAD5DC;
+  border-color: #F1A99D;
+  color: #FF3131;
+}
+
 .Main {
   padding-top: 100px;
 }

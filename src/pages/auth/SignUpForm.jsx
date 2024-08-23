@@ -1,10 +1,6 @@
 // React imports
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-// Style imports
-import styles from "../../styles/SignUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
 // Bootstrap imports
 import {
   Form,
@@ -15,6 +11,10 @@ import {
   Container,
   Alert,
 } from "react-bootstrap";
+// Style imports
+import styles from "../../styles/SignUpForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
 import axios from "axios";
 
 const SignUpForm = () => {
@@ -71,7 +71,7 @@ const SignUpForm = () => {
                 />
               </Form.Group>
               {errors.username?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert variant="warning" key={idx} className={appStyles.Alert}>
                   {message}
                 </Alert>
               ))}
@@ -87,7 +87,7 @@ const SignUpForm = () => {
                 />
               </Form.Group>
               {errors.password1?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert variant="warning" key={idx} className={appStyles.Alert}>
                   {message}
                 </Alert>
               ))}
@@ -103,7 +103,7 @@ const SignUpForm = () => {
                 />
               </Form.Group>
               {errors.password2?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert variant="warning" key={idx} className={appStyles.Alert}>
                   {message}
                 </Alert>
               ))}
@@ -114,7 +114,7 @@ const SignUpForm = () => {
                 Sign me up
               </Button>
               {errors.non_field_errors?.map((message, idx) => (
-                <Alert variant="warning" key={idx} className="mt-3">
+                <Alert variant="warning" key={idx} className={`${appStyles.Alert} mt-3`}>
                   {message}
                 </Alert>
               ))}
