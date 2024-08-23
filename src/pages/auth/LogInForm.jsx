@@ -16,8 +16,11 @@ import styles from "../../styles/AuthForms.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import axios from "axios";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
-function LogInForm () {
+function LogInForm() {
+  const setCurrentUser = useSetCurrentUser()
+
   const [logInData, setLogInData] = useState({
     username: "",
     password: "",
@@ -32,7 +35,8 @@ function LogInForm () {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/login/", logInData);
+      const { data } = await axios.post("/dj-rest-auth/login/", logInData);
+      setCurrentUser(data.user);
       navigate("/");
     } catch (err) {
       setErrors(err.response?.data);
@@ -46,8 +50,6 @@ function LogInForm () {
     });
   };
 
-
-
   return (
     <>
       <Row>
@@ -56,7 +58,7 @@ function LogInForm () {
         </Col>
       </Row>
       <Row className={styles.Row}>
-      <Col
+        <Col
           md={6}
           className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
         >
@@ -110,7 +112,11 @@ function LogInForm () {
                 Log In
               </Button>
               {errors.non_field_errors?.map((message, idx) => (
-                <Alert variant="warning" key={idx} className={`${appStyles.Alert} mt-3`}>
+                <Alert
+                  variant="warning"
+                  key={idx}
+                  className={`${appStyles.Alert} mt-3`}
+                >
                   {message}
                 </Alert>
               ))}
@@ -122,10 +128,9 @@ function LogInForm () {
             </Link>
           </Container>
         </Col>
-        
       </Row>
     </>
   );
-};
+}
 
 export default LogInForm;
