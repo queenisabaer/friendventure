@@ -2,13 +2,19 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import logo from "../assets/FriendVenture_logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink, Link } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser()
+  const setCurrentUser = useSetCurrentUser();
+
+  const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -57,7 +63,11 @@ const NavBar = () => {
         className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
         to="/profile"
       >
-        <Avatar src={currentUser?.profile_image} text={currentUser?.username} height={30} />
+        <Avatar
+          src={currentUser?.profile_image}
+          text={currentUser?.username}
+          height={30}
+        />
       </Nav.Link>
       <Nav.Link
         as={NavLink}
@@ -89,7 +99,12 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar className={styles.NavBar} expand="md" fixed="top">
+    <Navbar
+      expanded={expanded}
+      className={styles.NavBar}
+      expand="md"
+      fixed="top"
+    >
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
@@ -101,7 +116,11 @@ const NavBar = () => {
             />
           </Navbar.Brand>
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="ml-auto text-center">
             <Nav.Link
