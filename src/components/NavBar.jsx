@@ -14,32 +14,48 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
-  const {expanded, setExpanded, ref} = useClickOutsideToggle();
+  const { expanded, setExpanded, showDropdown, setShowDropdown, ref } =
+    useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
       await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
+      setExpanded(false);
+      setShowDropdown(false);
       showMessage("success", "Successfully signed out!");
     } catch (err) {
       console.log(err);
     }
   };
 
+  const handleDropdownClick = (event) => {
+    event.preventDefault();
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleDropdownItemClick = () => {
+    setShowDropdown(false);
+    setExpanded(false);
+  };
+
   const loggedInIcons = (
     <>
       <NavDropdown
         title={
-          <span id={styles.dropdownMenu}>
+          <span id={styles.dropdownMenu} onClick={handleDropdownClick}>
             <i className="fa-solid fa-dharmachakra"></i>
             FriendVentures
           </span>
         }
+        show={showDropdown}
+        ref={ref}
       >
         <NavDropdown.Item
           as={Link}
           className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
           to="/add"
+          onClick={handleDropdownItemClick}
         >
           <i className="fa-solid fa-calendar-plus"></i>Add
         </NavDropdown.Item>
@@ -47,6 +63,7 @@ const NavBar = () => {
           as={Link}
           className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
           to="/bookmarks"
+          onClick={handleDropdownItemClick}
         >
           <i className="fa-solid fa-heart"></i>Bookmarks
         </NavDropdown.Item>
@@ -54,6 +71,7 @@ const NavBar = () => {
           as={Link}
           className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
           to="/upcoming"
+          onClick={handleDropdownItemClick}
         >
           <i className="fa-solid fa-calendar-check"></i>Upcoming
         </NavDropdown.Item>
@@ -62,6 +80,7 @@ const NavBar = () => {
         as={NavLink}
         className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
         to="/profile"
+        onClick={() => setExpanded(expanded)}
       >
         <Avatar
           src={currentUser?.profile_image}
@@ -117,7 +136,6 @@ const NavBar = () => {
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
-          ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
         />
@@ -130,6 +148,7 @@ const NavBar = () => {
                 isActive ? `${styles.NewActive}` : ""
               }
               to="/"
+              onClick={() => setExpanded(expanded)}
             >
               <i className="fas fa-home"></i>Home
             </Nav.Link>
