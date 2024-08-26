@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import {
   Form,
@@ -6,7 +6,8 @@ import {
   Row,
   Col,
   Container,
-  Image
+  Image,
+  Alert,
 } from "react-bootstrap";
 
 import Upload from "../../assets/Friendventure_upload.webp";
@@ -15,6 +16,8 @@ import styles from "../../styles/FriendventureCreatEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
+import { useNavigate } from "react-router-dom";
+import { axiosRequest } from "../../api/axiosDefault";
 
 function FriendventureCreateForm() {
   const [friendventureData, setFriendventureData] = useState({
@@ -23,12 +26,17 @@ function FriendventureCreateForm() {
     image: "",
     date: "",
     time: "",
-    location: "",
+    place: "",
     category: "",
   });
 
-  const { title, description, image, date, time, location, category } =
+  const { title, description, image, date, time, place, category } =
     friendventureData;
+
+  const [errors, setErrors] = useState({});
+
+  const imageInput = useRef(null);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFriendventureData({
@@ -47,7 +55,42 @@ function FriendventureCreateForm() {
     }
   };
 
-  const [errors, setErrors] = useState({});
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const selectedDate = new Date(date);
+    const today = new Date();
+
+    if (selectedDate < today.setHours(0, 0, 0, 0)) {
+      setErrors({ date: ["The date must be in the future."] });
+      return;
+    }
+
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("date", date);
+    formData.append("time", time);
+    formData.append("place", place);
+    formData.append("category", category);
+    // Only append the image file if one has been selected
+    if (imageInput.current.files.length > 0) {
+      formData.append("image", imageInput.current.files[0]);
+    }
+
+    try {
+      const response = await axiosRequest.post("/friendventures/", formData);
+      const { data } = response;
+
+      navigate(`/friendventures/${data.id}`);
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data || {});
+      }
+    }
+  };
 
   const textFields = (
     <div className="text-center">
@@ -62,6 +105,11 @@ function FriendventureCreateForm() {
           onChange={handleChange}
           required
         />
+        {errors.title?.map((message, idx) => (
+          <Alert variant="warning" key={idx} className={appStyles.Alert}>
+            {message}
+          </Alert>
+        ))}
       </Form.Group>
       <Form.Group className="mb-2">
         <Form.Label className="mb-1">Description</Form.Label>
@@ -69,11 +117,16 @@ function FriendventureCreateForm() {
           className={styles.Input}
           as="textarea"
           placeholder="Descripe your FriendVenture"
-          name="description" 
+          name="description"
           rows={4}
           value={description}
           onChange={handleChange}
         />
+        {errors.description?.map((message, idx) => (
+          <Alert variant="warning" key={idx} className={appStyles.Alert}>
+            {message}
+          </Alert>
+        ))}
       </Form.Group>
       <Form.Group className="mb-2">
         <Row>
@@ -84,8 +137,15 @@ function FriendventureCreateForm() {
               name="date"
               value={date}
               onChange={handleChange}
+              required
             />
+            {errors.date?.map((message, idx) => (
+              <Alert variant="warning" key={idx} className={appStyles.Alert}>
+                {message}
+              </Alert>
+            ))}
           </Col>
+
           <Col lg={6}>
             <Form.Label className="mb-1">Time</Form.Label>
             <Form.Control
@@ -93,7 +153,13 @@ function FriendventureCreateForm() {
               name="time"
               value={time}
               onChange={handleChange}
+              required
             />
+            {errors?.time?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
           </Col>
         </Row>
       </Form.Group>
@@ -101,11 +167,17 @@ function FriendventureCreateForm() {
         <Form.Label className="mb-1">Location</Form.Label>
         <Form.Control
           type="text"
-          name="location"
+          name="place"
           placeholder="Enter the place to be"
-          value={location}
+          value={place}
           onChange={handleChange}
+          required
         />
+        {errors.time?.map((message, idx) => (
+          <Alert variant="warning" key={idx} className={appStyles.Alert}>
+            {message}
+          </Alert>
+        ))}
       </Form.Group>
       <Form.Group className="mb-2">
         <Form.Label className="mb-1">Category</Form.Label>
@@ -114,13 +186,26 @@ function FriendventureCreateForm() {
           name="category"
           value={category}
           onChange={handleChange}
+          required
+          className={styles.Input}
         >
-          <option>Indoor</option>
-          <option>Outdoor</option>
+          <option value="" disabled>
+            Select category for indoor or outdoor event
+          </option>
+          <option value="Indoor">Indoor</option>
+          <option value="Outdoor">Outdoor</option>
         </Form.Control>
+        {errors.category?.map((message, idx) => (
+        <Alert variant="warning" key={idx} className={appStyles.Alert}>
+            {message}
+        </Alert>
+    ))}
       </Form.Group>
 
-      <Button className={`${btnStyles.Button} ${btnStyles.Red}`} onClick={() => {}}>
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Red}`}
+        onClick={() => navigate(-1)}
+      >
         cancel
       </Button>
       <Button className={`${btnStyles.Button}`} type="submit">
@@ -130,7 +215,7 @@ function FriendventureCreateForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col>
           <h1 className={appStyles.Title}>Create a new FriendVenture</h1>
@@ -170,6 +255,7 @@ function FriendventureCreateForm() {
                 onChange={handleChangeImage}
                 id="image-upload"
                 className={styles.ImageUpload}
+                ref={imageInput}
               />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
