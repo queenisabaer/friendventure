@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import "./api/axiosDefault";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LogInForm from "./pages/auth/LogInForm";
+import FriendventureCreateForm from "./pages/friendventures/FriendventureCreateForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" element={<h1>Home Page</h1>} />
             <Route exact path="/signup" element={<SignUpForm />} />
             <Route exact path="/login" element={<LogInForm />} />
+            <Route exact path="/add" element={<FriendventureCreateForm />} />
             <Route path="*" element={<p>Sorry, Page not found</p>} />
           </Routes>
         </Container>

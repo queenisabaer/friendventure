@@ -7,14 +7,15 @@
   margin-left: 2px;
   margin-right: 2px;
   min-width: 75px;
-  background-color: #008281;
+  background-color: #008281!important;
   letter-spacing: 0.05rem;
+  color: #fff;
 }
 
 .Button:hover {
   opacity: 0.8;
   background-color: #287cb3;
-  color: #ffffff;
+  color: #fff;
   border-color: transparent;
   cursor: pointer;
 }
@@ -36,35 +37,6 @@
   width: 100%;
 }
 
-.Blue,
-.BlueOutline:hover,
-.Bright:hover {
-  background-color: #406277;
-  color: #ffffff;
+.Red {
+  background-color: #ff3131!important;
 }
-
-.BlueOutline,
-.Blue:hover {
-  /* border: 1px solid #2142b2; */
-  background-color: #ffffff;
-  color: #406277;
-}
-
-.Black,
-.BlackOutline:hover {
-  /* background-color: #242a3d;
-    color: white; */
-  background-color: #242a3d;
-  color: aliceblue;
-}
-
-.Black:hover,
-.BlackOutline {
-  /* background-color: #dadadf;
-    color: #242a3d;
-    border-color: #242a3d; */
-  background-color: aliceblue;
-  color: #242a3d;
-}
-
-

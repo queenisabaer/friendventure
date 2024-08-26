@@ -1,0 +1,17 @@
+.Container {
+  min-height: 343px;
+}
+
+.Input {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  box-sizing: border-box;
+  border-radius: 0.375rem;
+  color: #287cb3;
+  text-align: center;
+  padding: 5px;
+}
+
+.ImageUpload {
+  display: none;
+}
