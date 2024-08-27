@@ -3,6 +3,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { axiosResponse } from "../../api/axiosDefault";
 
 // format date and time
 function formatDate(dateString) {
@@ -48,6 +49,7 @@ const Friendventure = (props) => {
     description,
     updated_at,
     friendventurePage,
+    setFriendventure,
     datetime,
   } = props;
 
@@ -55,6 +57,38 @@ const Friendventure = (props) => {
   const is_owner = currentUser?.username === owner;
   const formatedDate = formatDate(date);
   const formatedTime = formatTime(time);
+
+  const handleParticipants = async () => {
+    try {
+        const {data} = await axiosResponse.post('/participants/', {friendventure:id});
+        setFriendventure((prevFriendventures) => ({
+            ...prevFriendventures,
+            results: prevFriendventures.results.map((friendventure) => {
+                return friendventure.id === id
+                ? {...friendventure, participants_count: friendventure.participants_count + 1, participants_id: data.id}
+                : friendventure;
+            })
+        }))
+    } catch (error) {
+        console.log(error)
+    }
+  };
+
+  const handleNonparticipant = async () => {
+    try {
+      await axiosResponse.delete(`/participants/${participants_id}`);
+      setFriendventure((prevFriendventures) => ({
+        ...prevFriendventures,
+        results: prevFriendventures.results.map((friendventure) => {
+          return friendventure.id === id
+          ? {...friendventure, participants_count: friendventure.participants_count - 1, participants_id: 0}
+          : friendventure
+        }),
+      }))
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Card className={styles.Friendventure}>
@@ -142,7 +176,7 @@ const Friendventure = (props) => {
                 <i className={`fa-solid fa-user-check ${styles.Icon}`}/>
               </OverlayTrigger>
             ) : participants_id ? (
-              <span onClick={() => {}}>
+              <span onClick={handleNonparticipant}>
                 <i className={`fa-solid fa-user-check ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
@@ -153,7 +187,7 @@ const Friendventure = (props) => {
                     <Tooltip>Participate in this FriendVenture!</Tooltip>
                   }
                 >
-                  <span onClick={() => {}}>
+                  <span onClick={handleParticipants}>
                     <i className={`fa-solid fa-user-check ${styles.Icon}`} />
                   </span>
                 </OverlayTrigger>
