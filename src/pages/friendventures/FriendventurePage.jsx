@@ -6,10 +6,11 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { axiosRequest } from "../../api/axiosDefault";
+import Friendventure from "./Friendventure";
 
 function FriendventurePage() {
   const {id} = useParams();
-  const [Friendventure, setFriendventure] = useState({results: []});
+  const [friendventure, setFriendventure] = useState({results: []});
 
   useEffect(() => {
     const handleMount = async () => {
@@ -31,7 +32,7 @@ function FriendventurePage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
-        <p>Post component</p>
+        <Friendventure {...friendventure.results[0]} setFriendventure={setFriendventure} friendventurePage />
         <Container className={appStyles.Content}>
           Comments
         </Container>

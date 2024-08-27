@@ -1,0 +1,225 @@
+import styles from "../../styles/Friendventure.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Card, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Avatar from "../../components/Avatar";
+
+// format date and time
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+const formatTime = (timeString) => {
+  if (!timeString) {
+    console.error("Time string is empty or undefined");
+    return "Invalid time";
+  }
+  const cleanTime = timeString.split(":");
+  if (cleanTime.length < 2) {
+    console.error("Invalid time format");
+    return "Invalid time";
+  }
+  const [hours, minutes] = cleanTime;
+  return `${hours}:${minutes}`;
+};
+
+const Friendventure = (props) => {
+  const {
+    id,
+    owner,
+    profile_id,
+    profile_pic,
+    bookmarks_count,
+    bookmark_id,
+    category,
+    comments_count,
+    participants_count,
+    participants_id,
+    place,
+    date,
+    time,
+    title,
+    image,
+    description,
+    updated_at,
+    friendventurePage,
+    datetime,
+  } = props;
+
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
+  const formatedDate = formatDate(date);
+  const formatedTime = formatTime(time);
+
+  return (
+    <Card className={styles.Friendventure}>
+      <Card.Body>
+        <Row className="d-flex flex-column flex-md-row align-items-center">
+          <Col
+            md={8}
+            className="d-flex flex-column justify-content-center order-2 order-md-1"
+          >
+            {title && <Card.Title className={styles.Title}>{title}</Card.Title>}
+          </Col>
+          <Col
+            md={4}
+            className={`d-flex justify-content-end align-items-center order-1 order-md-2 ${styles.SmallText}`}
+          >
+            <p className="mt-3 text-center">by</p>
+            <Link to={`/profiles/${profile_id}`}>
+              <Avatar src={profile_pic} height={30} />
+              <span className="ml-2">{owner}</span>
+              {is_owner && friendventurePage && "..."}
+            </Link>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <Link to={`/friendventures/${id}`}>
+              <Card.Img src={image} className={styles.Image} />
+            </Link>
+          </Col>
+          <Col md={6}>
+            {" "}
+            <p className="mb-1">Description:</p>
+            {description && <Card.Text>{description}</Card.Text>}
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={6}>
+            <div className="d-flex align-items-center">
+              <i className= {`fa-regular fa-calendar ${styles.IconGreen}`} /> {formatedDate}
+            </div>
+          </Col>
+          <Col md={6}>
+            <div className="d-flex align-items-center">
+              <i className={`fa-regular fa-clock ${styles.IconGreen}`}  /> {formatedTime}
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <div className="d-flex align-items-center">
+              <i className={`fa-solid fa-map-marker-alt ${styles.IconGreen}`} /> {place}
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div>
+              <span
+                className={`d-flex justify-content-end ${styles.SmallText}`}
+              >
+                last updated: {updated_at}
+              </span>
+            </div>
+          </Col>
+        </Row>
+      </Card.Body>
+      <Card.Footer>
+        <Row className="d-flex align-items-center justify-content-between">
+          <Col
+            xs={4}
+            className="d-flex justify-content-center align-items-center"
+          >
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip>
+                    As the owner of this FriendVenture, you are already a
+                    participant.
+                  </Tooltip>
+                }
+              >
+                <i className={`fa-solid fa-user-check ${styles.Icon}`}/>
+              </OverlayTrigger>
+            ) : participants_id ? (
+              <span onClick={() => {}}>
+                <i className={`fa-solid fa-user-check ${styles.Icon}`} />
+              </span>
+            ) : currentUser ? (
+              <Link to={`/friendventures/${id}`}>
+                <OverlayTrigger
+                  placement="top"
+                  overlay={
+                    <Tooltip>Participate in this FriendVenture!</Tooltip>
+                  }
+                >
+                  <span onClick={() => {}}>
+                    <i className={`fa-solid fa-user-check ${styles.Icon}`} />
+                  </span>
+                </OverlayTrigger>
+              </Link>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip>
+                    Log in to participate in this FriendVenture!
+                  </Tooltip>
+                }
+              >
+                <span>
+                  <i className={`fa-solid fa-user-check ${styles.Icon}`} />
+                </span>
+              </OverlayTrigger>
+            )}
+            {participants_count}
+          </Col>
+
+          <Col
+            xs={4}
+            className="d-flex justify-content-center align-items-center"
+          >
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip>You can't bookmark your own FriendVenture!</Tooltip>
+                }
+              >
+                <i className={`fa-regular fa-heart ${styles.Icon}`}/>
+              </OverlayTrigger>
+            ) : bookmark_id ? (
+              <span onClick={() => {}}>
+                <i className={`fa-regular fa-heart ${styles.Icon}`} />
+              </span>
+            ) : currentUser ? (
+              <span onClick={() => {}}>
+                <i className={`fa-regular fa-heart ${styles.IconOutline}`} />
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to bookmark a FriendVenture!</Tooltip>}
+              >
+                <i className={`fa-regular fa-heart ${styles.Icon}`} />
+              </OverlayTrigger>
+            )}
+            {bookmarks_count}
+          </Col>
+
+          <Col
+            xs={4}
+            className="d-flex justify-content-center align-items-center"
+          >
+            <Link to={`/friendventures/${id}`}>
+              <i className={`far fa-comments ${styles.Icon}`} />
+            </Link>
+            {comments_count}
+          </Col>
+        </Row>
+      </Card.Footer>
+    </Card>
+  );
+};
+
+export default Friendventure;

@@ -1,0 +1,45 @@
+.Friendventure {
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  margin: 5px 5px 15px 5px;
+}
+
+.Title {
+  color: #008281;
+  font: 1.5rem "Shadows Into Light", sans-serif;
+}
+
+.Icon {
+  color: #f85032;
+  margin-right: 3px;
+}
+
+.Icon:hover, 
+.IconGreen {
+  color: #008281;
+}
+
+
+.IconOutline:hover {
+  color: #f85032;
+}
+
+.Date i {
+  margin-right: 5px;
+  color: #008281;
+}
+
+.Date {
+  justify-items: center;
+}
+
+.SmallText {
+  font-size: 0.75rem;
+}
+
+@media screen and (min-width: 576px) {
+  .Friendventure {
+    margin: 0 0 15px 0;
+  }
+}
