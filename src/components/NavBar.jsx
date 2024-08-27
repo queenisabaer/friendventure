@@ -23,7 +23,6 @@ const NavBar = () => {
       setCurrentUser(null);
       setExpanded(false);
       setShowDropdown(false);
-      showMessage("success", "Successfully signed out!");
     } catch (err) {
       console.log(err);
     }
@@ -49,7 +48,6 @@ const NavBar = () => {
           </span>
         }
         show={showDropdown}
-        ref={ref}
       >
         <NavDropdown.Item
           as={Link}
@@ -80,7 +78,7 @@ const NavBar = () => {
         as={NavLink}
         className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
         to="/profile"
-        onClick={() => setExpanded(expanded)}
+        onClick={handleDropdownItemClick}
       >
         <Avatar
           src={currentUser?.profile_image}
@@ -104,6 +102,7 @@ const NavBar = () => {
         as={NavLink}
         className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
         to="/signup"
+        onClick={handleDropdownItemClick}
       >
         <i className="fa-solid fa-user-pen"></i>Sign Up
       </Nav.Link>
@@ -111,6 +110,7 @@ const NavBar = () => {
         as={NavLink}
         className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
         to="/login"
+        onClick={handleDropdownItemClick}
       >
         <i className="fa-solid fa-right-to-bracket"></i>Log in
       </Nav.Link>
@@ -125,7 +125,7 @@ const NavBar = () => {
       fixed="top"
     >
       <Container>
-        <NavLink to="/">
+        <NavLink to="/" onClick={handleDropdownItemClick}>
           <Navbar.Brand>
             <img
               className={styles.Logo}
@@ -139,7 +139,7 @@ const NavBar = () => {
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
         />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+        <Navbar.Collapse ref={ref} id="basic-navbar-nav" className="justify-content-end">
           <Nav className="ml-auto text-center">
             <Nav.Link
               end
@@ -148,7 +148,7 @@ const NavBar = () => {
                 isActive ? `${styles.NewActive}` : ""
               }
               to="/"
-              onClick={() => setExpanded(expanded)}
+              onClick={handleDropdownItemClick}
             >
               <i className="fas fa-home"></i>Home
             </Nav.Link>
