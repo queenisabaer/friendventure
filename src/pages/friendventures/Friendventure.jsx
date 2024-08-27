@@ -60,17 +60,23 @@ const Friendventure = (props) => {
 
   const handleParticipants = async () => {
     try {
-        const {data} = await axiosResponse.post('/participants/', {friendventure:id});
-        setFriendventure((prevFriendventures) => ({
-            ...prevFriendventures,
-            results: prevFriendventures.results.map((friendventure) => {
-                return friendventure.id === id
-                ? {...friendventure, participants_count: friendventure.participants_count + 1, participants_id: data.id}
-                : friendventure;
-            })
-        }))
+      const { data } = await axiosResponse.post("/participants/", {
+        friendventure: id,
+      });
+      setFriendventure((prevFriendventures) => ({
+        ...prevFriendventures,
+        results: prevFriendventures.results.map((friendventure) => {
+          return friendventure.id === id
+            ? {
+                ...friendventure,
+                participants_count: friendventure.participants_count + 1,
+                participants_id: data.id,
+              }
+            : friendventure;
+        }),
+      }));
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
   };
 
@@ -81,14 +87,60 @@ const Friendventure = (props) => {
         ...prevFriendventures,
         results: prevFriendventures.results.map((friendventure) => {
           return friendventure.id === id
-          ? {...friendventure, participants_count: friendventure.participants_count - 1, participants_id: 0}
-          : friendventure
+            ? {
+                ...friendventure,
+                participants_count: friendventure.participants_count - 1,
+                participants_id: 0,
+              }
+            : friendventure;
         }),
-      }))
+      }));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+
+  const handleBookmarks = async () => {
+    try {
+      const { data } = await axiosResponse.post("/bookmarks/", {
+        friendventure: id,
+      });
+      setFriendventure((prevFriendventures) => ({
+        ...prevFriendventures,
+        results: prevFriendventures.results.map((friendventure) => {
+          return friendventure.id === id
+            ? {
+                ...friendventure,
+                bookmarks_count: friendventure.bookmarks_count + 1,
+                bookmark_id: data.id,
+              }
+            : friendventure;
+        }),
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUnbookmark = async () => {
+    try {
+      await axiosResponse.delete(`/bookmarks/${bookmark_id}`);
+      setFriendventure((prevFriendventures) => ({
+        ...prevFriendventures,
+        results: prevFriendventures.results.map((friendventure) => {
+          return friendventure.id === id
+            ? {
+                ...friendventure,
+                bookmarks_count: friendventure.bookmarks_count - 1,
+                bookmark_id: 0,
+              }
+            : friendventure;
+        }),
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Card className={styles.Friendventure}>
@@ -128,12 +180,14 @@ const Friendventure = (props) => {
         <Row>
           <Col md={6}>
             <div className="d-flex align-items-center">
-              <i className= {`fa-regular fa-calendar ${styles.IconGreen}`} /> {formatedDate}
+              <i className={`fa-regular fa-calendar ${styles.IconGreen}`} />{" "}
+              {formatedDate}
             </div>
           </Col>
           <Col md={6}>
             <div className="d-flex align-items-center">
-              <i className={`fa-regular fa-clock ${styles.IconGreen}`}  /> {formatedTime}
+              <i className={`fa-regular fa-clock ${styles.IconGreen}`} />{" "}
+              {formatedTime}
             </div>
           </Col>
         </Row>
@@ -141,7 +195,8 @@ const Friendventure = (props) => {
         <Row>
           <Col>
             <div className="d-flex align-items-center">
-              <i className={`fa-solid fa-map-marker-alt ${styles.IconGreen}`} /> {place}
+              <i className={`fa-solid fa-map-marker-alt ${styles.IconGreen}`} />{" "}
+              {place}
             </div>
           </Col>
         </Row>
@@ -173,7 +228,7 @@ const Friendventure = (props) => {
                   </Tooltip>
                 }
               >
-                <i className={`fa-solid fa-user-check ${styles.Icon}`}/>
+                <i className={`fa-solid fa-user-check ${styles.Icon}`} />
               </OverlayTrigger>
             ) : participants_id ? (
               <span onClick={handleNonparticipant}>
@@ -220,14 +275,14 @@ const Friendventure = (props) => {
                   <Tooltip>You can't bookmark your own FriendVenture!</Tooltip>
                 }
               >
-                <i className={`fa-regular fa-heart ${styles.Icon}`}/>
+                <i className={`fa-regular fa-heart ${styles.Icon}`} />
               </OverlayTrigger>
             ) : bookmark_id ? (
-              <span onClick={() => {}}>
+              <span onClick={handleUnbookmark}>
                 <i className={`fa-regular fa-heart ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
-              <span onClick={() => {}}>
+              <span onClick={handleBookmarks}>
                 <i className={`fa-regular fa-heart ${styles.IconOutline}`} />
               </span>
             ) : (
