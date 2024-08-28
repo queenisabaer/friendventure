@@ -13,12 +13,27 @@ export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
-  const handleMount = async () => {
+  const refreshAuthToken = async () => {
     try {
-      const { data } = await axiosResponse.get("dj-rest-auth/user/");
-      setCurrentUser(data);
+      await axios.post("/dj-rest-auth/token/refresh/");
+      return true;
     } catch (err) {
-      console.log(err);
+      setCurrentUser(null);
+      navigate("/login");
+      return false;
+    }
+  };
+
+  const handleMount = async () => {
+    const tokenValid = await refreshAuthToken();
+    if (tokenValid) {
+      try {
+        const { data } = await axiosResponse.get("dj-rest-auth/user/");
+        setCurrentUser(data);
+      } catch (err) {
+        console.log(err);
+        setCurrentUser(null);
+      }
     }
   };
 
@@ -29,17 +44,7 @@ export const CurrentUserProvider = ({ children }) => {
   useEffect(() => {
     const requestInterceptor = axiosRequest.interceptors.request.use(
       async (config) => {
-        try {
-          await axios.post("/dj-rest-auth/token/refresh/");
-        } catch (err) {
-          setCurrentUser((prevCurrentUser) => {
-            if (prevCurrentUser) {
-              navigate("/login");
-            }
-            return null;
-          });
-          return config;
-        }
+        await refreshAuthToken();
         return config;
       },
       (err) => {
@@ -51,17 +56,10 @@ export const CurrentUserProvider = ({ children }) => {
       (response) => response,
       async (err) => {
         if (err.response?.status === 401) {
-          try {
-            await axios.post("dj-rest-auth/token/refresh/");
-          } catch (err) {
-            setCurrentUser((prevCurrentUser) => {
-              if (prevCurrentUser) {
-                navigate("/login");
-              }
-              return null;
-            });
+          const tokenValid = await refreshAuthToken();
+          if (tokenValid) {
+            return axios(err.config);
           }
-          return axios(err.config);
         }
         return Promise.reject(err);
       }
