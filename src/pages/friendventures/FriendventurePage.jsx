@@ -31,14 +31,14 @@ function FriendventurePage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Your upcoming FriendVentures for mobile</p>
+        <p>Participants for mobile</p>
         <Friendventure {...friendventure.results[0]} setFriendventure={setFriendventure} friendventurePage />
         <Container className={appStyles.Content}>
           Comments
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Your upcoming FriendVentures
+        Participants
       </Col>
     </Row>
   );

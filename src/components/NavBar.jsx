@@ -73,6 +73,14 @@ const NavBar = () => {
         >
           <i className="fa-solid fa-calendar-check"></i>Upcoming
         </NavDropdown.Item>
+        <NavDropdown.Item
+          as={Link}
+          className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
+          to="/friendventures"
+          onClick={handleDropdownItemClick}
+        >
+          <i className="fa-solid fa-compass"></i>Explore
+        </NavDropdown.Item>
       </NavDropdown>
       <Nav.Link
         as={NavLink}
