@@ -13,15 +13,17 @@ import Friendventure from "./Friendventure";
 import NoResults from "../../assets/no_results.webp";
 import Asset from "../../components/Asset";
 
-function FriendventuresPage({message, filter = ""}) {
+function FriendventuresPage({ message, filter = "" }) {
   const [friendventures, setFriendventures] = useState({ results: [] });
   const [hasLoaded, setHasloaded] = useState(false);
   const { pathname } = useLocation();
 
+  const  [query, setQuery ] = useState("");
+
   useEffect(() => {
     const fetchFriendventures = async () => {
       try {
-        const { data } = await axiosRequest.get(`/friendventures/?${filter}`);
+        const { data } = await axiosRequest.get(`/friendventures/?${filter}search=${query}`);
         setFriendventures(data);
         setHasloaded(true);
       } catch (error) {
@@ -29,13 +31,33 @@ function FriendventuresPage({message, filter = ""}) {
       }
     };
     setHasloaded(false);
-    fetchFriendventures();
-  }, [filter, pathname]);
+    const timer = setTimeout(() => {
+      fetchFriendventures();
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [filter, query, pathname]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Your upcoming FriendVentures mobile</p>
+        
+          <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`} />
+          <Form
+            className={styles.SearchBar}
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <Form.Control
+              value={query}
+              onChange={(event)=> setQuery(event.target.value)}
+              type="text"
+              className="mr-ms-2"
+              placeholder="Search FriendVentures"
+            />
+          </Form>
+        
         {hasLoaded ? (
           <>
             {friendventures.results.length ? (
