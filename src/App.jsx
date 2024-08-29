@@ -12,32 +12,33 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import { useState } from "react";
 import Message from "./components/Message";
 
-
 function App() {
-
   const [message, setMessage] = useState(null);
 
-const showMessage = (type, text) => {
-  setMessage({ type, text });
+  const showMessage = (type, text) => {
+    setMessage({ type, text });
 
-  setTimeout(() => {
-    setMessage(null);
-  }, 2000);
-};
+    setTimeout(() => {
+      setMessage(null);
+    }, 2000);
+  };
 
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
   return (
     <>
       <div className={styles.App}>
-      {message && <Message type={message.type} text={message.text} />}
-        <NavBar showMessage={showMessage}/>
+        {message && <Message type={message.type} text={message.text} />}
+        <NavBar showMessage={showMessage} />
         <Container className={styles.Main}>
           <Routes>
-            <Route exact path="/" element={
-              <FriendventuresPage
-                  message="Sorry, no FriendVentures found. Adjust the search keyword."
-                />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <FriendventuresPage message="Sorry, no FriendVentures found. Adjust the search keyword." />
+              }
+            />
             <Route
               exact
               path="/friendventures"
@@ -68,9 +69,9 @@ const showMessage = (type, text) => {
                 />
               }
             />
-            <Route exact path="/signup" element={<SignUpForm />} />
-            <Route exact path="/login" element={<LogInForm />} />
-            <Route exact path="/add" element={<FriendventureCreateForm />} />
+            <Route exact path="/signup" element={<SignUpForm showMessage={showMessage}/>} />
+            <Route exact path="/login" element={<LogInForm showMessage={showMessage}/>}  />
+            <Route exact path="/add" element={<FriendventureCreateForm showMessage={showMessage}/>} />
             <Route
               exact
               path="/friendventures/:id"

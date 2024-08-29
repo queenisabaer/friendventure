@@ -19,7 +19,7 @@ import Asset from "../../components/Asset";
 import { useNavigate } from "react-router-dom";
 import { axiosRequest } from "../../api/axiosDefault";
 
-function FriendventureCreateForm() {
+function FriendventureCreateForm(props) {
   const [friendventureData, setFriendventureData] = useState({
     title: "",
     description: "",
@@ -37,6 +37,8 @@ function FriendventureCreateForm() {
 
   const imageInput = useRef(null);
   const navigate = useNavigate();
+
+  const { showMessage } = props;
 
   const handleChange = (event) => {
     setFriendventureData({
@@ -84,6 +86,7 @@ function FriendventureCreateForm() {
       const { data } = response;
 
       navigate(`/friendventures/${data.id}`);
+      showMessage("success", "Your FriendVenture has been created successfully!");
     } catch (err) {
       console.error("Error submitting form:", err);
       if (err.response?.status !== 401) {

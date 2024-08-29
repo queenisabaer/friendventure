@@ -1,4 +1,4 @@
-import { axiosRequest } from "../../api/axiosDefault";
+import { axiosRequest } from "../api/axiosDefault";
 
 export const fetchMoreData = async (resource, setResource) => {
   try {

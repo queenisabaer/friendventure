@@ -17,7 +17,7 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import axios from "axios";
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
@@ -27,6 +27,7 @@ const SignUpForm = () => {
   const { username, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
+  const { showMessage } = props;
 
   const navigate = useNavigate();
 
@@ -42,6 +43,7 @@ const SignUpForm = () => {
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       navigate("/login");
+      showMessage("success", "You signed up successfully, and can now log in.")
     } catch (err) {
       setErrors(err.response?.data);
     }

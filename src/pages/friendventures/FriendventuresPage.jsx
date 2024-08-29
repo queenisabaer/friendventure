@@ -13,7 +13,7 @@ import Friendventure from "./Friendventure";
 import NoResults from "../../assets/no_results.webp";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../styles/utils/utils";
+import { fetchMoreData } from "../../utils/utils";
 
 function FriendventuresPage({ message, filter = "" }) {
   const [friendventures, setFriendventures] = useState({ results: [] });
