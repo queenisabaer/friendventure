@@ -14,12 +14,16 @@ export const CurrentUserProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const refreshAuthToken = async () => {
+    console.log("Refreshing token");
     try {
       await axios.post("/dj-rest-auth/token/refresh/");
       return true;
     } catch (err) {
-      setCurrentUser(null);
-      navigate("/login");
+      console.log("Token refresh failed", err);
+      if (currentUser) {
+        setCurrentUser(null);
+        navigate("/login");
+      }
       return false;
     }
   };
