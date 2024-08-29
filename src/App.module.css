@@ -22,6 +22,12 @@
   color: #FF3131;
 }
 
+.AlertGreen {
+  background-color: #e0f2eb;
+  border-color: #008281;
+  color: #008281;
+}
+
 .Main {
   padding-top: 100px;
 }

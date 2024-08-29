@@ -9,14 +9,29 @@ import FriendventureCreateForm from "./pages/friendventures/FriendventureCreateF
 import FriendventurePage from "./pages/friendventures/FriendventurePage";
 import FriendventuresPage from "./pages/friendventures/FriendventuresPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import { useState } from "react";
+import Message from "./components/Message";
+
 
 function App() {
+
+  const [message, setMessage] = useState(null);
+
+const showMessage = (type, text) => {
+  setMessage({ type, text });
+
+  setTimeout(() => {
+    setMessage(null);
+  }, 2000);
+};
+
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
   return (
     <>
       <div className={styles.App}>
-        <NavBar />
+      {message && <Message type={message.type} text={message.text} />}
+        <NavBar showMessage={showMessage}/>
         <Container className={styles.Main}>
           <Routes>
             <Route exact path="/" element={

@@ -10,7 +10,8 @@ import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
-const NavBar = () => {
+const NavBar = (props) => {
+  const { showMessage } = props;
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
@@ -23,6 +24,7 @@ const NavBar = () => {
       setCurrentUser(null);
       setExpanded(false);
       setShowDropdown(false);
+      showMessage("success", "Successfully signed out!");
     } catch (err) {
       console.log(err);
     }
