@@ -1,9 +1,10 @@
 import styles from "../../styles/Friendventure.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosResponse } from "../../api/axiosDefault";
+import { EditDeleteDropdown } from "../../components/EditDeleteDropdown";
 
 // format date and time
 function formatDate(dateString) {
@@ -57,6 +58,20 @@ const Friendventure = (props) => {
   const is_owner = currentUser?.username === owner;
   const formatedDate = formatDate(date);
   const formatedTime = formatTime(time);
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    navigate(`/friendventures/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosResponse.delete(`/friendventures/${id}/`);
+      navigate(-1);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleParticipants = async () => {
     try {
@@ -160,8 +175,10 @@ const Friendventure = (props) => {
             <Link to={`/profiles/${profile_id}`}>
               <Avatar src={profile_pic} height={30} />
               <span className="ml-2">{owner}</span>
-              {is_owner && friendventurePage && "..."}
             </Link>
+            {is_owner && friendventurePage && (
+              <EditDeleteDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+            )}
           </Col>
         </Row>
         <Row>

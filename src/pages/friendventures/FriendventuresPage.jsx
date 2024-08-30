@@ -71,6 +71,7 @@ function FriendventuresPage({ message, filter = "" }) {
                     key={friendventure.id}
                     {...friendventure}
                     setFriendventure={setFriendventures}
+                    friendventurePage
                   />
                 ))}
                 dataLength={friendventures.results.length}

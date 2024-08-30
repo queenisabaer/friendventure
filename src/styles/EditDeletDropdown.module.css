@@ -1,0 +1,14 @@
+.DropdownIcon {
+  margin-left: 10px; 
+}
+
+.DropdownItem {
+    display: inline-block;
+    padding: 0px;
+  }
+  
+  .Absolute {
+    position: absolute;
+    right: 0;
+    z-index: 99;
+  }
