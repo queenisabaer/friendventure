@@ -17,16 +17,16 @@ function formatDate(dateString) {
 }
 
 const formatTime = (timeString) => {
-  if (!timeString) {
-    console.error("Time string is empty or undefined");
-    return "Invalid time";
+  if (!timeString || typeof timeString !== "string") {
+    console.error("Time string is empty, undefined, or not a string");
+    return "N/A";
   }
   const cleanTime = timeString.split(":");
   if (cleanTime.length < 2) {
-    console.error("Invalid time format");
-    return "Invalid time";
+    console.error(`Invalid time format: ${timeString}`);
+    return "N/A";
   }
-  const [hours, minutes] = cleanTime;
+  const [hours, minutes] = cleanTime.slice(0, 2);
   return `${hours}:${minutes}`;
 };
 
@@ -57,7 +57,7 @@ const Friendventure = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const formatedDate = formatDate(date);
-  const formatedTime = formatTime(time);
+  const formatedTime = time ? formatTime(time) : "N/A";
   const navigate = useNavigate();
 
   const handleEdit = () => {
@@ -67,7 +67,7 @@ const Friendventure = (props) => {
   const handleDelete = async () => {
     try {
       await axiosResponse.delete(`/friendventures/${id}/`);
-      navigate(-1);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -177,7 +177,10 @@ const Friendventure = (props) => {
               <span className="ml-2">{owner}</span>
             </Link>
             {is_owner && friendventurePage && (
-              <EditDeleteDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+              <EditDeleteDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             )}
           </Col>
         </Row>

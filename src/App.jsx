@@ -11,6 +11,7 @@ import FriendventuresPage from "./pages/friendventures/FriendventuresPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import { useState } from "react";
 import Message from "./components/Message";
+import FriendventureEditForm from "./pages/friendventures/FriendventureEditForm";
 
 function App() {
   const [message, setMessage] = useState(null);
@@ -72,11 +73,8 @@ function App() {
             <Route exact path="/signup" element={<SignUpForm showMessage={showMessage}/>} />
             <Route exact path="/login" element={<LogInForm showMessage={showMessage}/>}  />
             <Route exact path="/add" element={<FriendventureCreateForm showMessage={showMessage}/>} />
-            <Route
-              exact
-              path="/friendventures/:id"
-              element={<FriendventurePage />}
-            />
+            <Route exact path="/friendventures/:id" element={<FriendventurePage />} />
+            <Route exact path="/friendventures/:id/edit" element={< FriendventureEditForm showMessage={showMessage}/> } />
             <Route path="*" element={<p>Sorry, Page not found</p>} />
           </Routes>
         </Container>

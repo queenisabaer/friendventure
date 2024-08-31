@@ -29,7 +29,7 @@ export const EditDeleteDropdown = ({ handleEdit, handleDelete }) => {
     <>
       <Dropdown>
         <Dropdown.Toggle as={DropdownIcon} />
-        <Dropdown.Menu className="text-center">
+        <Dropdown.Menu className="text-center" popperConfig={{ strategy: "absolute" }}>
           <Dropdown.Item
             className={styles.DropdownItem}
             onClick={handleEdit}

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   Form,
@@ -10,16 +10,13 @@ import {
   Alert,
 } from "react-bootstrap";
 
-import Upload from "../../assets/Friendventure_upload.webp";
-
 import styles from "../../styles/FriendventureCreatEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { axiosRequest } from "../../api/axiosDefault";
 
-function FriendventureCreateForm(props) {
+function FriendventureEditForm(props) {
   const [friendventureData, setFriendventureData] = useState({
     title: "",
     description: "",
@@ -37,6 +34,39 @@ function FriendventureCreateForm(props) {
 
   const imageInput = useRef(null);
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosRequest.get(`/friendventures/${id}/`);
+        const {
+          title,
+          description,
+          image,
+          date,
+          time,
+          place,
+          category,
+          is_owner,
+        } = data;
+        is_owner
+          ? setFriendventureData({
+              title,
+              description,
+              image,
+              date,
+              time,
+              place,
+              category,
+            })
+          : navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleMount();
+  }, [navigate, id]);
 
   const { showMessage } = props;
 
@@ -72,7 +102,7 @@ function FriendventureCreateForm(props) {
     // Image size validation
     if (imageInput.current.files.length > 0) {
       const imageFile = imageInput.current.files[0];
-
+  
       if (imageFile.size > 1024 * 1024 * 2) {
         setErrors({ image: ["Image can't be larger than 2MB"] });
         return;
@@ -87,20 +117,14 @@ function FriendventureCreateForm(props) {
     formData.append("time", time);
     formData.append("place", place);
     formData.append("category", category);
-    // Only append the image file if one has been selected
-    if (imageInput.current.files.length > 0) {
-      formData.append("image", imageInput.current.files[0]);
-    }
+    if (imageInput?.current?.files[0]) {
+        formData.append("image", imageInput.current.files[0]);
+      }
 
     try {
-      const response = await axiosRequest.post("/friendventures/", formData);
-      const { data } = response;
-
-      navigate(`/friendventures/${data.id}`);
-      showMessage(
-        "success",
-        "Your FriendVenture has been created successfully!"
-      );
+      await axiosRequest.put(`/friendventures/${id}/`, formData);
+      navigate(`/friendventures/${id}/`);
+      showMessage("success", "Your FriendVenture has been updated!");
     } catch (err) {
       console.error("Error submitting form:", err);
       if (err.response?.status !== 401) {
@@ -173,7 +197,7 @@ function FriendventureCreateForm(props) {
               required
             />
             {errors?.time?.map((message, idx) => (
-              <Alert variant="warning" key={idx} className={appStyles.Alert}>
+              <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
             ))}
@@ -226,7 +250,7 @@ function FriendventureCreateForm(props) {
         cancel
       </Button>
       <Button className={`${btnStyles.Button}`} type="submit">
-        create
+        update
       </Button>
     </div>
   );
@@ -235,7 +259,7 @@ function FriendventureCreateForm(props) {
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col>
-          <h1 className={appStyles.Title}>Create a new FriendVenture</h1>
+          <h1 className={appStyles.Title}>Update your FriendVenture</h1>
         </Col>
       </Row>
       <Row>
@@ -244,7 +268,6 @@ function FriendventureCreateForm(props) {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
                 <>
                   <figure>
                     <Image className={appStyles.Image} src={image} rounded />
@@ -258,14 +281,6 @@ function FriendventureCreateForm(props) {
                     </Form.Label>
                   </div>
                 </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <Asset src={Upload} message="Click or tap to upload" />
-                </Form.Label>
-              )}
               <Form.Control
                 type="file"
                 accept="image/*"
@@ -275,10 +290,10 @@ function FriendventureCreateForm(props) {
                 ref={imageInput}
               />
               {errors?.image?.map((message, idx) => (
-                <Alert variant="warning" key={idx} className={appStyles.Alert}>
-                  {message}
-                </Alert>
-              ))}
+              <Alert variant="warning" key={idx} className={appStyles.Alert}>
+                {message}
+              </Alert>
+            ))}
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
           </Container>
@@ -291,4 +306,4 @@ function FriendventureCreateForm(props) {
   );
 }
 
-export default FriendventureCreateForm;
+export default FriendventureEditForm;
