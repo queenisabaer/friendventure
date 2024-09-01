@@ -18,3 +18,9 @@
   background-color: #EAD5DC;
   color: #406277;
 }
+
+.CommentAreaWrapper {
+  border-bottom: 1px solid #EAD5DC;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}

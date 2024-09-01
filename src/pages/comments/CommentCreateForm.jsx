@@ -63,7 +63,7 @@ function CommentCreateForm(props) {
           />
         </InputGroup>
       </Form.Group>
-      <Form.Group className="d-flex justify-content-end mt-2">
+      <Form.Group className={`d-flex justify-content-end mt-2 ${styles.CommentAreaWrapper}`}>
       <button
         className={`${styles.Button}`}
         disabled={!content.trim()}

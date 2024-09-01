@@ -14,7 +14,7 @@ const DropdownIcon = forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const EditDeleteDropdown = ({ handleEdit, handleDelete }) => {
+export const EditDeleteDropdown = ({ handleEdit, handleDelete, confirmationMessage }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
@@ -55,7 +55,7 @@ export const EditDeleteDropdown = ({ handleEdit, handleDelete }) => {
         handleClose={handleCloseModal}
         handleConfirm={handleConfirmDelete}
         title="Confirm Deletion"
-        message="Are you sure you want to delete this FriendVenture?"
+        message={confirmationMessage}
       />
     </>
   );

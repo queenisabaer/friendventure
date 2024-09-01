@@ -58,7 +58,11 @@ function FriendventurePage() {
           ) : null}
           {comments.results.length ? (
             comments.results.map(comment => (
-              <Comment key={comment.id} {...comment}/>
+              <Comment 
+                key={comment.id}
+                {...comment}
+                setFriendventure={setFriendventure}
+                setComments={setComments}/>
             ))
           ) : currentUser ? (
             <span>No comment yet, be the first to do</span>

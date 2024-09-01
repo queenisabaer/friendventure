@@ -180,6 +180,7 @@ const Friendventure = (props) => {
               <EditDeleteDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
+                confirmationMessage={"Are you sure, you want to delete this FriendVenture?"}
               />
             )}
           </Col>
