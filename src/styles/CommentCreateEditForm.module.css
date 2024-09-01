@@ -15,12 +15,26 @@
 
 .Button:hover {
   cursor: pointer;
-  background-color: #EAD5DC;
-  color: #406277;
+  opacity: 0.8;
 }
 
 .CommentAreaWrapper {
   border-bottom: 1px solid #EAD5DC;
   padding-bottom: 10px;
   margin-bottom: 15px;
+}
+
+.RedButton {
+  background-color: #ff3131;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 4px 10px;
+  min-width: 75px;
+  margin: 5px;
+}
+
+.RedButton:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
