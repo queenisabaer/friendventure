@@ -1,34 +1,11 @@
-import React, { useEffect, useState } from "react";
 import appStyles from "../../App.module.css";
 import { Container } from "react-bootstrap";
-import { axiosRequest } from "../../api/axiosDefault";
 import Asset from "../../components/Asset";
 import Profile from "./Profile";
+import { useProfileData } from "../../contexts/ProfileDataContext";
 
 const ActiveProfiles = ({ mobile }) => {
-  const [profileData, setProfileData] = useState({
-    pageProfile: { results: [] },
-    activeProfiles: { results: [] },
-  });
-
-  const { activeProfiles } = profileData;
-
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const { data } = await axiosRequest.get(
-          `/profiles/?ordering=-friendventures_count`
-        );
-        setProfileData((prevState) => ({
-          ...prevState,
-          activeProfiles: data,
-        }));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    handleMount();
-  });
+  const {activeProfiles} = useProfileData()
 
   return (
     <Container
