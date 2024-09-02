@@ -14,6 +14,7 @@ import NoResults from "../../assets/no_results.webp";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import ActiveProfiles from "../profiles/ActiveProfiles";
 
 function FriendventuresPage({ message, filter = "" }) {
   const [friendventures, setFriendventures] = useState({ results: [] });
@@ -92,7 +93,7 @@ function FriendventuresPage({ message, filter = "" }) {
         )}
       </Col>
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <p>Your upcoming FriendVentures for desktop</p>
+        <ActiveProfiles />
       </Col>
     </Row>
   );
