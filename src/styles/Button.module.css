@@ -14,7 +14,6 @@
 
 .Button:hover {
   opacity: 0.8;
-  background-color: #287cb3;
   color: #fff;
   border-color: transparent;
   cursor: pointer;
@@ -22,10 +21,12 @@
 
 .Button:hover:active {
   background-color: #406277!important;
+  border-color: transparent;
 }
 
 .Button:active {
   background-color: #406277!important;
+  border-color: transparent;
 }
 
 .Button:focus {
@@ -39,4 +40,9 @@
 
 .Red {
   background-color: #ff3131!important;
+}
+
+.Red:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
