@@ -48,13 +48,13 @@ const Comment = (props) => {
 
   return (
     <div>
-      <Row>
+      <Row className="d-flex align-items-center">
         <Col xs="auto">
           <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_pic} />
+            <Avatar src={profile_pic} height={40}/>
           </Link>
         </Col>
-        <Col>
+        <Col xs className="flex-grow-1">
           <Link to={`/profiles/${profile_id}`} className={styles.Owner}>
             <span>{owner}</span>
           </Link>
