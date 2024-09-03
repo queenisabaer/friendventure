@@ -10,6 +10,7 @@ const Profile = (props) => {
   const { id, following_id, profile_image, owner } = profile;
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  console.log("profile image in profile component = ", profile_image)
 
   return (
     <div

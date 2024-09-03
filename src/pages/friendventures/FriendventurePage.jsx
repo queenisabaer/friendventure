@@ -13,6 +13,7 @@ import Comment from "../comments/Comment";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import Asset from "../../components/Asset";
+import FriendVentureParticipants from "../participants/FriendventureParticipants";
 
 
 function FriendventurePage() {
@@ -42,7 +43,6 @@ function FriendventurePage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Participants for mobile</p>
         <Friendventure
           {...friendventure.results[0]}
           setFriendventure={setFriendventure}
@@ -80,9 +80,10 @@ function FriendventurePage() {
             <span>No comments yet.</span>
           )}
         </Container>
+        <FriendVentureParticipants friendventureId={id} mobile/>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Participants
+        <FriendVentureParticipants friendventureId={id}/>
       </Col>
     </Row>
   );

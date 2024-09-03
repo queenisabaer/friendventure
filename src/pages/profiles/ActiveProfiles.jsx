@@ -18,13 +18,13 @@ const ActiveProfiles = ({ mobile }) => {
           <p>Most active profiles:</p>
           {mobile ? (
             <div className="d-flex justify-content-around">
-              {activeProfiles.results.slice(0, 4).map((profile) => (
+              {activeProfiles.results.slice(0, 3).map((profile) => (
                 <Profile key={profile.id} profile={profile} mobile />
               ))}
             </div>
           ) : (
             activeProfiles.results
-              .slice(0, 6)
+              .slice(0, 5)
               .map((profile) => <Profile key={profile.id} profile={profile} />)
           )}
         </>
