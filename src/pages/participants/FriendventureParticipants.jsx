@@ -18,7 +18,7 @@ const FriendVentureParticipants = ({ friendventureId, mobile }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosRequest.get(
-          `/participants/?friendventure=${friendventureId}&ordering=created_at`
+          `/participants/?friendventure=${friendventureId}`
         );
         setParticipantsData((prevState) => ({
           ...prevState,
@@ -29,7 +29,7 @@ const FriendVentureParticipants = ({ friendventureId, mobile }) => {
       }
     };
     handleMount();
-  }, [friendventureId]);
+  }, []);
 
   return (
     <Container
@@ -47,9 +47,9 @@ const FriendVentureParticipants = ({ friendventureId, mobile }) => {
               ))}
             </div>
           ) : (
-            friendventureParticipants.results.map((profile) => (
+            friendventureParticipants.results.map((profile) => 
               <Profile key={profile.id} profile={profile} />
-            ))
+            )
           )}
         </>
       ) : (

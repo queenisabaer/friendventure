@@ -1,4 +1,5 @@
 import styles from "../../styles/Friendventure.module.css";
+import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -172,7 +173,7 @@ const Friendventure = (props) => {
             className={`d-flex justify-content-end align-items-center order-1 order-md-2 ${styles.SmallText}`}
           >
             <p className="mt-3 text-center">by</p>
-            <Link to={`/profiles/${profile_id}`}>
+            <Link className={appStyles.NoUnderline} to={`/profiles/${profile_id}`}>
               <Avatar src={profile_pic} height={30} />
               <span className="ml-2">{owner}</span>
             </Link>

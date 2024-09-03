@@ -104,3 +104,7 @@ figure {
 .Upper{
   text-transform: uppercase;
 }
+
+.NoUnderline {
+  text-decoration: none;
+}

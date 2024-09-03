@@ -12,6 +12,7 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import { useState } from "react";
 import Message from "./components/Message";
 import FriendventureEditForm from "./pages/friendventures/FriendventureEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   const [message, setMessage] = useState(null);
@@ -75,6 +76,7 @@ function App() {
             <Route exact path="/add" element={<FriendventureCreateForm showMessage={showMessage}/>} />
             <Route exact path="/friendventures/:id" element={<FriendventurePage />} />
             <Route exact path="/friendventures/:id/edit" element={< FriendventureEditForm showMessage={showMessage}/> } />
+            <Route exact path="/profiles/:id" element={<ProfilePage />} />
             <Route path="*" element={<p>Sorry, Page not found</p>} />
           </Routes>
         </Container>

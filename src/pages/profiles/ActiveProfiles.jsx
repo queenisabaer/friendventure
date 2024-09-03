@@ -25,7 +25,8 @@ const ActiveProfiles = ({ mobile }) => {
           ) : (
             activeProfiles.results
               .slice(0, 5)
-              .map((profile) => <Profile key={profile.id} profile={profile} />)
+              .map((profile) => <Profile key={profile.id} profile={profile} />
+            )
           )}
         </>
       ) : (
