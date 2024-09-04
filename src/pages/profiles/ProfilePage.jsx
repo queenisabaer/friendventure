@@ -27,23 +27,19 @@ function ProfilePage() {
   });
   const currentUser = useCurrentUser();
   const { id } = useParams();
-  console.log("ProfilePage - useParams id:", id);
-  const {setProfileData, handleFollow} = useSetProfileData();
+  const {setProfileData, handleFollow, handleUnfollow} = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
   useEffect(() => {
-    console.log("useEffect triggered with id:", id);
     const fetchData = async () => {
-      console.log("Fetching data for profile id:", id);
       try {
         const [{ data: pageProfile }, { data: profileFriendventures }] =
           await Promise.all([
             axiosRequest.get(`/profiles/${id}/`),
             axiosRequest.get(`/friendventures/?owner__profile=${id}`),
           ]);
-        console.log("API Response - pageProfile:", pageProfile);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
@@ -56,6 +52,7 @@ function ProfilePage() {
     };
     fetchData();
   }, [id, setProfileData]);
+  
   const mainProfile = (
     <>
       <Row noGutters className="px-3 text-center">
@@ -89,7 +86,7 @@ function ProfilePage() {
             (profile?.following_id ? (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.RedLight}`}
-                onClick={() => {}}
+                onClick={() => handleUnfollow(profile)}
               >
                 unfollow
               </Button>

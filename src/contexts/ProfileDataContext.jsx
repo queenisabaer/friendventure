@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { axiosRequest, axiosResponse } from "../api/axiosDefault";
 import { useCurrentUser } from "./CurrentUserContext";
-import { followHelper } from "../utils/utils";
+import { followHelper, unfollowHelper } from "../utils/utils";
 
 const ProfileDataContext = createContext();
 const SetProfileDataContext = createContext();
@@ -45,12 +45,8 @@ export const ProfileDataProvider = ({ children }) => {
 
   const handleFollow = async (clickedProfile) => {
     try {
-      const { data: profileData } = await axiosRequest.get(
-        `/profiles/?owner=${clickedProfile.owner}`
-      );
-      const profileId = profileData.results[0]?.id;
       const { data } = await axiosResponse.post("/followers/", {
-        followed: profileId,
+        followed: clickedProfile.id,
       });
 
       setProfileData((prevState) => ({
@@ -78,6 +74,34 @@ export const ProfileDataProvider = ({ children }) => {
     }
   };
 
+  const handleUnfollow = async (clickedProfile) => {
+    try {
+      await axiosResponse.delete(`/followers/${clickedProfile.following_id}/`);
+      setProfileData((prevState) => ({
+        ...prevState,
+        pageProfile: {
+          results: prevState.pageProfile.results.map((profile) =>
+            unfollowHelper(profile, clickedProfile)
+          ),
+        },
+        activeProfiles: {
+          ...prevState.activeProfiles,
+          results: prevState.activeProfiles.results.map((profile) =>
+            unfollowHelper(profile, clickedProfile)
+          ),
+        },
+        friendventureParticipants: {
+          ...prevState.friendventureParticipants,
+          results: prevState.friendventureParticipants.results.map((profile) =>
+            unfollowHelper(profile, clickedProfile)
+          ),
+        },
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -97,7 +121,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   return (
     <ProfileDataContext.Provider value={profileData}>
-      <SetProfileDataContext.Provider value={{ setProfileData, handleFollow }}>
+      <SetProfileDataContext.Provider value={{ setProfileData, handleFollow, handleUnfollow }}>
         <SetFriendventureIdContext.Provider value={setFriendventureId}>
           {children}
         </SetFriendventureIdContext.Provider>

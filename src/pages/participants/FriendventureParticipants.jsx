@@ -8,6 +8,7 @@ import { useProfileData } from "../../contexts/ProfileDataContext";
 
 const FriendVentureParticipants = ({ mobile }) => {
   const { friendventureParticipants } = useProfileData();
+  console.log("friendventureParticipants:", friendventureParticipants)
 
   return (
     <Container
