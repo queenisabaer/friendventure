@@ -46,3 +46,12 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+.RedLight {
+  background-color: #ff3131!important;
+  opacity: 0.8;
+}
+
+.RedLight:hover {
+  opacity: 1;
+}
