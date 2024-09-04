@@ -1,35 +1,13 @@
-import { useEffect, useState } from "react";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/FriendventureParticipants.module.css"
 import { Container } from "react-bootstrap";
-import { axiosRequest } from "../../api/axiosDefault";
 import Asset from "../../components/Asset";
 import Profile from "../profiles/Profile";
+import { useProfileData } from "../../contexts/ProfileDataContext";
 
 
-const FriendVentureParticipants = ({ friendventureId, mobile }) => {
-  const [participantsData, setParticipantsData] = useState({
-    friendventureParticipants: { results: [] },
-  });
-
-  const { friendventureParticipants } = participantsData;
-
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const { data } = await axiosRequest.get(
-          `/participants/?friendventure=${friendventureId}`
-        );
-        setParticipantsData((prevState) => ({
-          ...prevState,
-          friendventureParticipants: data,
-        }));
-      } catch (error) {
-        console.error("Error fetching participants:", error);
-      }
-    };
-    handleMount();
-  }, []);
+const FriendVentureParticipants = ({ mobile }) => {
+  const { friendventureParticipants } = useProfileData();
 
   return (
     <Container
@@ -47,9 +25,9 @@ const FriendVentureParticipants = ({ friendventureId, mobile }) => {
               ))}
             </div>
           ) : (
-            friendventureParticipants.results.map((profile) => 
+            friendventureParticipants.results.map((profile) => (
               <Profile key={profile.id} profile={profile} />
-            )
+            ))
           )}
         </>
       ) : (
