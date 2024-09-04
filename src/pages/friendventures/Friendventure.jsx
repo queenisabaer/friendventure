@@ -173,7 +173,10 @@ const Friendventure = (props) => {
             className={`d-flex justify-content-end align-items-center order-1 order-md-2 ${styles.SmallText}`}
           >
             <p className="mt-3 text-center">by</p>
-            <Link className={appStyles.NoUnderline} to={`/profiles/${profile_id}`}>
+            <Link
+              className={appStyles.NoUnderline}
+              to={`/profiles/${profile_id}`}
+            >
               <Avatar src={profile_pic} height={30} />
               <span className="ml-2">{owner}</span>
             </Link>
@@ -181,7 +184,9 @@ const Friendventure = (props) => {
               <EditDeleteDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
-                confirmationMessage={"Are you sure, you want to delete this FriendVenture?"}
+                confirmationMessage={
+                  "Are you sure, you want to delete this FriendVenture?"
+                }
               />
             )}
           </Col>
@@ -223,6 +228,11 @@ const Friendventure = (props) => {
           </Col>
         </Row>
         <Row>
+          <Col>
+            <div className={styles.Category}>
+              {category}
+            </div>
+          </Col>
           <Col>
             <div>
               <span

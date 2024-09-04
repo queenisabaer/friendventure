@@ -108,3 +108,8 @@ figure {
 .NoUnderline {
   text-decoration: none;
 }
+
+.Subheading {
+  font-size: 1.2rem;
+  color: #406277;
+}

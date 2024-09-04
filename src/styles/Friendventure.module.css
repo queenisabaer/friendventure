@@ -20,6 +20,18 @@
   color: #008281;
 }
 
+.Category {
+  font: 1.3rem "Shadows Into Light", sans-serif;
+  border-radius: 100px;
+  border: 1px solid #008281;
+  padding: 2px 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 75px;
+  max-width: fit-content;
+  color: #406277;
+  text-align: center;
+}
 
 .IconOutline:hover {
   color: #f85032;

@@ -103,12 +103,13 @@ function ProfilePage() {
           {profile?.content && <Col className="p-3">{profile.content}</Col>}
         </Col>
       </Row>
+      <hr />
     </>
   );
   const mainProfileFriendventures = (
     <>
       <hr />
-      <p className="text-center">Profile owner's FriendVentures</p>
+      <p className={`text-center ${appStyles.Subheading}`}>Profile owner's FriendVentures</p>
       <hr />
       {profileFriendventures.results.length ? (
         <InfiniteScroll
