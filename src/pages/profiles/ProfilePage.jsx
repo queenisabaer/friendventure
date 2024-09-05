@@ -147,6 +147,7 @@ function ProfilePage() {
               key={friendventure.id}
               {...friendventure}
               setFriendventure={setProfileFriendventures}
+              friendventurePage
             />
           ))}
           dataLength={profileFriendventures.results.length}
