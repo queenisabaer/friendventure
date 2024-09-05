@@ -15,10 +15,17 @@
   margin-right: 3px;
 }
 
-.Icon:hover, 
+.Icon:hover {
+  color: #008281;
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+  opacity: 0.8;
+}
+
 .IconGreen {
   color: #008281;
 }
+
 
 .Category {
   font: 1.3rem "Shadows Into Light", sans-serif;
@@ -31,10 +38,6 @@
   max-width: fit-content;
   color: #406277;
   text-align: center;
-}
-
-.IconOutline:hover {
-  color: #f85032;
 }
 
 .Date i {

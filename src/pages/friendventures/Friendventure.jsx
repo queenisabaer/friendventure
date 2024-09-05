@@ -275,7 +275,7 @@ const Friendventure = (props) => {
                   }
                 >
                   <span onClick={handleParticipants}>
-                    <i className={`fa-solid fa-user-check ${styles.Icon}`} />
+                    <i className={`fa-solid fa-user ${styles.Icon}`} />
                   </span>
                 </OverlayTrigger>
               </Link>
@@ -311,11 +311,11 @@ const Friendventure = (props) => {
               </OverlayTrigger>
             ) : bookmark_id ? (
               <span onClick={handleUnbookmark}>
-                <i className={`fa-regular fa-heart ${styles.Icon}`} />
+                <i className={`fa-solid fa-heart ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
               <span onClick={handleBookmarks}>
-                <i className={`fa-regular fa-heart ${styles.IconOutline}`} />
+                <i className={`fa-regular fa-heart ${styles.Icon}`} />
               </span>
             ) : (
               <OverlayTrigger
