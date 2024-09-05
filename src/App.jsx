@@ -1,21 +1,23 @@
-import styles from "./App.module.css";
-import NavBar from "./components/NavBar";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Route, Routes } from "react-router-dom";
 import "./api/axiosDefault";
-import SignUpForm from "./pages/auth/SignUpForm";
-import LogInForm from "./pages/auth/LogInForm";
+
+import styles from "./App.module.css";
+
 import FriendventureCreateForm from "./pages/friendventures/FriendventureCreateForm";
 import FriendventurePage from "./pages/friendventures/FriendventurePage";
 import FriendventuresPage from "./pages/friendventures/FriendventuresPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
-import { useState } from "react";
+import NavBar from "./components/NavBar";
 import Message from "./components/Message";
 import FriendventureEditForm from "./pages/friendventures/FriendventureEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPassword";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import SignUpForm from "./pages/auth/SignUpForm";
+import LogInForm from "./pages/auth/LogInForm";
 
 function App() {
   const [message, setMessage] = useState(null);
@@ -103,17 +105,17 @@ function App() {
             <Route
               exact
               path="/profiles/:id/edit/username"
-              element={<UsernameForm />}
+              element={<UsernameForm showMessage={showMessage} />}
             />
             <Route
               exact
               path="/profiles/:id/edit/password"
-              element={<UserPasswordForm />}
+              element={<UserPasswordForm showMessage={showMessage} />}
             />
             <Route
               exact
               path="/profiles/:id/edit"
-              element={<ProfileEditForm />}
+              element={<ProfileEditForm showMessage={showMessage} />}
             />
             <Route path="*" element={<p>Sorry, Page not found</p>} />
           </Routes>

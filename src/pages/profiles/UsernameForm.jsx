@@ -17,12 +17,13 @@ import {
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-const UsernameForm = () => {
+const UsernameForm = (props) => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
   const { id } = useParams();
+  const {showMessage} = props;
 
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
@@ -45,6 +46,7 @@ const UsernameForm = () => {
         ...prevUser,
         username,
       }));
+      showMessage("success", "Your username has been updated!")
       navigate(-1);
     } catch (err) {
       console.log(err);
@@ -64,10 +66,11 @@ const UsernameForm = () => {
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
+                className="mb-3"
               />
             </Form.Group>
             {errors?.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className={appStyles.Alert}>
                 {message}
               </Alert>
             ))}

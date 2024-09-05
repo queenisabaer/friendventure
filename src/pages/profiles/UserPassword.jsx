@@ -14,10 +14,11 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-const UserPasswordForm = () => {
+const UserPasswordForm = (props) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const currentUser = useCurrentUser();
+  const {showMessage} = props;
 
   const [userData, setUserData] = useState({
     new_password1: "",
@@ -39,13 +40,14 @@ const UserPasswordForm = () => {
       // redirect user if they are not the owner of this profile
       navigate("/");
     }
-  }, [currentUser, history, id]);
+  }, [currentUser, navigate, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await axiosResponse.post("/dj-rest-auth/password/change/", userData);
-      history.goBack();
+      showMessage("success", "Your password has been updated!")
+      navigate(-1);
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -65,10 +67,11 @@ const UserPasswordForm = () => {
                 value={new_password1}
                 onChange={handleChange}
                 name="new_password1"
+                className="mb-3"
               />
             </Form.Group>
             {errors?.new_password1?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className={appStyles.Alert}>
                 {message}
               </Alert>
             ))}
@@ -80,10 +83,11 @@ const UserPasswordForm = () => {
                 value={new_password2}
                 onChange={handleChange}
                 name="new_password2"
+                className="mb-3"
               />
             </Form.Group>
             {errors?.new_password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className={appStyles.Alert}>
                 {message}
               </Alert>
             ))}
