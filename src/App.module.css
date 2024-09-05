@@ -17,9 +17,9 @@
 }
 
 .Alert {
-  background-color: #EAD5DC;
-  border-color: #F1A99D;
-  color: #FF3131;
+  background-color: #ead5dc;
+  border-color: #f1a99d;
+  color: #ff3131;
 }
 
 .AlertGreen {
@@ -101,7 +101,7 @@ figure {
   object-fit: contain;
 }
 
-.Upper{
+.Upper {
   text-transform: uppercase;
 }
 
@@ -112,4 +112,8 @@ figure {
 .Subheading {
   font-size: 1.2rem;
   color: #406277;
+}
+
+.NoDisplay {
+  display: none;
 }

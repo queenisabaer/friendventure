@@ -17,8 +17,10 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
+import { useRedirect } from "../../hooks/useRedirect";
 
 const ProfileEditForm = (props) => {
+  useRedirect('loggedOut');
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
@@ -209,15 +211,8 @@ const ProfileEditForm = (props) => {
                 type="file"
                 ref={imageFile}
                 accept="image/*"
-                onChange={(e) => {
-                  if (e.target.files.length) {
-                    setProfileData({
-                      ...profileData,
-                      profile_image: URL.createObjectURL(e.target.files[0]),
-                    });
-                  }
-                }}
-                style={{ display: "none" }}
+                onChange={handleChangeImage}
+                className={appStyles.NoDisplay}
               />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>

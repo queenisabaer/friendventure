@@ -18,8 +18,10 @@ import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { useNavigate } from "react-router-dom";
 import { axiosRequest } from "../../api/axiosDefault";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function FriendventureCreateForm(props) {
+  useRedirect('loggedOut')
   const [friendventureData, setFriendventureData] = useState({
     title: "",
     description: "",
