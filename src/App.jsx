@@ -18,6 +18,7 @@ import UserPasswordForm from "./pages/profiles/UserPassword";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LogInForm from "./pages/auth/LogInForm";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [message, setMessage] = useState(null);
@@ -117,7 +118,7 @@ function App() {
               path="/profiles/:id/edit"
               element={<ProfileEditForm showMessage={showMessage} />}
             />
-            <Route path="*" element={<p>Sorry, Page not found</p>} />
+            <Route path="*" element={< NotFound />} />
           </Routes>
         </Container>
       </div>
