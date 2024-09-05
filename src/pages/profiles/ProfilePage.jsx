@@ -19,6 +19,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Friendventure from "../friendventures/Friendventure";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no_results.webp";
+import { ProfileEditDropdown } from "../../components/EditDeleteDropdown";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -27,7 +28,7 @@ function ProfilePage() {
   });
   const currentUser = useCurrentUser();
   const { id } = useParams();
-  const {setProfileData, handleFollow, handleUnfollow} = useSetProfileData();
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
@@ -52,10 +53,11 @@ function ProfilePage() {
     };
     fetchData();
   }, [id, setProfileData]);
-  
+
   const mainProfile = (
     <>
-      <Row noGutters className="px-3 text-center">
+      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+      <Row className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
@@ -64,7 +66,9 @@ function ProfilePage() {
           />
         </Col>
         <Col lg={7}>
-          <h3 className="m-2">{profile?.owner}</h3>
+          <Row className="align-items-center">
+            <h3 className={`m-2 d-inline ${styles.Username}`}>{profile?.owner}</h3>
+          </Row>
           <Row className="justify-content-center no-gutters">
             <Col xs={12} md={4} className="my-2">
               <div>{profile?.friendventures_count}</div>
@@ -79,6 +83,31 @@ function ProfilePage() {
               <div>Following</div>
             </Col>
           </Row>
+          <Row className="p-3">
+        <Col xs={12}>
+          <p className={`mt-2 mb-1 ${appStyles.Subheading}`}>That's me:</p>
+          {profile?.description ? (
+            <p>{profile.description}</p>
+          ) : (
+            <p>Sorry, no description added yet.</p>
+          )}
+        </Col>
+        <Col xs={12}>
+          <p className={`mt-2 mb-1 ${appStyles.Subheading}`}>Reach out:</p>
+        </Col>
+        <Col xs={12} md={6}>
+        <p className="mb-1">Phone:</p>
+          <p >
+            {profile?.phone_number ? profile.phone_number : "Not yet provided"}
+          </p>
+        </Col>
+        <Col xs={12} md={6}>
+          <p className="mb-1">Email:</p>
+          <p>
+            {profile?.email ? profile.email : "Not yet provided"}
+          </p>
+        </Col>
+      </Row>
         </Col>
         <Col lg={2} className="text-lg-right">
           {currentUser &&
@@ -91,22 +120,25 @@ function ProfilePage() {
                 unfollow
               </Button>
             ) : (
-              <Button className={`${btnStyles.Button}`} onClick={() => handleFollow(profile)}>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => handleFollow(profile)}
+              >
                 follow
               </Button>
             ))}
-        </Col>
-        <Col className="p-3">
-          {profile?.content && <Col className="p-3">{profile.content}</Col>}
         </Col>
       </Row>
       <hr />
     </>
   );
+
   const mainProfileFriendventures = (
     <>
       <hr />
-      <p className={`text-center ${appStyles.Subheading}`}>Profile owner's FriendVentures</p>
+      <p className={`text-center ${appStyles.Subheading}`}>
+        Profile owner's FriendVentures
+      </p>
       <hr />
       {profileFriendventures.results.length ? (
         <InfiniteScroll

@@ -87,7 +87,7 @@ const NavBar = (props) => {
       <Nav.Link
         as={NavLink}
         className={({ isActive }) => (isActive ? `${styles.NewActive}` : "")}
-        to="/profile"
+        to={`/profiles/${currentUser?.profile_id}/`}
         onClick={handleDropdownItemClick}
       >
         <Avatar

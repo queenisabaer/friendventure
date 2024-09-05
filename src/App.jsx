@@ -13,6 +13,9 @@ import { useState } from "react";
 import Message from "./components/Message";
 import FriendventureEditForm from "./pages/friendventures/FriendventureEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPassword";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 function App() {
   const [message, setMessage] = useState(null);
@@ -71,12 +74,47 @@ function App() {
                 />
               }
             />
-            <Route exact path="/signup" element={<SignUpForm showMessage={showMessage}/>} />
-            <Route exact path="/login" element={<LogInForm showMessage={showMessage}/>}  />
-            <Route exact path="/add" element={<FriendventureCreateForm showMessage={showMessage}/>} />
-            <Route exact path="/friendventures/:id" element={<FriendventurePage />} />
-            <Route exact path="/friendventures/:id/edit" element={< FriendventureEditForm showMessage={showMessage}/> } />
+            <Route
+              exact
+              path="/signup"
+              element={<SignUpForm showMessage={showMessage} />}
+            />
+            <Route
+              exact
+              path="/login"
+              element={<LogInForm showMessage={showMessage} />}
+            />
+            <Route
+              exact
+              path="/add"
+              element={<FriendventureCreateForm showMessage={showMessage} />}
+            />
+            <Route
+              exact
+              path="/friendventures/:id"
+              element={<FriendventurePage />}
+            />
+            <Route
+              exact
+              path="/friendventures/:id/edit"
+              element={<FriendventureEditForm showMessage={showMessage} />}
+            />
             <Route exact path="/profiles/:id" element={<ProfilePage />} />
+            <Route
+              exact
+              path="/profiles/:id/edit/username"
+              element={<UsernameForm />}
+            />
+            <Route
+              exact
+              path="/profiles/:id/edit/password"
+              element={<UserPasswordForm />}
+            />
+            <Route
+              exact
+              path="/profiles/:id/edit"
+              element={<ProfileEditForm />}
+            />
             <Route path="*" element={<p>Sorry, Page not found</p>} />
           </Routes>
         </Container>
