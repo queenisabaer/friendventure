@@ -28,12 +28,32 @@ export const ProfileDataProvider = ({ children }) => {
     const fetchFriendventureParticipants = async () => {
       if (friendventureId) {
         try {
-          const { data } = await axiosRequest.get(
+          // Fetch participants data
+          const { data: participantsData } = await axiosRequest.get(
             `/participants/?friendventure=${friendventureId}`
           );
+
+          //  Fetch all profiles
+          const { data: allProfilesData } = await axiosRequest.get(
+            `/profiles/`
+          );
+
+          //  Filter profiles based on participant owners
+          const participantOwners = participantsData.results.map(
+            (participant) => participant.owner
+          );
+
+          const fullProfiles = allProfilesData.results.filter((profile) =>
+            participantOwners.includes(profile.owner)
+          );
+
+          //  Update state with filtered profiles
           setProfileData((prevState) => ({
             ...prevState,
-            friendventureParticipants: data,
+            friendventureParticipants: {
+              ...participantsData,
+              results: fullProfiles, // Set the filtered profiles as results
+            },
           }));
         } catch (error) {
           console.error(error);
