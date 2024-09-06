@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import moment from "moment-timezone";
 import Asset from "../../components/Asset";
 import styles from "../../styles/ProfilePage.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -33,6 +34,11 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
+  const combineDateTime = (dateString) => {
+    const parsedDate = moment(dateString, "DD MMM YYYY HH:mm");
+    return parsedDate.isValid() ? parsedDate.utc().valueOf() : null;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,7 +51,20 @@ function ProfilePage() {
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
-        setProfileFriendventures(profileFriendventures);
+
+        // Filter friendventures based on datetime
+        const now = moment().utc().valueOf();
+        const filteredFriendventures = profileFriendventures.results.filter(
+          (friendventure) => {
+            const friendventureTimestamp = combineDateTime(
+              friendventure.datetime
+            );
+            return (
+              friendventureTimestamp !== null && friendventureTimestamp >= now
+            );
+          }
+        );
+        setProfileFriendventures({ results: filteredFriendventures });
         setHasLoaded(true);
       } catch (error) {
         console.log(error);
@@ -56,7 +75,9 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+      <span className={styles.EditProfile}>
+        {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+      </span>
       <Row className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
@@ -67,7 +88,9 @@ function ProfilePage() {
         </Col>
         <Col lg={7}>
           <Row className="align-items-center">
-            <h3 className={`m-2 d-inline ${styles.Username}`}>{profile?.owner}</h3>
+            <h3 className={`m-2 d-inline ${styles.Username}`}>
+              {profile?.owner}
+            </h3>
           </Row>
           <Row className="justify-content-center no-gutters">
             <Col xs={12} md={4} className="my-2">
@@ -84,30 +107,30 @@ function ProfilePage() {
             </Col>
           </Row>
           <Row className="p-3">
-        <Col xs={12}>
-          <p className={`mt-2 mb-1 ${appStyles.Subheading}`}>That's me:</p>
-          {profile?.description ? (
-            <p>{profile.description}</p>
-          ) : (
-            <p>Sorry, no description added yet.</p>
-          )}
-        </Col>
-        <Col xs={12}>
-          <p className={`mt-2 mb-1 ${appStyles.Subheading}`}>Reach out:</p>
-        </Col>
-        <Col xs={12} md={6}>
-        <p className="mb-1">Phone:</p>
-          <p >
-            {profile?.phone_number ? profile.phone_number : "Not yet provided"}
-          </p>
-        </Col>
-        <Col xs={12} md={6}>
-          <p className="mb-1">Email:</p>
-          <p>
-            {profile?.email ? profile.email : "Not yet provided"}
-          </p>
-        </Col>
-      </Row>
+            <Col xs={12}>
+              <p className={`mt-2 mb-1 ${appStyles.Subheading}`}>That's me:</p>
+              {profile?.description ? (
+                <p>{profile.description}</p>
+              ) : (
+                <p>Sorry, no description added yet.</p>
+              )}
+            </Col>
+            <Col xs={12}>
+              <p className={`mt-2 mb-1 ${appStyles.Subheading}`}>Reach out:</p>
+            </Col>
+            <Col xs={12} md={6}>
+              <p className="mb-1">Phone:</p>
+              <p>
+                {profile?.phone_number
+                  ? profile.phone_number
+                  : "Not yet provided"}
+              </p>
+            </Col>
+            <Col xs={12} md={6}>
+              <p className="mb-1">Email:</p>
+              <p>{profile?.email ? profile.email : "Not yet provided"}</p>
+            </Col>
+          </Row>
         </Col>
         <Col lg={2} className="text-lg-right">
           {currentUser &&

@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import moment from "moment-timezone";
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/FriendventuresPage.module.css";
@@ -18,24 +19,38 @@ import ActiveProfiles from "../profiles/ActiveProfiles";
 
 function FriendventuresPage({ message, filter = "" }) {
   const [friendventures, setFriendventures] = useState({ results: [] });
-  const [hasLoaded, setHasloaded] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
 
+  const combineDateTime = (dateString) => {
+    const parsedDate = moment(dateString, "DD MMM YYYY HH:mm");
+    return parsedDate.isValid() ? parsedDate.utc().valueOf() : null;
+  };
+  
   useEffect(() => {
     const fetchFriendventures = async () => {
       try {
         const { data } = await axiosRequest.get(
           `/friendventures/?${filter}search=${query}`
         );
-        setFriendventures(data);
-        setHasloaded(true);
+
+        const now = moment().utc().valueOf();
+
+        const filteredData = data.results.filter((friendventure) => {
+          const friendventureTimestamp = combineDateTime(friendventure.datetime);
+          return friendventureTimestamp !== null && friendventureTimestamp >= now;
+        });
+
+        setFriendventures({ ...data, results: filteredData });
+        setHasLoaded(true);
       } catch (error) {
         console.log(error);
       }
     };
-    setHasloaded(false);
+
+    setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchFriendventures();
     }, 1000);
