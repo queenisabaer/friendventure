@@ -154,43 +154,44 @@ The background image was found at Pixabay and was created by [blickpixel](https:
 
 #### Logo
 
-The logo was made with [Canva](https://www.canva.com/). The font that was used to add the title is supposed to remind of handwritten greeting cards.<br>
+The logo was designed by me with [Canva](https://www.canva.com/). The FriendVenture logo features a light grey compass as the central symbol, with the brand name "FriendVenture" written above it in a handwritten red font. The choice of a compass represents exploration, guidance, and the spirit of adventure, perfectly aligning with the theme of discovering new experiences and journeys with friends.<br>
 
-  ![Logo for Your Wish List Maker](documentation/features/logo_ywlm_2.webp)<br>
+  ![Logo for FriendVenture](src/documentation/features/FriendVenture-logo.png)<br>
 
 #### Favicon
 
-The favicon was created with [Favicon.io](https://favicon.io/favicon-generator/).<br>
+The favicon was created with [Favicon.io](https://favicon.io/favicon-generator/) by using the logo in a square form.<br>
 
-  ![Favicon for Your Wish List Maker](documentation/images/favicon_readme.png)
+  ![Favicon for Friendventure](src/documentation/images/favicon-friendventure.png)
 
 #### Colour Scheme:
   
-The colour palette was generated xxx.  
+The color palette was created based on the red color of the logo text with [ColorSpace](https://mycolor.space/?hex=%23FF3131&sub=1). Additionally, the pink from the cheeks of the little ghost, which always serves as a placeholder, was used.
+
 
 <details>
 <summary> Click here to see the colour palette </summary>
 <br>
 
-I created the colour palette with [coloors](https://coolors.co/).<br>
-![Colour palette ](documentation/images/wish_list_palette_coolors.png)<br>
+I created this colour palette with [coloors](https://coolors.co/).<br>
+![Colour palette ](src/documentation/images/friendventure_color_palette.png)<br>
 
 </details>
 
 ### Typography
 
-[xxx](xxx) was used as font for headings. <br>
-[xxx](xxx) was selected for text content.  Both fonts were imported via Google Fonts. 
+[Shadows Into Light](https://fonts.google.com/specimen/Shadows+Into+Light) was used as font for headings. This font is similar to the one used in the logo. Since the logo was designed with Canva and the font used was not freely available, I searched for a similar-looking alternative.<br>
+[Inter](https://fonts.google.com/specimen/Inter) was selected for text content. It is a clean font that goes really well with the heading font. Both fonts were imported via Google Fonts. 
 
 ## Structure 
 
-The first database schema was crafted during the planning phase of the project and was created with [dbdiagramm](https://dbdiagram.io/home). 
+The first database schema was crafted during the planning phase of the project. The second one was created after finishing the project. It only adds two created_at fields and renames some of the tables. Both schemas were created with [dbdiagramm](https://dbdiagram.io/home). 
 
-![Initial Database Schema](documentation/images/erd_plan.png)<br>
+![Initial Database Schema](src/documentation/images/dbdiagramm-FriendVenture.png)<br>
 Final ERD:<br>
-![Final Database Schema](documentation/images/erd_final.png)<br>
+![Final Database Schema](src/documentation/images/dbdiagramm_final_FriendVenture.png)<br>
 
-## Database<br> NEED UPDATE 
+## Database<br>
 I used a PostgreSQL provided by Code Institute as relational database.<br>
 
 - **FieldTypes:**<br>
@@ -199,21 +200,27 @@ I used a PostgreSQL provided by Code Institute as relational database.<br>
   - EmailField: A CharField that checks if the value is a valid email address.
   - DateTimeField: A field for storing date and time.
   - DateField: A field for storing dates.
+  - TimeField: A field for storing time.
   - TextField: A large text field.
+  - ImageField: 
   - OneToOneField: A one-to-one relationship.
   - ForeignKey: A many-to-one relationship.
   - IntegerField: An integer field.
+  - EmailField: 
   - DecimalField: A fixed-precision decimal number.
-  - URLField: A CharField for URLs.
-  - ResizedImageField: An image field with resizing options.<br>
+  - URLField: A CharField for URLs.<br>
 - **Relationships:**<br>
-  - A User has one UserProfile.
-  - A UserProfile belongs to one User.
+  - A User has one Profile.
+  - A Profile belongs to one User.
   - A FriendVenture is created by one User.
   - A User can create many FriendVentures.
   - A User can be a Participant in a FriendVenture.
+  - Participant belongs to one User and one Friendventure
   - A User can bookmark a FriendVenture.
+  - Bookmark belongs to one User and one Friendventure
   - A User can create a Comment for a FriendVenture. 
+  - A Comment belongs to one User and one Friendventure
+  - A User can follow another User.
 
 ## Features
 
