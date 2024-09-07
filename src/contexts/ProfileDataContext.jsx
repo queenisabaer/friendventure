@@ -32,19 +32,17 @@ export const ProfileDataProvider = ({ children }) => {
           const { data: participantsData } = await axiosRequest.get(
             `/participants/?friendventure=${friendventureId}`
           );
-
+          // Extract participant owner IDs (user IDs)
+          const participantOwnerIds = participantsData.results.map(
+            (participant) => participant.owner_id // Assuming participant contains owner ID
+          );
           //  Fetch all profiles
           const { data: allProfilesData } = await axiosRequest.get(
             `/profiles/`
           );
-
-          //  Filter profiles based on participant owners
-          const participantOwners = participantsData.results.map(
-            (participant) => participant.owner
-          );
-
-          const fullProfiles = allProfilesData.results.filter((profile) =>
-            participantOwners.includes(profile.owner)
+          // Filter profiles based on participant owner IDs
+          const fullProfiles = allProfilesData.results.filter(
+            (profile) => participantOwnerIds.includes(profile.owner_id) //  use owner_id for filtering
           );
 
           //  Update state with filtered profiles
@@ -141,7 +139,9 @@ export const ProfileDataProvider = ({ children }) => {
 
   return (
     <ProfileDataContext.Provider value={profileData}>
-      <SetProfileDataContext.Provider value={{ setProfileData, handleFollow, handleUnfollow }}>
+      <SetProfileDataContext.Provider
+        value={{ setProfileData, handleFollow, handleUnfollow }}
+      >
         <SetFriendventureIdContext.Provider value={setFriendventureId}>
           {children}
         </SetFriendventureIdContext.Provider>
