@@ -166,7 +166,8 @@ const Friendventure = (props) => {
             md={8}
             className="d-flex flex-column justify-content-center order-2 order-md-1"
           >
-            {title && <Card.Title className={styles.Title}>{title}</Card.Title>}
+            <Link to={`/friendventures/${id}`} className={appStyles.NoUnderline}>
+            {title && <Card.Title className={styles.Title}>{title}</Card.Title>}</Link>
           </Col>
           <Col
             md={4}

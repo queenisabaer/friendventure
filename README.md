@@ -377,8 +377,15 @@ Screenshot of edit password page:<br>
 <details>
 <summary> FriendVenture Management</summary>
 <br>
-xxx
-The FriendVenture Management includes the following topics: Adding a new FriendVenture, FriendVenture detail view, Editing or deleting an existing FriendVenture, displaying an overview of all existing FriendVentures on profile page. <br>
+FriendVenture Management includes the following topics:<br>
+
+**Adding a new FriendVenture**: Users can create and submit new FriendVentures through a designated form.
+**FriendVenture Detail View**: Users can view detailed information about a specific FriendVenture by clicking on the  it from the list.<br>
+**Editing or deleting an existing FriendVenture**: Users can modify or remove their existing FriendVentures through an edit or delete option.
+**Overview of all existing FriendVentures on Homepage**: The home page displays a comprehensive list of all available FriendVentures.
+Overview of FriendVentures Created by the user on their profile page: Users can view a summary of all FriendVentures they have created from their profile page.
+Overview of Bookmarked FriendVentures: Users can access a list of FriendVentures they have bookmarked for quick reference.
+Overview of Upcoming FriendVentures as a Participant: Users can view a list of upcoming FriendVentures they are participating in.  <br>
 
  - **Adding a new FriendVenture**<br>
 xxx
