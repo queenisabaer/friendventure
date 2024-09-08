@@ -24,7 +24,7 @@ const NavBar = (props) => {
       setCurrentUser(null);
       setExpanded(false);
       setShowDropdown(false);
-      showMessage("success", "Successfully signed out!");
+      showMessage("success", "Successfully logged out!");
     } catch (err) {
       console.log(err);
     }

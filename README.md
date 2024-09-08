@@ -150,11 +150,13 @@ The 'sign up' page xxx<br>
 
 ### Imagery
  
-The background image was found at Pixabay and was created by [blickpixel](https://pixabay.com/de/photos/geschenk-p%C3%A4ckchen-%C3%BCberraschung-548296/) It was used to create the colour palette and logo. The colours are rather soft and playful, and the three gifts represent very well the theme of the site. 
+The friendly ghost, which can be seen in the placeholder images or in the not found sections, was found at Pixabay. It was created by [madebytin](https://pixabay.com/de/illustrations/geist-boo-halloween-niedlich-8250317/) The pink of the cheeks was also integrated into the color palette.
+
+The logo, the not found image, the 404 image, the placeholder images of the users' profile and of the FriendVentures were designed by me with [Canva](https://www.canva.com/).
 
 #### Logo
 
-The logo was designed by me with [Canva](https://www.canva.com/). The FriendVenture logo features a light grey compass as the central symbol, with the brand name "FriendVenture" written above it in a handwritten red font. The choice of a compass represents exploration, guidance, and the spirit of adventure, perfectly aligning with the theme of discovering new experiences and journeys with friends.<br>
+ The FriendVenture logo features a light grey compass as the central symbol, with the brand name "FriendVenture" written above it in a handwritten red font. The choice of a compass represents exploration, guidance, and the spirit of adventure, perfectly aligning with the theme of discovering new experiences and journeys with friends.<br>
 
   ![Logo for FriendVenture](src/documentation/features/FriendVenture-logo.png)<br>
 
@@ -232,35 +234,43 @@ To learn more about each feature, please click on the respective headline
 <summary> Header with logo and navbar </summary>
 <br>
 
-To ensure uniformity and a sense of familiarity for users, all pages include the same header with navigation links and an identical footer.
-The header consists of the logo, which is always arranged on the right and acts as a link to return to the main page. On the left side is the navigation bar, which turns into a clickable burger menu on smaller screens. Depending on whether the user is logged in or not, the navigation elements adapt accordingly. <br>
+To ensure uniformity and a sense of familiarity for users, all pages include the same header with navigation links depending on the authentication status of the user. 
+The header consists of the logo, which is always arranged on the left and acts as a link to return to the main page. On the right side is the navigation bar, which turns into a clickable burger menu on smaller screens. Depending on whether the user is logged in or not, the navigation elements adapt accordingly.<br>
+A particular challenge was implementing the dropdown menu within the navigation bar on smaller screens (as a burger menu) when the user is logged in. The dropdown menu needed to remain accessible even when the main dropdown item (FriendVentures) was clicked in the burger menu. In other cases, the burger menu should naturally close as soon as a link is clicked to ensure a better user experience. However, for the dropdown menu, it should first open when the dropdown item is selected, and only after a link within this menu is clicked should the burger menu close again. 
+The navigation menu also closes in mobile view when a click occurs outside of it.<br>
+<br>
+
 View for users who are not logged in:<br>
   - Screenshot of header in mobile view:<br>
-  ![Screenshot header mobile view](/documentation/features)<br>
+  ![Screenshot header mobile view](src/documentation/features/header-mobile.png)<br>
   - Screenshot of header in mobile view with toggled navigation:<br>
-  ![Screenshot header mobile view toggle](/documentation/features)<br>
+  ![Screenshot header mobile view toggle](src/documentation/features/header-mobile-toggle1.png)<br>
   - Screenshot of header on larger screens:<br>
-  ![Screenshot Header on larger screens](/documentation/features)<br>
+  ![Screenshot Header on larger screens](src/documentation/features/header-desktop.png)<br>
 
   
   View for users who are logged in:<br>
   - Screenshot of header in mobile view:<br>
-  ![Screenshot header for logged in user mobile view](/documentation/features)<br>
+  ![Screenshot header for logged in user mobile view](src/documentation/features/header-mobile-login.png)<br>
   - Screenshot of header in mobile view with toggled navigation:<br>
-  ![Screenshot header for logged in user mobile view toggle](/documentation/features)<br>
-  - Screenshot of header in mobile view with toggled navigation:<br>
-  ![Screenshot header for logged in user on larger screens](/documentation/features)<br>
+  ![Screenshot header for logged in user mobile view toggle](src/documentation/features/header-mobile-toggle-login.png)<br>
+  - Screenshot of header in mobile view with dropdown in toggled navigation:<br>
+  ![Screenshot header for logged in user mobile view toggle](src/documentation/features/header-mobile-toggle2-login.png)<br>
+  - Screenshot of header in desktop view:<br>
+  ![Screenshot header for logged in user on larger screens](src/documentation/features/header-desktop-login.png)<br>
+  - Screenshot of header in desktop view with dropdown:<br>
+  ![Screenshot header for logged in user on larger screens with dropdown](src/documentation/features/header-desktop-toggle-login.png)<br>
 
 
 </details>
 
 <details>
-<summary> Favicon </summary>
+<summary> Favicon & Title</summary>
 <br>
 
-xxx <br>
+To create a consistent appearance, the logo, which appears in a rectangular form in the navigation bar, was adapted into a square version to create the favicon. A fitting title was also added to maintain consistency in the overall design.<br>
 Screenshot of the favicon:<br>
-![Screenshot og favicon](/documentation/features)<br>
+![Screenshot of favicon](src/documentation/images/favicon-friendventure.png)<br>
 
 </details>
 
@@ -284,23 +294,32 @@ Screenshot of the home page after log in: <br>
 <summary> User authentication </summary>
 <br>
 
-xxxx<br> 
+The user authentication system is implemented using the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/) framework, ensuring secure and reliable access to the site. This feature includes standard registration, login, and logout processes, with error handling and feedback tailored to match the application's design.<br> 
 
-**Screenshots**<br>
+**Sign Up**<br>
+Users who are new to the site or have not yet created an account, can select the "Sign up" option from the Navigation Bar to register for a new user account. This process utilizes the standard dj-rest/auth/registration method for user account creation. Error messages for the username and password fields have been customized to match the application's color scheme. After properly registering, the user will be redirected to the login page and a success message will be displayed for two seconds.<br>
 Screenshot for Sign Up: <br>
-![Screenshot of the Sign Up page](/documentation/features)<br>
+![Screenshot of the Sign Up page](src/documentation/features/sign-up.png)<br>
+Screenshot for Sign Up with Error message for username: <br>
+![Screenshot of the Sign Up page with error message username](src/documentation/features/sign-up-username.png)<br>
+Screenshot for Sign Up with Error message for password: <br>
+![Screenshot of the Sign Up page with error message password](src/documentation/features/sign-up-password.png)<br>
+Screenshot of success message after properly registration: <br>
+![Screenshot of the success message after properly registration](src/documentation/features/sign-up-success.png)<br>
 
+**Log in** <br>
+Users who already have an account can click on the "Login" option in the Navigation Bar to access their account. This page utilizes the standard dj-rest/auth/login method for user authentication. Error messages for the username and password fields have been customized to match the application's color scheme. After the user correctly logs in, a success message is displayed for 2 seconds, and the user is redirected to the homepage, where an overview of all created FriendVentures is shown.<br>
 Screenshot for Log In: <br>
-![Screenshot of the Login page](/documentation/features)<br>
+![Screenshot of the Login page](src/documentation/features/log-in.png)<br>
+Screenshot for Log In with error message: <br>
+![Screenshot of the Login page with error message](src/documentation/features/log-in-error.png)<br>
+Screenshot of success message after properly log-in: <br>
+![Screenshot of the success message after properly logging in](src/documentation/features/log-in-success.png)<br>
 
-Screenshot to edit the username and success message:<br>:
-![Screenshot of edit username](/documentation/features)<br>
-![Screenshot of message after editing the username](/documentation/features)<br>
-
-Screenshot to edit the password and success message:<br>:
-![Screenshot of edit password](/documentation/features)<br>
-![Screenshot of message after editing the password](/documentation/features)<br>
-
+**Log Out**<br>
+To log out, the user simply needs to click on the "Log Out" option in the menu. Upon doing so, the user is successfully logged out via the /dj-rest-auth/logout/ endpoint, is redirected to the log-in page, and a success message is displayed.<br>
+Screenshot for Log out success message <br>
+![Screenshot for Log out success message ](src/documentation/features/log-out-success.png)<br>
 
 </details>
 
@@ -309,15 +328,49 @@ Screenshot to edit the password and success message:<br>:
 <summary> User Profile </summary>
 <br>
 
-The navigation bar allows you to navigate to the user's profile page. Alternatively, there is a corresponding button directly on the home page after a successful log in. <br>
+The user can access their profile only if logged-in through the navigation bar, from the "Most Active Profiles" section (if they are listed there), the participants or comments section by clicking on their username or profile picture. <br>
+
+The profile contains the following components:<br>
+**Profile Picture**: If the user hasn’t uploaded a picture, a placeholder image featuring the cute ghost that appears throughout the site is shown.<br>
+**Username**: The username that the user created during the signup process.<br>
+**Follow/Unfollow button**: This button appears only if the user being viewed is not the currently logged-in user.<br>
+**Overview of FriendVentures**: Displays the number of FriendVentures the user has currently created.<br>
+**Followers and Following Counts**: Shows how many people are following the user and how many people the user is following.<br>
+**"That's Me" Description**: A personal description if the user has filled it out.<br>
+**Contact Information (Reach out)**: A section where the user can provide their phone number and email address. If these are not provided, a placeholder text is displayed.<br>
+When a user creates a FriendVenture, the FriendVenture count on their profile increases. If the user follows or unfollows another user, the followers count on their profile will increase or decrease accordingly. Similarly, if another user follows or unfollows them, the following count will be updated. Additionally, the follow/unfollow button will change to reflect the current following status.
+Below these components, there is an overview of all the FriendVentures the user currently has online.If the user has created more than 10 FriendVentures, additional FriendVentures will continue to load as the user scrolls down (infinite scroll functionality). During this process, a spinner is briefly displayed to indicate that more content is being loaded.<br>
+When a user visits their own profile, three dots outlined in green appear on the right side. Clicking on these dots reveals a dropdown menu where the user can edit their profile, username, or password. Each option redirects the user to the corresponding form page for making the desired changes. <br>
+When editing their profile, the user must ensure that the profile picture does not exceed 2 MB in size. Additionally, the phone number field must contain numerical values, and the email field must have a valid email address.<br>
 <br>
 
-Screenshot of profile page:<br>
-![Screenshot of profile page](/documentation/features)<br>
-Screenshot to edit the profile and success message:<br>:
-![Screenshot of edit profile page](/documentation/features)<br>
-![Screenshot of message to edit profile](/documentation/features)<br>
+Screenshot of profile page(desktop view) after signing up:<br>
+![Screenshot of profile page](src/documentation/features/profile-after-sign-up.png)<br>
+Screenshot of profile page(mobile):<br>
+![Screenshot of profile page](src/documentation/features/profile-mobile.png)<br>
+Screenshot of profile page(desktop):<br>
+![Screenshot of profile page](src/documentation/features/profile-desktop.png)<br>
 
+**Edit a profile**<br>
+Screenshot of profile page with edit menu(desktop):<br>
+![Screenshot of profile page with edit menu on larger screens ](src/documentation/features/profile-edit-desktop.png)<br>
+Screenshot of profile page with edit menu(mobile):<br>
+![Screenshot of profile page with edit menu on mobile view](src/documentation/features/profile-edit-mobile.png)<br>
+Screenshot to edit the profile page and success message after editing:<br>:
+![Screenshot of edit profile page](src/documentation/features/profile-editpage-desktop.png)<br>
+![Screenshot of message after edititing profile](src/documentation/features/profile-edit-success.png)<br>
+Screenshot of error messages:<br>:
+![Screenshot of edit profile page with error for large image](src/documentation/features/profile-image-error.png)<br>
+![Screenshot of edit profile page with error for telephone number](src/documentation/features/profile-telephone-error.png)<br>
+![Screenshot of edit profile page with error for wrong email](src/documentation/features/profile-email-error.png)<br>
+
+**Edit username** <br>
+Screenshot of edit username page:<br>
+![Screenshot of edit username](src/documentation/features/edit-username.png)<br>
+
+**Edit password**<br>
+Screenshot of edit password page:<br>
+![Screenshot of edit password](src/documentation/features/edit-password.png)<br>
 
 </details>
 
@@ -415,9 +468,18 @@ An error page for the common error 404 has been created and includes a xxx <br>
 
 </details>
 
+ 
+<details>
+<summary> Redirect functionality for the user depending on loggedin or loggedout status </summary>
+<br>
+The application includes a redirect functionality to manage user access based on their logged-in or logged-out status. If the user is logged in, they cannot access the Signup or Login pages, even by typing the URL directly in the browser; any attempt to do so will automatically redirect them to the homepage. Conversely, if the user is logged out, they are restricted from accessing the user profile page, the detail page of a FriendVenture, or interacting with FriendVentures (such as bookmarking, commenting, or participating). In such cases, the user is always redirected to the homepage.
+<br>
+
+</details>
 
 ### Features, which I would like to implement in the future NEEDS UPDATE
 
+- Delete a profile
 - 
 
 ## Bugs NEEDS UPDATE
@@ -543,24 +605,51 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 |:---|:---|:---|:---|
 | Header - Logo | Click on the logo to return to main page | Clicking on the logo on each page will return you to the main page | Pass |
 | Header - Navbar toggle in tablet/mobile view | Click in tablet/mobile view on the burger icon to open the navigation | When the burger icon in mobile or tablet view is clicked, the navigation should open | Pass |
-| Header - Navbar toggle inside the menu in tablet/mobile view | Click in tablet/mobile view on the burger icon to open the navigation and then click on FriendVentures | When the burger icon in mobile or tablet view is clicked, the navigation should open | Pass |
-| Header - Navigation underline | The page you are currently on should be underlined in the menu | After reaching a page at the application, the corresponding navigation item should be underlined | Pass |
+| Header - Close Navbar toggle in tablet/mobile view | Click outside of the toggeld navbar in tablet/mobile view | When clicking outside of the toggled navbar, the navbar should dissapear and the burger icon should be shown | Pass |
+| Header - Navbar toggle inside the menu in tablet/mobile view | Click in tablet/mobile view on the burger icon to open the navigation and then click on FriendVentures | When the user clicks FriendVentures in mobile or tablet view, the dropdown should open | Pass |
 | Header - Navigation link | Click on a term in the navigation bar to go to the corresponding page | Clicking on a page at the navigation bar should take the user to the corresponding page | Pass |
+| Header - Navigation link (mobile view) | Click in the mobile view on a term in the navigation bar to go to the corresponding page and close the toggled burger menu | Clicking on a page at the navigation bar should take the user to the corresponding page and close the toggled burger menu | Pass |
 | Header - Navigation links and items | Depending on whether the user is logged in or not, the navigation elements should adapt accordingly | After logging in, the navigation menu should adjust accordingly. | Pass |
-| Footer - Icons | Click on the logo of GitHub or LinkedIn and a new tab with the repository page of this project or the personal LinkedIn profile page opens | After clicking on the logo of GitHub it should open a new tab with the repository page for this project, and after clicking on the LinkedIn logo, LinkedIn should open in a new tab as well | Pass |
+| Favicon & Title | When opening the page or navigating within it, the favicon and the title should be visible. | After opening the page or navigating within it, tha favicon should be visible. | Pass |
+
+
 | Main page - default version | Visit the website for the first time or don't be logged in to see the default version of the 'home' page | After visiting the website for the first time or if a user isn't logged in, the main page should contain a short welcome message, with two buttons to sign up or log in, and a navigation bar that only contains three elements: 'Home', 'Login' and 'Sign Up'. 'Home' should be underlined | Pass |
 | Main page - Log in version | Log in to see a modified version of the 'home' page | After logging in, the 'home' page should contain a short welcome message, with two buttons to sign up or log in, and a navigation bar that contains five elements: 'Home', 'New List', 'Profile', 'Overview' and 'Logout'. 'Home' should be underlined | Pass |
-| Sign Up | Fill out each field and click on the sign-up button. | After filling out every form field with validate input, and clicking the 'Sign Up' button, the user should be redirected to the verify email page and receive an email to verify the mail address | Pass |
-| Verify email | Click on the link provided in the mail | After clicking on the link that was provided in the 'Verify your email-address' mail, the user should be verified and redirected to the corresponding page | Pass |
-| Log In | Log in with username and password | Clicking on the 'Log In' button after providing the correct username and password, the user should be redirected to the main page in the log in version. In addition, a message that a successful login has taken place should be displayed. | Pass |
-| Log out | Click 'Logout' in the navigation bar | After clicking on Logout, a new page should open in which the user is asked whether they really want to log out. When the logout button is clicked again, the user is redirected to the default home page and a message is displayed. | Pass |
-| Forget password | Click 'Forget password' under the login page | After clicking on 'Forget password', a new page should open and a mail to reset the password should be sent to the user. | Pass |
-| Forget password - mail link | Click on the link sent in the mail | After clicking on the link, a new page should open and a form to reset the password should be seen. | Pass |
-| Forget password - final step | Click on the button to change the password | After clicking on the button, the new password should be stored and a success message should be shown. | Pass |
+
+| Sign Up | Fill out each field and click on the sign-me-up button. | After filling out every form field with validate input, and clicking the 'Sign Up' button, the user should be redirected to the verify email page and receive an email to verify the mail address | Pass |
+| Sign Up - error message | Fill the username field with a username that is already existing or a pwassord that didn't match, and click on the sign-me-up button. | After entering a username that already exists or a password that doesn't match, and clicking the "sign me up" button, an error message should be displayed. | Pass |
+| Log In | Log in with username and password | Clicking on the 'Log In' button after providing the correct username and password, the user should be redirected to the main page, and the navigation menu should change. In addition, a message that a successful login has taken place should be displayed. | Pass |
+| Log out | Click 'Log out' in the navigation bar | After clicking on Log out, the user is logged out, redirected to the log in page, the navigation bar for logged out users is shown, and a message is displayed. | Pass |
+| Redirect Logged In - Signup/Login | Manually enter the URL for the Signup or Login page in the browser while logged in. | The user is redirected to the homepage, and the Signup/Login page is not accessible. | Pass |
+| Redirect Logged out - Profile Page | Manually enter the URL for the user profile page in the browser while logged out. | The user is redirected to the homepage, and the profile page is not accessible. | Pass |
+| Redirect Logged out - FriendVenture Detail Page | Manually enter the URL for a FriendVenture detail page in the browser while logged out. | The user is redirected to the homepage, and the FriendVenture detail page is not accessible. | Pass |
+| Redirect Logged out - FriendVenture Interaction | Attempt to bookmark, comment, or participate in a FriendVenture while logged out. | The user is redirected to the homepage, and the interaction is not allowed. | Pass |
+| User Profile Access - Logged In | Access the profile page via the navigation bar, "Most Active Profiles" section, participants section, or comments section by clicking on the username or profile picture. | The user should be able to access their profile page. | Pass |
+| Profile Picture Display | Access the profile page where the user has not uploaded a picture. | A placeholder image featuring the cute ghost should be displayed. | Pass |
+| Username Display | Access the profile page. | The username displayed should be the one created during the signup process. | Pass |
+| Follow/Unfollow Button Visibility | Access the profile page of a user who is not the currently logged-in user. | The follow/unfollow button should be visible. Access the profile page of the logged-in user. | The follow/unfollow button should not be visible. | Pass |
+| Overview of FriendVentures | Access the profile page. | The number of FriendVentures the user has created should be displayed accurately. | Pass |
+| Followers and Following Counts | Access the profile page. | The number of followers and the number of people the user is following should be displayed accurately. | Pass |
+| "That's Me" Description | Access the profile page where the user has provided a description. | The description should be displayed if it is filled out. If not, the field should be show placeholder text. | Pass |
+| Contact Information (Reach Out) | Access the profile page. | Phone number and email address fields should display the user's information if provided. If not provided, placeholder text should be displayed. | Pass |
+| Infinite Scroll for FriendVentures | Access a profile page with more than 10 FriendVentures and scroll down. | Additional FriendVentures should load as the user scrolls, and a spinner should be briefly displayed during loading. | Pass |
+| Edit Profile Button - Own Profile | Visit own profile page. | Three dots outlined in green should appear on the right side. Clicking these dots should reveal a dropdown menu with options to edit profile, username, or password. | Pass |
+| Redirect to Edit Profile Page | Click on 'Edit Profile' from the dropdown menu. | The user should be redirected to the edit profile page with existing data pre-filled in the form. | Pass |
+| Confirm Profile Changes | On the edit profile page, click 'Confirm Changes'. | The user should be redirected back to the profile overview page, and a success message should be displayed for 3 seconds. | Pass |
+| Profile Picture Size Validation | On the edit profile page, upload an image larger than 2 MB. | The system should reject the upload with an appropriate error message. | Pass |
+| Phone Number Field Validation | On the edit profile page, enter non-numeric characters in the phone number field. | The system should reject the input with an appropriate error message. | Pass |
+| Email Field Validation | On the edit profile page, enter an invalid email address. | The system should reject the input with an appropriate error message. | Pass |
+| Profile Editing - Success Message and Redirect | Save all changes to the profile, and click the save button. | A success message should be displayed, and the user should be redirected to the profile page. | Pass |
+
+
+
+
 | Userprofile - first view - Log in required | After successful registration, go to the profile page for the first time | The profile page should show an overview of the available data (username, email). There should be placeholder text in the fields for first and last names. | Pass |
 | Userprofile Overview - Log in required | Navigate to the profile page to see profile data | The profile page should show an overview of the data given | pass |
 | User Profile - edit profile page - Log in required | Click on the 'Edit your profile' button | After clicking on the 'Edit your profile' button, the user should be redirected to a page where they can edit its data. All fields of the form should already contain the existing data. | Pass |
 | User Profile - confirm changes - Log in required | Click the 'Confirm Changes' button on the edit profile page | After clicking the button, the user should be redirected to the profile overview and a success message should be shown for 3 seconds | Pass |
+
+
 | 'Add a new FriendVenture' page - Log in required | Click in the navigation bar on the link 'New List' or on the button 'New Wish List' to get to the 'Add a new wish list' page | After the user clicks on the button or the link, he gets to the corresponding website 'Add a new wish list' | Pass |
 | 'Add a new wish list' page - Create new wish list - Log in required | Fill in all necessary fields and click on "save wish list" button | The user should be forwarded to the Wish list detail page after all fields have been filled with valid data(e.g. due date in the future) and they have clicked on the button to save the wish list. A message that the wish list has been successfully created should be displayed to the user. The wish_list_id generated in the background should be part of the URL. | Pass |
 | 'Add a new wish list' page - Create new wish list with same name as existing wish list - Log in required  | Fill in all necessary fields, and give the wish list a name that is already existing, and click on "save wish list" button | The wish list should be generated with a different URL and wish_list_id | Pass |

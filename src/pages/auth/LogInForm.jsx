@@ -41,7 +41,7 @@ function LogInForm(props) {
       const { data } = await axios.post("/dj-rest-auth/login/", logInData);
       setCurrentUser(data.user);
       navigate(-1);
-      showMessage("success", "Successfully signed in!");
+      showMessage("success", "Successfully logged in!");
     } catch (err) {
       setErrors(err.response?.data);
     }
