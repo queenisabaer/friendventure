@@ -114,7 +114,7 @@ function FriendventureCreateForm(props) {
   const textFields = (
     <div className="text-center">
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Title</Form.Label>
+        <Form.Label className="mb-1">Title<sup>*</sup></Form.Label>
         <Form.Control
           className={styles.Input}
           type="text"
@@ -150,7 +150,7 @@ function FriendventureCreateForm(props) {
       <Form.Group className="mb-2">
         <Row>
           <Col lg={6}>
-            <Form.Label className="mb-1">Date</Form.Label>
+            <Form.Label className="mb-1">Date<sup>*</sup></Form.Label>
             <Form.Control
               type="date"
               name="date"
@@ -166,7 +166,7 @@ function FriendventureCreateForm(props) {
           </Col>
 
           <Col lg={6}>
-            <Form.Label className="mb-1">Time</Form.Label>
+            <Form.Label className="mb-1">Time<sup>*</sup></Form.Label>
             <Form.Control
               type="time"
               name="time"
@@ -183,7 +183,7 @@ function FriendventureCreateForm(props) {
         </Row>
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Location</Form.Label>
+        <Form.Label className="mb-1">Location<sup>*</sup></Form.Label>
         <Form.Control
           type="text"
           name="place"
@@ -199,7 +199,7 @@ function FriendventureCreateForm(props) {
         ))}
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Category</Form.Label>
+        <Form.Label className="mb-1">Category<sup>*</sup></Form.Label>
         <Form.Control
           as="select"
           name="category"
@@ -230,6 +230,7 @@ function FriendventureCreateForm(props) {
       <Button className={`${btnStyles.Button}`} type="submit">
         create
       </Button>
+      <div className={`${styles.SmallText} mt-2`}><sup>*</sup>required</div>
     </div>
   );
 

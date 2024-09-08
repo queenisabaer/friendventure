@@ -380,21 +380,21 @@ Screenshot of edit password page:<br>
 FriendVenture Management includes the following topics:<br>
 
 **Adding a new FriendVenture**: Users can create and submit new FriendVentures through a designated form.
-**FriendVenture Detail View**: Users can view detailed information about a specific FriendVenture by clicking on the  it from the list.<br>
+**FriendVenture Detail View**: Users can view detailed information about a specific FriendVenture by clicking on the title or the image in the friendventure card.<br>
 **Editing or deleting an existing FriendVenture**: Users can modify or remove their existing FriendVentures through an edit or delete option.
 **Overview of all existing FriendVentures on Homepage**: The home page displays a comprehensive list of all available FriendVentures.
-Overview of FriendVentures Created by the user on their profile page: Users can view a summary of all FriendVentures they have created from their profile page.
-Overview of Bookmarked FriendVentures: Users can access a list of FriendVentures they have bookmarked for quick reference.
-Overview of Upcoming FriendVentures as a Participant: Users can view a list of upcoming FriendVentures they are participating in.  <br>
+**Overview of FriendVentures created by the user on their profile page**: Users can view a summary of all FriendVentures they have created from their profile page.
+**Overview of bookmarked FriendVentures**: Users can access a list of FriendVentures they have bookmarked for quick reference.
+**Overview of upcoming FriendVentures as a Participant**: Users can view a list of upcoming FriendVentures they are participating in.  <br>
 
  - **Adding a new FriendVenture**<br>
-xxx
-To add a FriendVenture, the user must sign up or log in. Then they can go to the associated page via the navigation bar. Except the description all form fields are required. The date must be today or in the future. <br>
-After the user has clicked the 'create' button, they will be redirected to the home page, and a success message is shown to the user. The creator of a FriendVenture is automatically a participant in the FriendVenture.<br>
+To add a FriendVenture, the user must sign up and log in. They can then navigate to the appropriate page via the navigation bar. All form fields are required except for the description. The date must be today or in the future. The user can upload an image for the FriendVenture. If no image is uploaded, a placeholder image will be shown instead.
+If a required field is not filled out, an error message will be shown indicating which fields need to be completed. 
+After the user clicks the 'Create' button and all required fields are correctly filled, they will be redirected to the home page, and a success message will be displayed. The creator of a FriendVenture is automatically added as a participant in the FriendVenture.<br>
 <br>
 
 Screenshot of 'add a FriendVenture' page:<br>
-![Screenshot of add a new friendventure page](/documentation/features/screenshot_add_wishlist.png)<br>
+![Screenshot of add a new friendventure page](src/documentation/features)<br>
 Screenshot of success message:<br>
 ![Screenshot of success message](/documentation/features/message_wishlist.png)<br>
 
@@ -432,7 +432,6 @@ Screenshot of message if user is not owner:<br>
 
 
 - **Displaying an overview of all existing FriendVentures on the Homepage.**<br>
-xxx
 The user can access the overview page of all FriendVentures that have been created by clicking on the homepage link in the navigation bar (Home), or by clicking on the logo. These FriendVentures are sorted by the date they were added. Each FriendVenture is displayed in a card format that includes the FriendVenture's title, the description the date, the time, the location, the category, by whom the Friendventure was created, how many participants, bookmarks and comments it has and when the FriendVenture was last updated.
 
  that leads to the detailed view of the FriendVenture. 
@@ -647,34 +646,18 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 | Phone Number Field Validation | On the edit profile page, enter non-numeric characters in the phone number field. | The system should reject the input with an appropriate error message. | Pass |
 | Email Field Validation | On the edit profile page, enter an invalid email address. | The system should reject the input with an appropriate error message. | Pass |
 | Profile Editing - Success Message and Redirect | Save all changes to the profile, and click the save button. | A success message should be displayed, and the user should be redirected to the profile page. | Pass |
+| Add a new FriendVenture Page - Log In Required | Click on the navigation bar link 'Add' inside the dropdown menu *FriendVentures* to go to the 'Create a new FriendVenture' page. | After clicking the link, the user should be directed to the 'Create a new FriendVenture' page. | Pass |
+| Required Fields - error message | On the 'Create a new FriendVenture' page, leave one or more required fields empty and attempt to submit the form. | An error message should be displayed indicating which required fields are missing. | Pass |
+| Date field validation | On the 'Create a new FriendVenture' page, enter a date that is past the current date and try to submit the form. | The system should reject the date with an appropriate error message. | Pass |
+| Image upload - less than 2 MB | On the 'Create a New FriendVenture' page, upload an image less than 2 MB and submit the form. | The uploaded image should be displayed as part of the FriendVenture. | Pass |
+| Image Upload - more than 2 MB | On the 'Create a New FriendVenture' page, upload an image larger than 2 MB and try to submit the form. | An error message should be displayed indicating that the image size exceeds the limit. | Pass |
+| Placeholder Image | On the 'Add a New FriendVenture' page, do not upload an image and submit the form. | A placeholder image should be shown in place of the uploaded image. | Pass |
+| Successful creation - redirection and success message | After filling out all required fields correctly on the 'Create a New FriendVenture' page and clicking the 'Create' button. | The user should be redirected to the home page, and a success message should be displayed. | Pass |
+| Automatic Participation | After creating a FriendVenture, check the list of participants for the created FriendVenture. | The creator of the FriendVenture should be automatically listed as a participant. | Pass |
 
 
 
 
-| Userprofile - first view - Log in required | After successful registration, go to the profile page for the first time | The profile page should show an overview of the available data (username, email). There should be placeholder text in the fields for first and last names. | Pass |
-| Userprofile Overview - Log in required | Navigate to the profile page to see profile data | The profile page should show an overview of the data given | pass |
-| User Profile - edit profile page - Log in required | Click on the 'Edit your profile' button | After clicking on the 'Edit your profile' button, the user should be redirected to a page where they can edit its data. All fields of the form should already contain the existing data. | Pass |
-| User Profile - confirm changes - Log in required | Click the 'Confirm Changes' button on the edit profile page | After clicking the button, the user should be redirected to the profile overview and a success message should be shown for 3 seconds | Pass |
-
-
-| 'Add a new FriendVenture' page - Log in required | Click in the navigation bar on the link 'New List' or on the button 'New Wish List' to get to the 'Add a new wish list' page | After the user clicks on the button or the link, he gets to the corresponding website 'Add a new wish list' | Pass |
-| 'Add a new wish list' page - Create new wish list - Log in required | Fill in all necessary fields and click on "save wish list" button | The user should be forwarded to the Wish list detail page after all fields have been filled with valid data(e.g. due date in the future) and they have clicked on the button to save the wish list. A message that the wish list has been successfully created should be displayed to the user. The wish_list_id generated in the background should be part of the URL. | Pass |
-| 'Add a new wish list' page - Create new wish list with same name as existing wish list - Log in required  | Fill in all necessary fields, and give the wish list a name that is already existing, and click on "save wish list" button | The wish list should be generated with a different URL and wish_list_id | Pass |
-| Wish list detailed view - Log In and ownership required | In the wish list overview, click on the button "show wish list" to get to the detailed view | After clicking on the button, the user should be redirected to the detailed view for the wish list | Pass |
-| Wish list detailed view - share wish list - Log In and ownership required | Log in as the owner of the wish list, navigate to the wish list detail view, click on the "Share" button under the title | A modal opens with the link to copy. After clicking on the copy button for a brief moment, "copied" is displayed underneath the link. | Pass |
-| Wish list detailed view - edit and delete buttons visibility - Log In and ownership required | Log in as the owner of the wish list, navigate to the wish list detail view | "Edit" and "Delete" buttons are visible below the title | Pass |
-| Wish list detailed view - display details of wish list | Navigate to the wish list detail view | All details (name, due date, etc.) are displayed below the "Edit" and "Delete" buttons | Pass |
-| Wish list detailed view - purchase link is only shown if provided and opens in a new tab | Navigate to the wish list detail view and click on the purchase link, if it is displayed | The purchase link should only be displayed if the user has provided one. After clicking on the purchase link, a new tab should open | Pass |
-| Wish list detailed view - display Items in 'Wishes' section, sorted by priority | Navigate to the wish list detail view | Items are displayed in cards with provided data (image, name, price, priority, quantity, link if given) and sorted by priority | Pass |
-| Wish list detailed view - no items message - Log In and ownership | Log in as the owner of the wish list, navigate to the wish list detail view with no items added | A note is displayed under the 'Add a Wish' button, alerting the user that no items have been added yet | Pass |
-| Wish list detailed view - no items message - external user | Log in as the owner of the wish list, navigate to the wish list detail view with no items added | A note is displayed under the heading *Wishes*, alerting the user that no items have been added yet by the owner of the wish list | Pass |
-| Wish list detailed view - Add a Wish Button Functionality - Log In and ownership required | Log in as the owner of the wish list, navigate to the wish list data | A modal opens to allow the addition of new items | Pass |
-| Wish list detailed view - Link to Wish List Overview - Log In and ownership required | Log in as the owner of the wish list, navigate to the wish list detail view | A link is displayed below the wishes to return to the overview of all wish lists | Pass |
-| Wish list detailed view - Timestamp Display | Log in as the owner of the wish list, navigate to the wish list detail view | A timestamp in the lower-right corner shows the last edited date and time | Pass |
-| Wish list detailed view - View Wish List as Non-Owner | Open the wish list link as a non-owner | The wish list displays the name, details, wishes included, and the last updated timestamp without the "Share," "Edit," and "Delete" buttons and the link to display the wish lists overview | Pass |
-| Edit wish list from overview page | Log in as the owner of the wish list, navigate to the wish list overview page, click the "pen" button | User should be redirected to the edit form page with fields containing previous data | Pass |
-| Edit wish list from detail page | Log in as the owner of the wish list, navigate to the wish list detail page, click the "Edit" button |  User should be redirected to the edit form page with fields containing previous data | Pass |
-| Edit wish list - Confirm Changes | Log in as the owner of the wish list, navigate to the wish list edit form page, make changes, and click "Confirm Changes" button | User is redirected back to the overview page with a success message indicating the wish list has been changed | Pass |
 | Edit wish list -  Prevent unauthorized URL access for editing | Open the wish list edit URL without logging in  | Redirected to the login page with a message indicating the need to log in first to edit a wish list | Pass |
 | Edit wish list - Unauthorized User Receives 403 Error  - Log in required | Log in as a user who is a non-owner of a wish list, attempt to edit a wish list by entering the edit URL | Receive a 403 Forbidden page indicating they are not authorized to edit the wish list | Pass |
 | Delete a wish list from overview page | Log in as the owner of the wish list, navigate to the wish list overview page, click the "trash can" button | User should be redirected to the confirm deletion form page | Pass |
