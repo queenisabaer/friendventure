@@ -1,5 +1,6 @@
 # FriendVenture
-Advanced Front-End Portfolio Project(PP5) - Code Institute
+
+**Advanced Front-End Portfolio Project(PP5) - Code Institute**
 
 View the deployed site [here.](https://friendventure-702f1b6ed9cf.herokuapp.com/)<br>
 
@@ -20,7 +21,6 @@ The FriendVenture frontend is the user interface component of the FriendVenture 
   - [Favicon](#favicon)
   - [Typography](#typography)
 - [Structure](#structure)
-- [Database](#database)
 - [Features](#features)
 - [Bugs](#bugs)
 - [Technologies Used](#technologies-used)
@@ -90,7 +90,6 @@ User Stories with their id:  <br>
 - As a logged-in user I can like a comment on a FriendVenture so that I can show my appreciation for valuable comments. [#22](https://github.com/queenisabaer/friendventure/issues/22)
 - As a logged-in user I can rate a FriendVenture so that I can show the creator of the event and other users how the event was. [#19](https://github.com/queenisabaer/friendventure/issues/19)
 
-
 <br>
 
 - As a superuser I can see a list of all profiles so that I can see all profiles that have been set up.[#32](https://github.com/queenisabaer/friendventure/issues/32)
@@ -124,33 +123,56 @@ User Stories with their id:  <br>
 ## Design
 
 ### Wireframes
-Due to lack of time, some of the originally planned features that can be seen on the wireframe had to be deleted or implemented differently. A detailed description of the existing features, how they differ from the wireframes can be found [here](#features). 
+Due to lack of time, some of the originally planned features that can be seen on the wireframe had to be deleted or implemented differently. A detailed description of the existing features can be found [here](#features), how the implemented features differ from the wireframes can be found in every wireframe section. 
 
 <details>
-<summary> Home </summary>
+<summary> Home page </summary>
 <br>
+The original wireframes were created at the beginning of the project. The start home page was divided into versions for logged-out users and those who are logged in. During the project development, I did not have enough time to create the home page for logged-out users and the corresponding functionality. Therefore, this is a feature I would like to implement in the future. The wireframes also show a component that displays upcoming FriendVentures. This was also something that was discarded due to time constraints. Instead, the most active profiles are shown. Additionally, the category filtering option has not yet been implemented. 
  <br>
 
-![Mobile wireframe](/documentation/wireframes)<br>
-![Desktop wireframe](/documentation/wireframes)<br>
+Wireframe for home page for logged-out user: <br>
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_LandingP.png)<br>
+Wireframes for home page for logged-in user:
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_Home.png)<br>
+![Desktop wireframe](src/documentation/wireframes/FriendVenture_Home_desktop.png)<br>
 
 </details>
 
 <details>
-<summary> xxx </summary>
+<summary> Sign up & Log In </summary>
 <br>
-The 'sign up' page xxx<br>
+User authentication was implemented using dj-rest-auth. This library provides a comprehensive set of features for user management, including registration, login, and logout functionalities.
+For the final design of the authentication views, I utilized the Code Institute moments walkthrough design, which closely aligns with the wireframes originally created for the project. This approach ensured a consistent user experience throughout the application.<br>
 
-![Mobile wireframe](/documentation/wireframes)<br>
-![Desktop wireframe](/documentation/wireframes)<br>
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_Register.png)<br>
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_LogIn.png)<br>
 
 </details>
 
+<details>
+<summary> Create a FriendVenture </summary>
+<br>
+To create a FriendVenture, a form was designed that closely resembles the one outlined in the wireframes. This form includes fields for all necessary information, ensuring a seamless user experience that aligns with the original design specifications.<br>
 
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_create.png)<br>
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_create_desktop.png)<br>
+
+</details>
+
+<details>
+<summary> Profile Page </summary>
+<br>
+The profile page differs in some respects from the final version. One notable feature is the component that displays upcoming FriendVentures, which is a feature I plan to implement in the future. Additionally, the page was intended to include further filtering of FriendVentures, showing those that have already taken place and in which the user participated. This functionality was discarded during the course of the project.<br>
+
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_Profile.png)<br>
+![Mobile wireframe](src/documentation/wireframes/FriendVenture_Profile_desktop.png)<br>
+
+</details>
 
 ### Imagery
  
-The friendly ghost, which can be seen in the placeholder images or in the not found sections, was found at Pixabay. It was created by [madebytin](https://pixabay.com/de/illustrations/geist-boo-halloween-niedlich-8250317/) The pink of the cheeks was also integrated into the color palette.
+The friendly ghost, which can be seen in the placeholder images or in the not found sections, was found at Pixabay. It was created by [madebytin](https://pixabay.com/de/illustrations/geist-boo-halloween-niedlich-8250317/). The pink of the cheeks was also integrated into the color palette.
 
 The logo, the not found image, the 404 image, the placeholder images of the users' profile and of the FriendVentures were designed by me with [Canva](https://www.canva.com/).
 
@@ -183,46 +205,11 @@ I created this colour palette with [coloors](https://coolors.co/).<br>
 ### Typography
 
 [Shadows Into Light](https://fonts.google.com/specimen/Shadows+Into+Light) was used as font for headings. This font is similar to the one used in the logo. Since the logo was designed with Canva and the font used was not freely available, I searched for a similar-looking alternative.<br>
-[Inter](https://fonts.google.com/specimen/Inter) was selected for text content. It is a clean font that goes really well with the heading font. Both fonts were imported via Google Fonts. 
+[Inter](https://fonts.google.com/specimen/Inter) was selected for text content. It is a clean font that goes really well with the heading font. <br>Both fonts were imported via Google Fonts. 
 
 ## Structure 
 
-The first database schema was crafted during the planning phase of the project. The second one was created after finishing the project. It only adds two created_at fields and renames some of the tables. Both schemas were created with [dbdiagramm](https://dbdiagram.io/home). 
-
-![Initial Database Schema](src/documentation/images/dbdiagramm-FriendVenture.png)<br>
-Final ERD:<br>
-![Final Database Schema](src/documentation/images/dbdiagramm_final_FriendVenture.png)<br>
-
-## Database<br>
-I used a PostgreSQL provided by Code Institute as relational database.<br>
-
-- **FieldTypes:**<br>
-  - AutoField: An integer field that automatically increments.
-  - CharField: A text field with a maximum length.
-  - EmailField: A CharField that checks if the value is a valid email address.
-  - DateTimeField: A field for storing date and time.
-  - DateField: A field for storing dates.
-  - TimeField: A field for storing time.
-  - TextField: A large text field.
-  - ImageField: 
-  - OneToOneField: A one-to-one relationship.
-  - ForeignKey: A many-to-one relationship.
-  - IntegerField: An integer field.
-  - EmailField: 
-  - DecimalField: A fixed-precision decimal number.
-  - URLField: A CharField for URLs.<br>
-- **Relationships:**<br>
-  - A User has one Profile.
-  - A Profile belongs to one User.
-  - A FriendVenture is created by one User.
-  - A User can create many FriendVentures.
-  - A User can be a Participant in a FriendVenture.
-  - Participant belongs to one User and one Friendventure
-  - A User can bookmark a FriendVenture.
-  - Bookmark belongs to one User and one Friendventure
-  - A User can create a Comment for a FriendVenture. 
-  - A Comment belongs to one User and one Friendventure
-  - A User can follow another User.
+All information about the structure can be found in the README of the API [here](https://github.com/queenisabaer/friendventure-api)
 
 ## Features
 
@@ -433,8 +420,9 @@ Screenshot of delete confirmation modal<br>
 
 
 - **Displaying an overview of all existing FriendVentures on the Homepage.**<br>
-The user can access the overview page of all FriendVentures that have been created by clicking on the homepage The user can access the overview page displaying all created FriendVentures by clicking on the "Home" link in the navigation bar or by clicking on the logo. This page presents FriendVentures sorted by the date they were added, with the most recent ones appearing first. Each FriendVenture is displayed in a card format that includes essential details such as the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments. Additionally, the last updated timestamp is shown. The overview page features infinite scroll functionality: when the user scrolls through 10 FriendVentures, the next set of FriendVentures is automatically loaded. During this process, a spinner is briefly displayed to indicate that more content is being loaded. 
-In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures. <br>
+The user can access the overview page of all FriendVentures that have been created by clicking on the homepage The user can access the overview page displaying all created FriendVentures by clicking on the "Home" link in the navigation bar or by clicking on the logo. This page presents FriendVentures sorted by the date they were added, with the most recent ones appearing first. Each FriendVenture is displayed in a card format that includes essential details such as the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments. Additionally, the last updated timestamp is shown. Furthermore, if a FriendVenture's date and time are in the past, it will automatically be deleted from the FriendVenture overview pages. The overview page features infinite scroll functionality: when the user scrolls through 10 FriendVentures, the next set of FriendVentures is automatically loaded. During this process, a spinner is briefly displayed to indicate that more content is being loaded. 
+In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures.
+ <br>
 
 
 Screenshot of FriendVenture overview page <br>
@@ -490,9 +478,7 @@ Icons where the user is not a participant, FriendVenture has no bookmark and the
 A dedicated 404 error page has been created to handle instances where users navigate to a non-existent page. The page features a placeholder image of a ghost holding a sign with the number "404" to indicate that the requested page could not be found. Clicking on the ghost image redirects users back to the home page. Below the image, there is a short message: "Boo! Looks like you’re lost! Come back to the homepage". This message is also a clickable link that redirects users to the home page.<br>
 
 ![Screenshot of 404 page](src/documentation/features/not-found.png)<br>
-
 </details>
-
  
 <details>
 <summary> Redirect functionality for the user depending on loggedin or loggedout status </summary>
@@ -511,27 +497,27 @@ The application includes a redirect functionality to manage user access based on
 - *Optimize CurrentUserContext for participants*: Enhance the CurrentUserContext to streamline the process of displaying participants' avatars. This optimization will avoid unnecessary filtering of all profiles and ensure avatars are still shown correctly.
 - *Add post-event categories and comment enhancements*: Allow FriendVentures that have taken place to be moved into a different category for participants. Additionally, enable users to add pictures to their comments and provide the option to rate the FriendVenture.
 - *Star review for FriendVentures*: Implement a feature to display star ratings for FriendVentures. Users will be able to see how their FriendVentures have been rated by others, providing feedback and improving event quality.
+- *Creating a special start page for logged out user*: Develop a unique start page for users who are not logged in to provide a more engaging and informative experience tailored to their status. (as can be seen in the original wireframes)
 
 
 ## Bugs NEEDS UPDATE
 
 <details>
-<summary> xxx </summary>
+<summary> ESLint Configuration </summary>
 <br>
-xxx 
-<br>
+The configuration of ESLint turned out to be more difficult because I set up the React project with the latest version using Vite. For example, importing React at the top of the JSX files is no longer necessary. After I properly configured ESLint for the development phase without constant warnings and errors being displayed, I had to set it up again for the final testing. For this, I followed the approach published in the following thread. After that, the test ran without any errors or warnings. 
 <br>
 
-![Screenshot of the error message in browser](/documentation/bugs)<br>
-![Screenshot of the settings file section](/documentation/bugs)<br>
+![Screenshot of the error message in the console](src/documentation/bugs/eslint-first%20attempt.png)<br>
+![Screenshot of the error message in the console](src/documentation/bugs/eslint-error-first-attempt.png)<br>
+![Screenshot of the error message in the console](src/documentation/bugs/eslint-error.png)<br>
 
 </details>
 
 <details>
-<summary> xxx </summary>
+<summary> time </summary>
 <br>
-xxx
-<br>
+time (was undefinied, had to update friendventure.jsx)
 <br>
 
 ![Screenshot of the error message in browser](/documentation/bugs)<br>
@@ -539,14 +525,33 @@ xxx
 
 </details>
 
+<details>
+<summary> currentUser tokens </summary>
+<br>
+xxx<br>
 
+![Screenshot of the error message in browser](/documentation/bugs)<br>
+![Screenshot of the login html file section](/documentation/bugs)<br>
+
+</details>
+
+<details>
+<summary> Upating an image </summary>
+<br>
+update image wasn't working. got an cors property error. forget trailing slash
+<br>
+
+![Screenshot of the error message in browser](/documentation/bugs)<br>
+![Screenshot of the login html file section](/documentation/bugs)<br>
+
+</details>
 
 ## Technologies Used NEEDS UPDATE
 
 ### Languages:
 - [CSS](https://en.wikipedia.org/wiki/CSS)
 - [JavaScript](https://www.javascript.com/)
-- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+- [JSX](https://de.legacy.reactjs.org/docs/introducing-jsx.html)
 
 ### Tools:
 - [Git](https://git-scm.com/) was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
@@ -558,6 +563,7 @@ xxx
 - [Balsamiq](https://balsamiq.com/) was used to create the wireframes.
 - [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter) to beautify the code
 - [LanguageTool](https://languagetool.org/) was used to check the grammar and spelling in the README and the Code. 
+- [reverso](https://www.reverso.net/) was used to translate text from german to english.
 - [Coloors](https://coolors.co/image-picker) was used to create the colour scheme.
 - [Pixelied](https://pixelied.com/convert/jpg-converter/jpg-to-webp) was used to convert jpg images into wepb images.
 - [Pixabay](https://www.pixabay.com/de-de/) was used to search and load images
@@ -568,50 +574,57 @@ xxx
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools?hl=de) were used to check the application for responsiveness and errors. 
 
 ### Frameworks: 
-- 
+- [React](https://react.dev/) was initialized with [vite](https://vitejs.dev)/
+- [React Bootstrap](https://react-bootstrap.netlify.app/)
+- [React Router Dom](https://reactrouter.com/en/main)
 
 ### Libraries and modules:
-
+- [Axios](https://axios-http.com/docs/intro)
+- [React Infinite Scroll Component](https://www.npmjs.com/package/react-infinite-scroll-component)
+- [Moment](https://momentjs.com/)
 
 ## Testing
 
 The app was tested regularly and deployed early to Heroku to make sure both local and remote worked the same.
 
-### Validator Testing NEEDS UPDATE
+### Validator Testing
 
+<details>
+<summary> HTML Validation</summary>
+<br>
+
+I passed my deployed html files through the [HTML Validator](https://validator.w3.org/nu/) and no errors were found.<br>
+     
+![HTML result homepage](src/documentation/validation/html_home.png)
+![HTML result profiles](src/documentation/validation/html-profiles.png)
+![HTML result add a friendventure](src/documentation/validation/html-add.png)
+![HTML result friendventures overview](src/documentation/validation/html-friendventures-explore.png)
+![HTML result bookmarks](src/documentation/validation/html-bookmarks.png)
+![HTML result upcoming](src/documentation/validation/html-upcoming.png)
+  
+</details>
 
 <details>
 <summary> CSS Validation</summary>
 <br>
 
-I passed my css file through the [CSS Validator](https://jigsaw.w3.org/css-validator/) .<br>
+I passed m deployed css file through the [CSS Validator](https://jigsaw.w3.org/css-validator/) and no errors were found.<br>
      
-![CSS result](documentation/validation)
+![CSS result](src/documentation/validation/css-validation.png)
   
 </details>
 
 <details>
-<summary> JavaScript Validation</summary>
+<summary> JavaScript Validation - ESLint</summary>
 <br>
 
-I passed my javaScript file through the [JSHint](https://jshint.com/). In the first attempt, three warnings were found due to two missing semicolons and the usage of the async function, which is only available in ES8. After searching on Slack, I found a useful thread by [Joanna Skoczen](https://code-institute-room.slack.com/archives/C7EJUQT2N/p1662139410703239), and used the following statement to get rid of the error: 
-```//jshint esversion:8``` 
+To validate the Javascript code in my code editor I used [ESLint](https://eslint.org/). Several minor issues were immediately corrected and no errors or warnings were shown. 
 <br>
-<br>
-     
-![JavaScript result](documentation/validation/javascript_validation.png)
-
-The statement of one undefinied variable is caused by cross referencing scripts. 
   
 </details>
 
-<details>
-<summary> Python Validation</summary>
-<br>
+### Lighthouse Test
 
-All created python files were checked with the [Code Insitute validator - CI Python Linter](https://pep8ci.herokuapp.com/#). After removing some lines that were too long, everything was clear, and no errors were found.<br>
-  
-</details>
 
 
 ### Manual Testing
@@ -691,6 +704,8 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 | Delete FriendVenture - prevent unauthorized deletion via URL | Attempt to access the FriendVenture deletion URL directly as a non-owner or without logging in | The user should be redirected to the homepage or an error page, and the FriendVenture should remain undeleted | Pass |
 | Delete FriendVenture - database removal verification | After confirming the deletion of a FriendVenture, check the database to ensure the FriendVenture record is removed | The FriendVenture should no longer exist in the database | Pass |
 | Delete FriendVenture - redirect after deletion | After successfully deleting a FriendVenture, verify that the user is redirected to the homepage | The user should be on the homepage, and the deleted FriendVenture should not be visible | Pass |
+| FriendVenture - automatic deletion | As a logged-in user, create a FriendVenture with a date and time in the future and wait until scheduled date and time are in the past. | The FriendVenture should be automatically deleted from the overview pages. | Pass |
+| FriendVenture - automatic deletion | Attempt to access the FriendVenture's detail page after the event's scheduled time has passed. | The page should no longer be accessible; a "404 Not Found" error or redirection to the homepage should occur. | Pass |
 | Overview page - access via home link | Click on the "Home" link in the navigation bar | The user should be redirected to the overview page displaying all FriendVentures sorted by the date added | Pass |
 | Overview Page - access via logo | Click on the logo in the header | The user should be redirected to the overview page displaying all FriendVentures sorted by the date added | Pass |
 | FriendVenture card - display elements | Navigate to the overview, bookmarks, explore pages and view a FriendVenture card | Each FriendVenture card should display the title, description, date, time, location, category, creator information, participant count, bookmark count, comment count, and last updated timestamp | Pass |
@@ -843,7 +858,13 @@ To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.
 ### Code
 
 - Parts of the setup and overall design of this project were guided by the Code Institute's Moments walkthrough project. The core elements of the Profile, Friendventure, Follower, Bookmark, Participant, and Comment components, were derived from the walkthrough project and subsequently tailored to meet the unique requirements of this project. 
-- 
+- How to access the dropdown menu in mobile view was found [here](https://stackoverflow.com/questions/60373789/react-bootstrap-dropdown-on-hover) and [here](https://github.com/reactstrap/reactstrap/issues/1249)
+- The replacement of the useHistory() hook to useNavigate() was found [here](https://medium.com/@kgreve14/usehistory-usenavigate-5b383160adba)
+- To format the date with toLocaleDateString() was found [here](https://stackoverflow.com/questions/27939773/tolocaledatestring-short-format) and [here](https://www.codecademy.com/resources/docs/javascript/dates/toLocaleDateString)
+- The message implementation was found in the project of Johannes Bernet: [Sonic Explorer](https://github.com/nacht-falter/sonic-explorers)
+- To manage the deletion of FriendVentures once they have passed, I utilized the moment library for time handling. You can find detailed instructions and documentation for using moment to manage and manipulate dates [here](https://www.freecodecamp.org/news/the-ultimate-guide-to-javascript-date-and-moment-js/), [here](https://momentjs.com/timezone/docs/) and [here](https://www.sitepoint.com/managing-dates-times-using-moment-js/)
+- To setup the eslint.config.js I found this [thread on Slack very helpful](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1720034845624589?thread_ts=1718106475.333199&cid=C02MTH5MBDG). Furthermore, I used the command 
+_npx eslint **/*.js_ that [Roman_CI suggested on Slack](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1707836884873659?thread_ts=1707580913.765619&cid=C02MTH5MBDG) to test my react project 
 - The following websites were used as a source of knowledge: <br>
   - [Google](www.google.com)
   - [mdn](https://developer.mozilla.org/en-US/)
@@ -870,37 +891,3 @@ To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.
 - In addition, my sincerest gratitude goes out to [Ronja Sjögren](https://github.com/Ajn0r), [Kelly Hutchison](https://github.com/quiltingcode) and [Johannes Bernet](https://github.com/nacht-falter). Their projects were a great source of inspiration.
 
 **This is for educational use.**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Bugs: 
-- time (was undefinied, had to update friendventure.jsx)
-- currentUser tokens
-- update image wasn't working. got an cors property error. forget trailing slash
-
-
-
-
-content: 
-Issue with Dropdown menu in mobile view: [here](https://stackoverflow.com/questions/60373789/react-bootstrap-dropdown-on-hover) and [here](https://github.com/reactstrap/reactstrap/issues/1249)
-replacement of the useHistory() hook to useNavigate() [here](https://medium.com/@kgreve14/usehistory-usenavigate-5b383160adba)
-
-- format date with toLocaleDateString() was found [here](https://stackoverflow.com/questions/27939773/tolocaledatestring-short-format) and [here](https://www.codecademy.com/resources/docs/javascript/dates/toLocaleDateString)
-
-- message implementation from project of Johannes Bernet [Sonic Explorer](https://github.com/nacht-falter/sonic-explorers)
-- Moment Time [here](https://www.freecodecamp.org/news/the-ultimate-guide-to-javascript-date-and-moment-js/), [here](https://momentjs.com/timezone/docs/) and [here](https://www.sitepoint.com/managing-dates-times-using-moment-js/)
-

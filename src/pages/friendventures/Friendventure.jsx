@@ -195,7 +195,7 @@ const Friendventure = (props) => {
         <Row>
           <Col md={6}>
             <Link to={`/friendventures/${id}`}>
-              <Card.Img src={image} className={styles.Image} />
+              <Card.Img src={image} className={styles.Image} alt="Image that is related to FriendVenture" />
             </Link>
           </Col>
           <Col md={6}>
