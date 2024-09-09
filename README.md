@@ -226,7 +226,7 @@ I used a PostgreSQL provided by Code Institute as relational database.<br>
 
 ## Features
 
-### Existing Features NEEDS UPDATE
+### Existing Features
 
 To learn more about each feature, please click on the respective headline
 
@@ -271,22 +271,6 @@ View for users who are not logged in:<br>
 To create a consistent appearance, the logo, which appears in a rectangular form in the navigation bar, was adapted into a square version to create the favicon. A fitting title was also added to maintain consistency in the overall design.<br>
 Screenshot of the favicon:<br>
 ![Screenshot of favicon](src/documentation/images/favicon-friendventure.png)<br>
-
-</details>
-
-<details>
-<summary> Home page </summary>
-<br>
-
-<br>
-In the wireframe, a different approach can be seen. Due to a lack of time, I wasn't able to implement the functionality, so that 
- <br>
-
-Screenshot for the home page:<br>
-![Screenshot home page](/documentation/features)<br>
-Screenshot of the home page after log in: <br>
-![Screenshot home page after log in](/documentation/features)<br>
-
 
 </details>
 
@@ -390,78 +374,112 @@ FriendVenture Management includes the following topics:<br>
  - **Adding a new FriendVenture**<br>
 To add a FriendVenture, the user must sign up and log in. They can then navigate to the appropriate page via the navigation bar. All form fields are required except for the description. The date must be today or in the future. The user can upload an image for the FriendVenture. If no image is uploaded, a placeholder image will be shown instead.
 If a required field is not filled out, an error message will be shown indicating which fields need to be completed. 
-After the user clicks the 'Create' button and all required fields are correctly filled, they will be redirected to the home page, and a success message will be displayed. The creator of a FriendVenture is automatically added as a participant in the FriendVenture.<br>
+After the user clicks the 'Create' button and all required fields are correctly filled, they will be redirected to the detail page of this FriendVenture, and a success message will be displayed. The creator of a FriendVenture is automatically added as a participant in the FriendVenture, indicated by a small checkmark on the person icon.<br>
 <br>
 
 Screenshot of 'add a FriendVenture' page:<br>
-![Screenshot of add a new friendventure page](src/documentation/features)<br>
-Screenshot of success message:<br>
-![Screenshot of success message](/documentation/features/message_wishlist.png)<br>
+![Screenshot of add a new friendventure page](src/documentation/features/create-friendventure-desktop.png)<br>
+Screenshot of success message and participant icon:<br>
+![Screenshot of success message and participate icon](src/documentation/features/create-success.png)<br>
+Screenshot of error message for image larger than 2 MB:<br>
+![Screenshot of success message](src/documentation/features/create-image-error.png)<br>
+Screenshot of error message for date validation:<br>
+![Screenshot of success message](src/documentation/features/create-date-error.png)<br>
 
 - **FriendVenture detail view**<br>
-xxx
-A FriendVenture contains several elements in the detailed view. 
-The following elements are included for the owner of the list: <br>
+A FriendVenture contains several elements in its detailed view. The following elements are included for the owner of the FriendVenture:<br>
+- **Title**: The title of the FriendVenture. <br>
+- **Creator Information**: Displays the username of the creator with a link to their profile. <br>
+- **Image**: The image associated with the FriendVenture or the placeholder image <br>
+- **Description**: A brief description of the FriendVenture, if given by the user. <br>
+- **Date, Time, and Location**: Details about when and where the FriendVenture will take place.<br>
+- **Category**: Button styled representing categories for future feature use,(allowing FriendVentures to be filtered by category.)<br>
+- **Last Updated**: Information on when the FriendVenture was last updated. <br>
+Below these elements, there are three icons in a row with numbers next to each for counting: <br>
+- **User Icon**: Displays the number of participants. If the currently logged-in user is a participant in the FriendVenture, the icon will have a small checkmark.<br>
+- **Heart Icon**: Displays the number of bookmarks. If the currently logged-in user has bookmarked the FriendVenture, the heart will be filled with red.<br>
+- **Comment Icon**: Shows the number of comments associated with the FriendVenture.<br>
+Underneath these icons is the comments section.<br>
+**Participants List:**
+In mobile view, the list of participants is displayed underneath the comments section.
+In desktop view, the participants list appears next to the FriendVenture.
+If the currently logged-in user is the owner of the FriendVenture, three dots will appear next to the creator information, indicating options to edit or delete the FriendVenture. <br>
 <br>
 
-Screenshot of FriendVenture detail page for owner of the list:<br>
-![Screenshot of friendventure detail page ](/documentation/features/screenshot_wishlist_detail_log.png)<br>
-<br>
-
-- *Edit* (Pencil Icon & _Edit_) : Leads to the page for editing the FriendVentures.<br>
-- *Delete* (Trash Icon & _Delete_): Allows the user to delete the FriendVenture. This action requires a confirmation step(opens in a new modal) to complete the deletion.<br>
+Screenshot of FriendVenture detail page for owner of the FriendVenture in mobile view:<br>
+![Screenshot of friendventure detail page for owner of friendVenture](src/documentation/features/friendventure-detail-mobile.png)<br>
+Screenshot of FriendVenture detail page for other users of the FriendVenture in mobile view:<br>
+![Screenshot of friendventure detail page for other user of friendVenture](src/documentation/features/friendventure-detail-not-owner.png)<br>
+Screenshot of FriendVenture detail page for owner of the FriendVenture in desktop view:<br>
+![Screenshot of friendventure detail page for owner of friendVenture on larger screens](src/documentation/features/friendventure-detail-desktop.pngg)<br>
+Screenshot of FriendVenture detail page edit menu:<br>
+![Screenshot of friendventure detail page edit menu](src/documentation/features/friendventure-detail-edit.png)<br>
 <br>
 
 - **Edit a FriendVenture**<br>
-xxx
-As part of the full CRUD functionality, the FriendVenture owner has the ability to edit the FriendVenture. <br>
+As part of the full CRUD functionality, the FriendVenture owner has the ability to edit the FriendVenture. When a user clicks the link to edit their FriendVenture, they are redirected to a form page where the existing data is already populated in the corresponding fields. The form retains the same validations as the "Create a FriendVenture" form, including image size limits (maximum 2 MB), required fields, and date validation (the date must be today or in the future). After the user clicks the "Update" button, they are redirected to the FriendVenture's detail page, and a success message is displayed confirming the update.<br>
 
 Screenshot of edit page<br>
-![Screenshot of edit page](/documentation/features/screenshot_edit_wishlist.png)<br>
+![Screenshot of edit page](src/documentation/features/friendventure-update.png)<br>
 Screenshot of message:<br>
-![Screenshot of edit message](/documentation/features/message_edit.png)<br>
+![Screenshot of edit message](src/documentation/features/friendventure-update-success.png)<br>
 
 
 - **Delete a FriendVenture**<br>
 As part of the full CRUD functionality, the FriendVenture owner can delete a FriendVenture. This can be achieved from the FriendVenture overview by clicking on the three dots as well as from the detail page of the FriendVenture. The user must confirm that he actually wants to delete the FriendVenture in a modal. After successful deletion, the user is redirected back to the homepage and the corresponding FriendVenture is deleted from the database and the overview.<br>
 
 Screenshot of delete confirmation modal<br>
-![Screenshot of delete confirmation page](/documentation/features/screenshot_delete_wishlist.png)<br>
-Screenshot of message if user is not owner:<br>
-![Screenshot of delete message if user is not owner](/documentation/features/message_delete_log.png)<br>
+![Screenshot of delete confirmation page](src/documentation/features/friendventure-delete.png)<br>
 
 
 - **Displaying an overview of all existing FriendVentures on the Homepage.**<br>
-The user can access the overview page of all FriendVentures that have been created by clicking on the homepage link in the navigation bar (Home), or by clicking on the logo. These FriendVentures are sorted by the date they were added. Each FriendVenture is displayed in a card format that includes the FriendVenture's title, the description the date, the time, the location, the category, by whom the Friendventure was created, how many participants, bookmarks and comments it has and when the FriendVenture was last updated.
-
- that leads to the detailed view of the FriendVenture. 
- When clicking the three dots it opens a
- 
- , there are two buttons with icons:<br>
+The user can access the overview page of all FriendVentures that have been created by clicking on the homepage The user can access the overview page displaying all created FriendVentures by clicking on the "Home" link in the navigation bar or by clicking on the logo. This page presents FriendVentures sorted by the date they were added, with the most recent ones appearing first. Each FriendVenture is displayed in a card format that includes essential details such as the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments. Additionally, the last updated timestamp is shown. The overview page features infinite scroll functionality: when the user scrolls through 10 FriendVentures, the next set of FriendVentures is automatically loaded. During this process, a spinner is briefly displayed to indicate that more content is being loaded. 
+In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures. <br>
 
 
 Screenshot of FriendVenture overview page <br>
 ![Screenshot ofwish list overview page](/documentation/features/screenshot_wishlist_overview.png)<br>
 
 - **Displaying an overview of bookmarked FriendVentures**<br>
-xxx
+When a user bookmarks a FriendVenture by clicking on the heart icon within the FriendVenture card, they can later access an overview page of all their bookmarked FriendVentures. This page can be reached through the navigation bar by selecting  *Bookmarks* in the FriendVentures dropdown menu. The bookmarked FriendVentures are displayed similarly to those on the homepage overview, with each FriendVenture presented in a card format. This includes the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments, as well as the last updated timestamp. The page also features infinite scroll functionality, where additional FriendVentures are loaded after scrolling through the first 10 entries, with a brief display of a spinner indicating the loading process. In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures. <br>
 
 - **Displaying an overview of upcoming FriendVentures(as Participant)**<br>
-xxx
+When a user marks themselves as a participant in a FriendVenture by clicking on the person icon within the FriendVenture card, they can later access an overview page of all FriendVentures they are participating in. This page can be accessed through the navigation bar by selecting *Upcoming* in the FriendVentures dropdown menu. The participating FriendVentures are displayed similarly to those on the homepage overview, with each FriendVenture presented in a card format. This includes the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments, as well as the last updated timestamp. The page also features infinite scroll functionality, where additional FriendVentures are loaded after scrolling through the first 10 entries, with a brief display of a spinner indicating the loading process. In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures.
 
 - **Displaying an overview of all FriendVentures created by user**<br>
-xxx
-
-
+As already explained in the profile feature, all FriendVentures created by the user are listed on their profile
 
 </details>
 
 <details>
 <summary> User Interaction </summary>
 <br>
+Users can interact with each other in the following ways:
+- Commenting on a FriendVenture by going to the detailed view of the FriendVenture, which can also be accessed by clicking on the comment icon.
+- Marking themselves as a participant to join the event by clicking on the person icon.
+- Bookmarking a FriendVenture by clicking on the heart icon.
+- Follow/Unfollow functionality by clicking on the Follow/Unfollow button, which is available in the "Most Active Users" section, the participants list, and the profile overview. This option is only available when the logged-in user is not viewing their own profile. <br>
 
-An error page for the common error 404 has been created and includes a xxx <br>
-![Screenshot of 403 page](/documentation/features)<br>
+**Participation and Bookmark Icons**: <br>
+The icons representing participation (person icon) and bookmarks (heart icon) dynamically change based on the user's status:<br>
+- *Participation*: When the user clicks on the person icon, it toggles their participation status. If the user is now a participant, the icon will display a small checkmark, and the participant count will increase accordingly.<br>
+- *Bookmarks*: When the user clicks on the heart icon, it toggles the bookmark status of the FriendVenture. If the user has bookmarked the FriendVenture, the heart icon will turn red, and the bookmark count will increase accordingly.<br>
+
+**Comment Section:**
+Users can interact with the FriendVenture by adding comments: <br>
+
+The user's profile image is displayed next to the comment form field. After entering a comment and clicking the "add comment" button, the comment is displayed under the FriendVenture in a list format. Each comment includes the commenter's profile image, username, the time when the comment was added, and the comment content.
+If the currently logged-in user is the owner of the comment, three dots appear next to the comment, providing options to edit or delete the comment. <br>
+- *Edit*: When the user clicks "Edit" on their comment, the comment form reopens with the existing content. The user can then update the comment and save the changes. Alternatively, they can cancel the edit, which will close the form, leaving the comment unchanged. <br>
+- *Delete*: When the user clicks "Delete" on their comment, a confirmation modal appears. Upon confirming the deletion, the comment is removed from the list.
+
+![Screenshot of comment form](src/documentation/features/comment-form.png)<br>
+![Screenshot of comment form](src/documentation/features/comments-list.png)<br>
+![Screenshot of comment form](src/documentation/features/comment-delete.png)<br>
+Icons where the user is also a participant, FriendVenture has a bookmark and FriendVenture contains 4 comments: <br>
+![Screenshot of icons](src/documentation/features/icons-friendventure-1.png)<br>
+Icons where the user is not a participant, FriendVenture has no bookmark and the FriendVenture contains 0 comments:<br>
+![Screenshot of icons](src/documentation/features/icons-friendventure-2.png)<br>
 
 </details>
 
@@ -469,8 +487,9 @@ An error page for the common error 404 has been created and includes a xxx <br>
 <summary> 404 - Not Found page </summary>
 <br>
 
-An error page for the common error 404 has been created and includes a xxx <br>
-![Screenshot of 403 page](/documentation/features)<br>
+A dedicated 404 error page has been created to handle instances where users navigate to a non-existent page. The page features a placeholder image of a ghost holding a sign with the number "404" to indicate that the requested page could not be found. Clicking on the ghost image redirects users back to the home page. Below the image, there is a short message: "Boo! Looks like you’re lost! Come back to the homepage". This message is also a clickable link that redirects users to the home page.<br>
+
+![Screenshot of 404 page](src/documentation/features/not-found.png)<br>
 
 </details>
 
@@ -483,10 +502,16 @@ The application includes a redirect functionality to manage user access based on
 
 </details>
 
-### Features, which I would like to implement in the future NEEDS UPDATE
+### Features, which I would like to implement in the future
 
-- Delete a profile
-- 
+- *Delete a Profile*: Allow users to permanently delete their profiles from the platform. This feature will include necessary confirmations and safeguards to prevent accidental deletions.<br>
+- *Filter FriendVentures by category*: Enable filtering of FriendVentures based on categories. This will help users find events that match their interests more easily.<br>
+- *Upcoming FriendVenture component on profile page*: Add a component to the user profile page that displays upcoming FriendVentures, as illustrated in the wireframes. This component will provide a quick view of future activities associated with the user.
+- *Use of DateTime for upcoming events component*: Implement DateTime functionalities for the upcoming events component. This will allow for more precise scheduling and display of events, improving user experience by accurately reflecting event times.
+- *Optimize CurrentUserContext for participants*: Enhance the CurrentUserContext to streamline the process of displaying participants' avatars. This optimization will avoid unnecessary filtering of all profiles and ensure avatars are still shown correctly.
+- *Add post-event categories and comment enhancements*: Allow FriendVentures that have taken place to be moved into a different category for participants. Additionally, enable users to add pictures to their comments and provide the option to rate the FriendVenture.
+- *Star review for FriendVentures*: Implement a feature to display star ratings for FriendVentures. Users will be able to see how their FriendVentures have been rated by others, providing feedback and improving event quality.
+
 
 ## Bugs NEEDS UPDATE
 
@@ -532,13 +557,12 @@ xxx
 - [Fontawesome](https://fontawesome.com/) was used to add icons to the website.
 - [Balsamiq](https://balsamiq.com/) was used to create the wireframes.
 - [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter) to beautify the code
-- [Beautifier](https://beautifier.io/) to beautify the HTML code
 - [LanguageTool](https://languagetool.org/) was used to check the grammar and spelling in the README and the Code. 
 - [Coloors](https://coolors.co/image-picker) was used to create the colour scheme.
 - [Pixelied](https://pixelied.com/convert/jpg-converter/jpg-to-webp) was used to convert jpg images into wepb images.
 - [Pixabay](https://www.pixabay.com/de-de/) was used to search and load images
 - [Browserling](https://www.browserling.com/) was used to test the application on different browsers.
-- [Cloudinary](https://cloudinary.com/) was used to store the item images.
+- [Cloudinary](https://cloudinary.com/) was used to store the images for friendVentures, and profiles.
 - [Canva](https://www.canva.com/) was used to create the logo, and the placeholder images.
 - [Favicon.io](https://favicon.io/favicon-generator/) was used to create the favicon.
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools?hl=de) were used to check the application for responsiveness and errors. 
@@ -547,18 +571,7 @@ xxx
 - 
 
 ### Libraries and modules:
-- [os](https://docs.python.org/3/library/os.html) provides functions to interact with the operating system. 
-- [sys](https://docs.python.org/3/library/sys.html) was used to get system-specific functions.
-- [datetime](https://docs.python.org/3/library/time.html) supplies classes for manipulating dates and times.
-- [Gunicorn](https://gunicorn.org/) provides a way to serve Python web applications.
-- [Pycopg 2](https://pypi.org/project/psycopg2/) is a PostgreSQL database adapter for Python.
-- [Allauth](https://docs.allauth.org/en/latest/) was used to handle user authentication, registration, and account management.
-- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) is a Django application to manage and to render the forms.
-- [Whitenoise](https://whitenoise.readthedocs.io/en/stable/) was used to serve static files.
-- [Summernote](https://summernote.org/) as text-editor for admin panel. 
-- [dj_database_url](https://pypi.org/project/dj-database-url/) enables the ability to represent their database settings via a string.
-- [random](https://docs.python.org/3/whatsnew/3.12.html#random) implements a pseudo-random number generator.
-- [string](https://docs.python.org/3/whatsnew/3.11.html#string) contains a collection of string operations and constants.
+
 
 ## Testing
 
@@ -601,7 +614,7 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 </details>
 
 
-### Manual Testing NEEDS UPDATE
+### Manual Testing
 
 <details>
 <summary> Click here to see the testing table for features</summary>
@@ -617,11 +630,6 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 | Header - Navigation link (mobile view) | Click in the mobile view on a term in the navigation bar to go to the corresponding page and close the toggled burger menu | Clicking on a page at the navigation bar should take the user to the corresponding page and close the toggled burger menu | Pass |
 | Header - Navigation links and items | Depending on whether the user is logged in or not, the navigation elements should adapt accordingly | After logging in, the navigation menu should adjust accordingly. | Pass |
 | Favicon & Title | When opening the page or navigating within it, the favicon and the title should be visible. | After opening the page or navigating within it, tha favicon should be visible. | Pass |
-
-
-| Main page - default version | Visit the website for the first time or don't be logged in to see the default version of the 'home' page | After visiting the website for the first time or if a user isn't logged in, the main page should contain a short welcome message, with two buttons to sign up or log in, and a navigation bar that only contains three elements: 'Home', 'Login' and 'Sign Up'. 'Home' should be underlined | Pass |
-| Main page - Log in version | Log in to see a modified version of the 'home' page | After logging in, the 'home' page should contain a short welcome message, with two buttons to sign up or log in, and a navigation bar that contains five elements: 'Home', 'New List', 'Profile', 'Overview' and 'Logout'. 'Home' should be underlined | Pass |
-
 | Sign Up | Fill out each field and click on the sign-me-up button. | After filling out every form field with validate input, and clicking the 'Sign Up' button, the user should be redirected to the verify email page and receive an email to verify the mail address | Pass |
 | Sign Up - error message | Fill the username field with a username that is already existing or a pwassord that didn't match, and click on the sign-me-up button. | After entering a username that already exists or a password that doesn't match, and clicking the "sign me up" button, an error message should be displayed. | Pass |
 | Log In | Log in with username and password | Clicking on the 'Log In' button after providing the correct username and password, the user should be redirected to the main page, and the navigation menu should change. In addition, a message that a successful login has taken place should be displayed. | Pass |
@@ -634,7 +642,7 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 | Profile Picture Display | Access the profile page where the user has not uploaded a picture. | A placeholder image featuring the cute ghost should be displayed. | Pass |
 | Username Display | Access the profile page. | The username displayed should be the one created during the signup process. | Pass |
 | Follow/Unfollow Button Visibility | Access the profile page of a user who is not the currently logged-in user. | The follow/unfollow button should be visible. Access the profile page of the logged-in user. | The follow/unfollow button should not be visible. | Pass |
-| Overview of FriendVentures | Access the profile page. | The number of FriendVentures the user has created should be displayed accurately. | Pass |
+| Profile page - overview of FriendVentures | Access the profile page. | The number of FriendVentures the user has created should be displayed accurately. | Pass |
 | Followers and Following Counts | Access the profile page. | The number of followers and the number of people the user is following should be displayed accurately. | Pass |
 | "That's Me" Description | Access the profile page where the user has provided a description. | The description should be displayed if it is filled out. If not, the field should be show placeholder text. | Pass |
 | Contact Information (Reach Out) | Access the profile page. | Phone number and email address fields should display the user's information if provided. If not provided, placeholder text should be displayed. | Pass |
@@ -651,47 +659,82 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 | Date field validation | On the 'Create a new FriendVenture' page, enter a date that is past the current date and try to submit the form. | The system should reject the date with an appropriate error message. | Pass |
 | Image upload - less than 2 MB | On the 'Create a New FriendVenture' page, upload an image less than 2 MB and submit the form. | The uploaded image should be displayed as part of the FriendVenture. | Pass |
 | Image Upload - more than 2 MB | On the 'Create a New FriendVenture' page, upload an image larger than 2 MB and try to submit the form. | An error message should be displayed indicating that the image size exceeds the limit. | Pass |
-| Placeholder Image | On the 'Add a New FriendVenture' page, do not upload an image and submit the form. | A placeholder image should be shown in place of the uploaded image. | Pass |
-| Successful creation - redirection and success message | After filling out all required fields correctly on the 'Create a New FriendVenture' page and clicking the 'Create' button. | The user should be redirected to the home page, and a success message should be displayed. | Pass |
-| Automatic Participation | After creating a FriendVenture, check the list of participants for the created FriendVenture. | The creator of the FriendVenture should be automatically listed as a participant. | Pass |
-
-
-
-
-| Edit wish list -  Prevent unauthorized URL access for editing | Open the wish list edit URL without logging in  | Redirected to the login page with a message indicating the need to log in first to edit a wish list | Pass |
-| Edit wish list - Unauthorized User Receives 403 Error  - Log in required | Log in as a user who is a non-owner of a wish list, attempt to edit a wish list by entering the edit URL | Receive a 403 Forbidden page indicating they are not authorized to edit the wish list | Pass |
-| Delete a wish list from overview page | Log in as the owner of the wish list, navigate to the wish list overview page, click the "trash can" button | User should be redirected to the confirm deletion form page | Pass |
-| Delete a wish list from detail page | Log in as the owner of the wish list, navigate to the wish list detail page, click the "Delete" button |  User should be redirected to the confirm deletion form page | Pass |
-| Delete a wish list - Confirm deletion and redirect to overview | Click on the 'Confirm Deletion' button | After clicking on the "Confirm Deletion" button, the user should be redirected to the wish list overview page | Pass |
-| Delete wish list -  Prevent unauthorized URL access for editing | Open the wish list delete URL without logging in  | Redirected to the login page with a message indicating the need to log in first to delete a wish list | Pass |
-| Delete a wish list - Unauthorized User Receives 403 Error - Log in required | Log in as a user who is a non-owner of a wish list, attempt to delete a wish list by entering the delete URL | Receive a 403 Forbidden page indicating they are not authorized to delete the wish list | Pass |
-| Add item - open modal - Log In and ownership of wish list required | Log in as the owner of the wish list, navigate to the wish list detail page, click on the "Add item" button | The add item modal opens with a form | Pass |
-| Add Item with Valid Details - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, fill in the item name, price (within the limit), quantity, priority, and optionally select a different image, then click on the "Add item" button | The item is added as a new card in the wishes overview, and a success message is displayed | Pass |
-| Add item with price over €1000 - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, fill in the item name, set the price over €1000, fill in the other mandatory fields, and click on the "Add item" button | An error message is displayed indicating the price limit, and the item is not added | Pass |
-| Add item with quantity over 100 - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, fill in the item name, set the quantity over 100, fill in the other mandatory fields, and click on the "Add item" button | An error message is displayed indicating the quantity limit, and the item is not added | Pass |
-| Add item with default quantity, priority and image - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, fill in the item name and price within the limit, leave the quantity, the priority and the image field at their default values, and click on the "Add item" button | The item is added with the default quantity of 1, a priority  of _no-priority_ and the default image as a new card in the wishes overview, and a success message is displayed | Pass |
-| Add item - change default image - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, fill in the mandatory fields, select a different image from the local machine, and click on the "Add item" button | The item is added with the selected image as a new card in the wishes overview, and a success message is displayed | Pass |
-| Add item - alt text of default image - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, add an item with the default image, and inspect the added item card | The default image description (alt text) for this image is "item image" | Pass |
-| Add item - error message for empty mandatory fields - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, leave item name, price, quantity, and priority fields empty, and click on the "Add item" button | Error messages are displayed indicating the mandatory fields that need to be filled, and the item is not added | xxx |
-| Add item - success message and redirect to wishlist detail page with new card after adding item - Log In and ownership of wish list required | Log in as the owner of the wish list, open the add item modal, fill in the mandatory fields, and click on the "Add item" button | The item is added as a new card in the wishes overview, and a success message is displayed | Pass |
-| Wish list overview page - Access overview page - Log in required | Log in as owner of wish lists, click on the "Wish Lists Overview" link in the navigation bar or navigate to the profile page, and click on the "Show your wish lists overview" button| The wish list overview page is displayed, showing only the user's wish lists sorted by the date they were added | Pass |
-| Wish list overview page - display user's wish lists - Log in required| Log in as owner of wish lists, navigate to the wish list overview page | Only the wish lists created by the logged-in user are displayed, each in a card format with the title, due date, "Show wish list" button, and two buttons with icons | Pass |
-| Wish list overview page - Sort Wish Lists by Date Added - Log in required | Log in as owner of wish lists, navigate to the wish list overview page | Wish lists are displayed in the order they were added, from newest to oldest | Pass |
-| Wish list overview page - Show wish list button - Log in required | Log in as owner of wish lists, navigate to the wish list overview page, click on the "Show wish list" button on a wish list card  | The detailed view of the selected wish list should be displayed | Pass |
-| Wish list overview page - Edit button functionality - Log in required | Log in as owner of wish lists, navigate to the wish list overview page, click on the edit button (pencil icon) on a wish list card | The page for editing the selected wish list should be displayed. | Pass |
-| Wish list overview page - Delete button functionality - Log in required | Log in as owner of wish lists, navigate to the wish list overview page, click on the delete button (trash can) on a wish list card | A page to confirm the deletion should be displayed. | Pass |
-| Wish list overview page - No wish lists message - Log in required | Log in as the user with no wish lists created, navigate to the wish list overview page | A message is displayed: "Seems like you don't have a wish list yet. Click here to create your first one." The message includes a link to add a new wish list.| Pass |
-| Wish list overview page - Create Wish List Link - Log in required | Log in as the user with no wish lists created, navigate to the wish list overview page, click on the "Click here to create your first one" link  | The page to create a new wish list is displayed | Pass |
-| Wish list overview page - wish list card format | Log in as the user, navigate to the wish list overview page | Each wish list is displayed in a card format including the title, due date, and "Show wish list" button. | Pass |
-| Admin panel - superuser required | Navigate to the home page of the application and append /admin to it | As superuser, the admin panel should appear | Pass |
-| Admin panel - Login as superuser - superuser required | Access the admin login page, enter a valid superuser username and password, click the "Log in" button | The admin dashboard is displayed | Pass |
-| Admin panel - Try to access the admin area without superuser privileges - superuser required | Log in as a regular user, access the admin URL by adding /admin to the homepage URL | An error message is displayed indicating insufficient permissions, and the user cannot access the admin dashboard | Pass |
-| Admin panel - Manage user accounts - superuser required | Log in as a superuser, navigate to the user management section, add a new user, edit an existing user, delete a user. | The user accounts are correctly added, edited, and deleted, with changes reflected in the database. | Pass |
-| Admin panel - Manage user accounts - superuser required | Log in as a superuser, navigate to the user management section, add a new user, edit an existing user, delete a user. | The user accounts are correctly added, edited, and deleted, with changes reflected in the database. | Pass |
-| Admin panel - Manage wish lists - superuser required | Log in as a superuser, navigate to the wish lists section, add a new wish list, edit or delete an existing one. | The wish lists are correctly added, edited, and deleted, with changes reflected in the database. | Pass |
-| Admin panel - Manage items - superuser required | Log in as a superuser, navigate to the items section, add a new wish list item, edit or delete an existing one. | The items are correctly added, edited, and deleted, with changes reflected in the database. | Pass |
-| Responsiveness | Access the _Your Wish List Maker_ pages using a desktop browser, resize the browser window to simulate different screen sizes (e.g., mobile, tablet), and refresh the pages as needed | The page layout adjusts smoothly and remains usable without horizontal scrolling, ensuring all content (cards, buttons, text) is displayed appropriately for each screen size. | Pass |
-
+| Placeholder Image | On the 'Create a new FriendVenture' page, do not upload an image and submit the form. | A placeholder image should be shown in place of the uploaded image. | Pass |
+| Successful creation - redirection and success message | Filling out all required fields correctly on the 'Create a New FriendVenture' page and click the 'Create' button. | The user should be redirected to the detail page of the friendVenture, and a success message should be displayed. | Pass |
+| Automatic Participation | After creating a FriendVenture, check the list of participants for the created FriendVenture. | The creator of the FriendVenture should be automatically listed as a participant, indicated by a small checkmark on the person icon. | Pass |
+| Edit FriendVenture -  Prevent unauthorized URL access for editing | Open the FriendVenture edit URL without logging in or as  a user who is a non-owner of the FriendVenture | Redirected to home page | Pass |
+| FriendVenture detail view - title display | View the FriendVenture detail page | The title of the FriendVenture should be displayed correctly at the top of the detail page | Pass |
+| FriendVenture detail view - creator information| View the FriendVenture detail page | The username of the creator should be displayed with a clickable link to their profile | Pass |
+| FriendVenture detail view  - image display | View the FriendVenture detail page | The associated image or placeholder image should be displayed correctly | Pass |
+| FriendVenture detail view - Description Display | View the FriendVenture detail page | The description should be displayed if provided, or no description section if not provided | Pass |
+| FriendVenture detail view  - date, time, and location display | View the FriendVenture detail page | The correct date, time, and location of the FriendVenture should be displayed | Pass |
+| FriendVenture detail view - category display | View the FriendVenture detail page | The category should be displayed correctly, styled like a button, for future filtering functionality | Pass |
+| FriendVenture detail view - last updated information | View the FriendVenture detail page | The last updated date should be displayed correctly beneath the category button | Pass |
+| FriendVenture detail view - user icon (participant count) | View the FriendVenture detail page as a logged-in user | The user icon should display the correct number of participants, with a checkmark if the user is a participant | Pass |
+| FriendVenture detail view - heart icon (bookmark count) | View the FriendVenture detail page as a logged-in user | The heart icon should display the correct number of bookmarks, filled with red if the user has bookmarked the FriendVenture | Pass |
+| FriendVenture detail view - comment icon (comment count) | View the FriendVenture detail page | The comment icon should display the correct number of comments associated with the FriendVenture | Pass |
+| FriendVenture detail view - comments section display | View the FriendVenture detail page | The comments section should be displayed correctly below the icons | Pass |
+| FriendVenture detail view - participants list (mobile view) | View the FriendVenture detail page on a mobile device | The participants list should be displayed underneath the comments section | Pass |
+| friendVenture detail view - participants list (desktop view) | View the FriendVenture detail page on a desktop device | The participants list should be displayed next to the FriendVenture card | Pass |
+| FriendVenture detail view - edit/delete options for owner | View the FriendVenture detail page as the owner | Three dots should appear next to the creator information, allowing the owner to edit or delete the FriendVenture | Pass |
+| FriendVenture detail view - prevent unauthorized access to edit/delete | Attempt to access the edit/delete options without being logged in or as a non-owner of the FriendVenture | The options should not be available, and unauthorized users should be redirected to the homepage | Pass |
+| FriendVenture edit - pre-filled form data | Click the edit link for a FriendVenture | The user should be redirected to a form page where all the existing FriendVenture data is pre-filled in the corresponding fields | Pass |
+| FriendVenture edit - required fields validation | Attempt to submit the edit form without filling out the required fields | An error message should be displayed, indicating the missing required fields | Pass |
+| FriendVenture edit - image size validation | Upload an image larger than 2 MB on the edit form and try to submit | An error message should be displayed, preventing the form submission due to the large image size | Pass |
+| FriendVenture edit - date validation | Enter a date in the past on the edit form and try to submit | An error message should be displayed, preventing the form submission due to invalid date | Pass |
+| FriendVenture edit - successful update and redirect | Submit the form with valid data by clicking the update button | The user should be redirected to the FriendVenture detail page, and a success message should be displayed | Pass |
+| FriendVenture edit - prevent unauthorized URL access | Attempt to access the edit form URL without being logged in or as a non-owner of the FriendVenture | The user should be redirected to the home page, and the edit form should not be accessible | Pass |
+| Delete FriendVenture - access from overview | On the FriendVenture overview page, click on the three dots next to a FriendVenture and select the delete option | A modal should appear asking for confirmation to delete the FriendVenture | Pass |
+| Delete FriendVenture - access from detail page | On the FriendVenture detail page, click on the three dots next to the FriendVenture information and select the delete option | A modal should appear asking for confirmation to delete the FriendVenture | Pass |
+| Delete FriendVenture - modal confirmation | In the deletion confirmation modal, click the confirm button to delete the FriendVenture | The FriendVenture should be deleted, the user should be redirected to the homepage, and the FriendVenture should no longer be visible in the overview | Pass |
+| Delete FriendVenture - cancel deletion | In the deletion confirmation modal, click the cancel button | The modal should close, and no changes should be made; the FriendVenture should remain in the overview | Pass |
+| Delete FriendVenture - prevent unauthorized deletion via URL | Attempt to access the FriendVenture deletion URL directly as a non-owner or without logging in | The user should be redirected to the homepage or an error page, and the FriendVenture should remain undeleted | Pass |
+| Delete FriendVenture - database removal verification | After confirming the deletion of a FriendVenture, check the database to ensure the FriendVenture record is removed | The FriendVenture should no longer exist in the database | Pass |
+| Delete FriendVenture - redirect after deletion | After successfully deleting a FriendVenture, verify that the user is redirected to the homepage | The user should be on the homepage, and the deleted FriendVenture should not be visible | Pass |
+| Overview page - access via home link | Click on the "Home" link in the navigation bar | The user should be redirected to the overview page displaying all FriendVentures sorted by the date added | Pass |
+| Overview Page - access via logo | Click on the logo in the header | The user should be redirected to the overview page displaying all FriendVentures sorted by the date added | Pass |
+| FriendVenture card - display elements | Navigate to the overview, bookmarks, explore pages and view a FriendVenture card | Each FriendVenture card should display the title, description, date, time, location, category, creator information, participant count, bookmark count, comment count, and last updated timestamp | Pass |
+| FriendVenture Card - creator link | Click on the creator's name in a FriendVenture card | The user should be redirected to the profile page of the creator | Pass |
+| FriendVenture sorting - date added | Navigate to the overview page | FriendVentures should be sorted by the date they were added, with the most recent ones appearing first | Pass |
+| Overview page (mobile view) - most active profiles lacement | Access the overview page on a mobile device | The most active profiles should be displayed above the FriendVentures | Pass |
+| Overview page (desktop view) - most active profiles placement | Access the overview page on a desktop device | The most active profiles should be displayed next to the FriendVentures | Pass |
+| Overview page infinite scroll - load more FriendVentures | Scroll down the overview page after 10 FriendVentures are loaded | The next set of FriendVentures should be automatically loaded, and a spinner should be displayed briefly while loading | Pass |
+| Bookmark a FriendVenture - Heart Icon | Click the heart icon on a FriendVenture card on the homepage | The heart icon should turn red, indicating the FriendVenture is bookmarked, and the bookmark count should increase by 1 | Pass |
+| Access bookmarked FriendVentures - navigation bar | Click on the dropdown FriendVentures *Bookmarks* in the navigation bar | The user should be redirected to the overview page displaying all bookmarked FriendVentures | Pass |
+| Bookmarks page - display elements | Navigate to the bookmarked FriendVentures overview page | Each FriendVenture card should display the title, description, date, time, location, category, creator information, participant count, bookmark count, comment count, and last updated timestamp | Pass |
+| Bookmarks page - creator link | Click on the creator's name in a FriendVenture card on the bookmarked FriendVentures page | The user should be redirected to the profile page of the creator | Pass |
+| Bookmarks page infinite scroll (load more bookmarked FriendVentures) | Scroll down the bookmarked FriendVentures overview page after 10 FriendVentures are loaded | The next set of bookmarked FriendVentures should be automatically loaded, and a spinner should be briefly displayed while loading | Pass |
+| Unbookmark a FriendVenture | Click the heart icon on a FriendVenture card that was bookmarked from the currently logged-in user | The heart icon should no longer be red, the FriendVenture should be removed from the bookmarked overview, and the bookmark count should decrease by 1 | Pass |
+| Bookmarks page (mobile view) - most active profiles placement | Access the bookmarked FriendVentures overview page on a mobile device | The most active profiles should be displayed above the FriendVentures | Pass |
+| Bookmarks page (desktop view) - most active profiles placement | Access the bookmarked FriendVentures overview page on a desktop device | The most active profiles should be displayed next to the FriendVentures | Pass |
+| Mark as participant - person icon | Click the person icon on a FriendVenture card | The person icon should show a checkmark, indicating the user is a participant, and the participant count should increase by 1 | Pass |
+| Access participating FriendVentures - navigation bar | Click on *Upcoming* in the dropdown menu *FriendVentures* in the navigation bar | The user should be redirected to the overview page displaying all FriendVentures they are participating in | Pass |
+| Participating FriendVenture page - display elements | Navigate to the participating FriendVentures overview page | Each FriendVenture card should display the title, description, date, time, location, category, creator information, participant count, bookmark count, comment count, and last updated timestamp | Pass |
+| Participating FriendVenture page - Creator Link | Click on the creator's name in a FriendVenture card on the participating FriendVentures page | The user should be redirected to the profile page of the creator | Pass |
+| Participating FriendVenture page (infinite scroll)| Scroll down the participating FriendVentures overview page after 10 FriendVentures are loaded | The next set of participating FriendVentures should be automatically loaded, and a spinner should be briefly displayed while loading | Pass |
+| Unmark as Participant | Click the person icon on a participating FriendVenture card | The checkmark on the person icon should disappear, the FriendVenture should be removed from the participating overview, and the participant count should decrease by 1 | Pass |
+| Participating FriendVenture page (mobile view) - Most active profiles placement | Access the participating FriendVentures overview page on a mobile device | The most active profiles should be displayed above the FriendVentures | Pass |
+| Participating FriendVenture page (desktop view) - Most Active Profiles Placement | Access the participating FriendVentures overview page on a desktop device | The most active profiles should be displayed next to the FriendVentures | Pass |
+| Comment on a FriendVenture - log in required | Navigate to the detailed view of a FriendVenture and add a comment by typing in the comment section and clicking the "add comment" button. | The comment should be added, displayed in the comment section, and the comment count should increase by one. | Pass |
+| Follow another User - log in required | Click on the Follow button in the "Most Active Users" section, participants list, or profile overview (when viewing another user’s profile). | The user should be marked as following, and the follower count on the followed user’s profile should increase by one. | Pass |
+| Unfollow a User - log in required | Click on the Unfollow button in the "Most Active Users" section, participants list, or profile overview (when viewing another user’s profile). | The user should be marked as unfollowing, and the follower count on the unfollowed user’s profile should decrease by one. | Pass |
+| Participation icon status - log in required | Click on the person icon in the FriendVenture card. | The icon should change to display a checkmark if the user is now a participant, and the participant count should increase accordingly. | Pass |
+| Bookmark icon status - log in required | Click on the heart icon in the FriendVenture card. | The heart icon should turn red if the FriendVenture is now bookmarked, and the bookmark count should increase accordingly. | Pass |
+| Comment section - profile image display | Navigate to the comment section of a FriendVenture. | The user's profile image should be displayed next to the comment form field and the comment, if the user added one. | Pass |
+| Add comment - log in required | Enter a comment in the form field and click the "add comment" button. | The comment should be added, displayed under the FriendVenture, with the user's profile image, username, the time of the comment, and the comment content. The comment count should increase accordingly. | Pass |
+| Edit comment - log in and owner-status required | Click the three dots next to the comment you own and select "Edit". | The comment form should reopen with the existing content. The user should be able to update the comment by clicking "Save" or cancel the edit by clicking "Cancel". The updated comment should be displayed if saved. | Pass |
+| Delete comment - log in and owner-status required | Click the three dots next to the comment you own and select "Delete". Confirm the deletion in the modal. | The comment should be removed from the list, and the comment count should decrease accordingly. | Pass |
+| 404 Error Page - image display and redirection | Navigate to a non-existent page to trigger the 404 error page | The error page should display the placeholder image of a ghost holding a "404" sign. Clicking the image should redirect the user to the home page. | Pass |
+| 404 Error Page - error message display and redirection | Navigate to a non-existent page to trigger the 404 error page | The error page should display the message: "Boo! Looks like you’re lost! Come back to the homepage." Clicking the message should redirect the user to the home page. | Pass |
+| 404 Error Page - error message link functionality | On the 404 error page, click on the message link: "Boo! Looks like you’re lost! Come back to the homepage." | The user should be redirected to the home page. | Pass |
+| 404 Error Page - ghost image link functionality | On the 404 error page, click on the ghost image. | The user should be redirected to the home page. | Pass |
+| Redirect - logged-in user tries to access signup page | As a logged-in user, try to access the Signup page by typing the URL directly in the browser. | The user should be automatically redirected to the homepage. | Pass |
+| Redirect - logged-in user tries to access login page | As a logged-in user, try to access the Login page by typing the URL directly in the browser. | The user should be automatically redirected to the homepage. | Pass |
+| Redirect - logged-out user tries to access profile page | As a logged-out user, try to access a user profile page by typing the URL directly in the browser. | The user should be automatically redirected to the homepage. | Pass |
+| Redirect - logged-out user tries to access FriendVenture detail page | As a logged-out user, try to access the detail page of a FriendVenture by typing the URL directly in the browser. | The user should be automatically redirected to the homepage. | Pass |
+| Redirect - logged-out user tries to bookmark a FriendVenture | As a logged-out user, attempt to bookmark a FriendVenture. | The user should be automatically redirected to the homepage. | Pass |
+| Redirect - logged-out user tries commenting on a FriendVenture | As a logged-out user, attempt to comment on a FriendVenture. | The user should be automatically redirected to the homepage. | Pass |
+| Redirect - logged-out user tries participating in a FriendVenture | As a logged-out user, attempt to mark participation in a FriendVenture. | The user should be automatically redirected to the homepage. | Pass |
 
 </details>
 
@@ -701,31 +744,42 @@ All created python files were checked with the [Code Insitute validator - CI Pyt
 
 | **User Story** | **Acceptance Criteria** | **Was achieved as follows** |
 |:---|:---|:---|
-| #9 As a new website user, I am able to identify the website's goal so that I can decide whether to continue or leave. | The website should display a clear and concise description or tag line that communicates the website's primary purpose within the first few seconds of viewing. It should include visual elements and navigational cues that help explain the website's goal and functionality. | A home page has been created that displays a small introductory text for first time visitors or users who are not logged in. In addition, the heading, the background image, the logo and the favicon already indicate the meaning of the page. |
-| #12 As a new user, I can register an account so that I can create and manage wish lists or items of other wish lists. | The registration form should include fields for username and password. The registration form should be easy to access from the landing page and before creating a new list or selecting an item of another wish list Upon successful registration, the user should see its dashboard with the created wish lists and/or reserved items | I integrated Django Allauth into my project to handle user authentication, including registration, login, and logout functionalities. By configuring the necessary settings and templates, I ensured that users can easily access the registration form from the landing page and are redirected to the home page from where they can access their dashboard displaying their wish lists upon successful registration. |
-| #13 As a registered user, I want to log in to my account so that I can create, read, update and delete my wish list(s) | The login form should accept username and password and should be easy to access. After successful login, the user should be redirected to their dashboard and have the possibility to logout. | To achieve the user login functionality, I created a user login page that accepts a username and password, ensuring it is easily accessible. Upon successful login, the user is redirected to the home page, where they can effortlessly navigate to their profile. The navigation bar dynamically updates upon login, providing a clear option for the user to access the profile and to log out at any time. In addition, users can access their wish list overview directly on the home page. This page is also always accessible from the navigation list. In their wish list overview, the user has the possibility to update or delete the created wish lists. |
-| #13 As a registered user, I want to manage my profile so that I can update my account. | The dashboard should include a button to update the profile. | I implemented a profile management feature by adding a profile page. On this profile page, users can easily update their information by clicking the edit button or delete their account by clicking the delete button. The profile page can be accessed by users as soon as they are logged in, both from the homepage and from the navigation bar. |
-| #16 As a registered user, I want to edit my wish list so that I can update its details. | The wish list edit form should allow changes to the title, description, and occasion type. Changes should be saved and reflected in the user's dashboard and in the database. | To achieve the wish list edit functionality, I created an edit form that allows users to modify the title, description, due date, and occasion type of their wish lists. Changes made in the form are saved and immediately reflected both in the user's profile and in the database. Users can access this form from the wish list overview page, where all their wish lists are displayed, as well as from the detailed view of each individual wish list. |
-| #17 As a registered user, I want to be able to delete a wish list so that I can remove outdated or unnecessary lists. | The Wishlist contains a delete button. The delete action should prompt for confirmation. Once confirmed, the wish list should be removed from the user's dashboard and removed from the database | To achieve the wish list deletion functionality, I added a delete button on both the wish list detail view and the wish list overview page. When the user clicks the delete button, a confirmation page appears, informing them that this action cannot be undone and asking for their confirmation. Upon confirmation, the wish list is removed from the user's dashboard and deleted from the database, along with all items related to the wish list. |
-| #19 As a registered user, I want to edit items in my wish list so that I can update their details. | The item edit form should allow changes to the item name, description, and purchase link. Changes should be saved and reflected in the wish list. | I was unable to complete this user story due to time constraints; however, I plan to implement it in the future. This feature remains a priority and will be added to enhance the application's functionality. |
-| #20 As a registered user, I want to be able to delete items from my wish list so that I can remove unwanted items | The delete action should prompt for confirmation. Once confirmed, the item should be removed from the wish list. | I was unable to complete this user story due to time constraints; however, I plan to implement it in the future. This feature remains a priority and will be added to enhance the application's functionality. |
-| #23 As a registered user, I want to reserve an item of a wish list, so that no other user will purchase this. | Users should be able to mark an item in a wish list as reserved/unreserved. Reserved items should display a visual indicator | I was unable to complete this user story due to time constraints; however, I plan to implement it in the future. This feature remains a priority and will be added to enhance the application's functionality. |
-| #24 As a registered user, I want to be able to collaborate on a wishlist with others so that we can collectively manage it. | Collaborators should be able to add, edit, and delete items in the shared wishlist. | I was unable to complete this user story due to time constraints; however, I plan to implement it in the future. This feature remains a priority and will be added to enhance the application's functionality. |
-| #14 As a logged-in user, I want to update my profile information so that my account details are current. | The profile page should allow users to update their username and password. Changes should be saved and reflected immediately. | To meet the acceptance criteria, I created a profile page where users can update their username and password. The profile overview contains an „Edit your Profile" button that redirects to an edit page with a form pre-filled with the current data. Upon submitting the form, changes are saved immediately in the database, and the user is redirected back to the profile overview, where a success message indicates the profile has been updated. This ensures that updates are reflected immediately, and the user is informed of the successful update. |
-| #9 As a frequent website user, I can easily log in to my account so that I have access to my wish lists and items I want to purchase. | "The website should display a clear and concise description or tag line that communicates the website's primary purpose within the first few seconds of view in.It should include visual elements and navigational cues that help explain the website's goal and functionality. | To achieve the user login functionality, I added a prominent login button on the homepage for easy access. Additionally, the navigation bar includes login functionality. Once logged in, users can access their wish lists, ensuring a seamless user experience. The functionality to re serve an item has yet to be implemented. |
-| #15 As a user of the website, I want to create a wish list for a specific occasion so that I can organize my desired items | The wish list creation form should include fields for title, description, and occasion type. The new wish list should appear in the user's dashboard. | To achieve the wishlist creation functionality, I added a form requiring users to fill out fields for the list name, due date, description, and occasion type. These fields are mandatory to ensure the wishlist is well-organized for the specific occasion. Once the form is submitted, the new wishlist appears in the user's wish list overview. |
-| #18 As a user, I want to add items to my wishlist so that I can keep track of things I want. | The item addition form should include fields for item name, description, quantity, purchase link and the possibility to reserve the item. The new item should appear in the wishlist. | To achieve the item addition functionality, I implemented a form displayed in a modal that opens when the user clicks the 'Add item' button on the wishlist detail page. The form includes mandatory fields for item name, price (limited to €1000), quantity (limited to 100), and priority. Users can also add a purchase link and upload a custom image, with a default image automatically generated if none is provided. Once the form is submitted, the new item appears in the corresponding wishlist |
-| #22 As a user, I want to share my wishlist with others so that they can see my wishlist and know what I would like to have. | The sharing functionality should generate a unique link for the wishlist. The recipient of the link should be able to view the wishlist without logging in. | To achieve the wishlist sharing functionality, I integrated a share button on the wishlist detail view. Clicking this button opens a modal displaying a unique link for the wishlist, along with a copy button. When the copy button is clicked, a "copied" confirmation briefly appears beneath the link. This link allows recipients to view the wishlist details without needing to sign up or log in. Additionally, the shared view restricts any modifications, preventing the addition, deletion, or editing of items on the wishlist. |
-| #10 As a developer, I want to define a database structure so that it matches the objectives of the project. | Modelling the database schema visually | To achieve the objective of defining a database structure that aligns with the project's goals, I visually modelled the database schema using dbdiagram.io. This involved creating an Entity-Relationship Diagram (ERD) to plan the models for WishList, Item, User, and UserProfile. The ERD provided a clear and organized representation of the relationships between these entities. |
-| #11 As a developer, I want to set up and configure a database so that I can store and manage the application data securely and efficiently. | Choose an appropriate database for the project. Define models representing the data structure required by the application. Ensure database credentials are stored securely | I chose PostgreSQL, provided by Code Institute, as the relational database for the project. I defined the necessary models to represent the application's data structure, ensuring they align with the project's requirements. |
-| #25 As a developer, I need to verify that all HTML files pass the W3C validation so that the code is executed correctly | When I pass my code into the validator, no errors are thrown. | To ensure that all HTML files pass W3C validation and execute correctly, I used the Nu Html Checker to check each HTML file I created or updated. By passing all my HTML code via link or text input through the validator, I confirmed that no errors were present. |
-| #26 As a developer, I need to verify that my CSS files pass the W3C validation so that the code is executed correctly | When I pass my code into the validator, no errors are thrown | To ensure that my CSS file passes W3C validation and execute correctly, I used the W3C CSS Validation Service. By validating my CSS code through this service, I confirmed that no errors were present. |
-| #27 As a developer, I need to verify that my JavaScript files pass the JSHint validation so that the code is executed correctly | When I pass my code into the validator, no errors are thrown | To ensure that my JavaScript file passes JavaScript validation and execute correctly, I used JSHint to check my JavaScript file. By running my code through JSHint, I confirmed that no errors were present. |
-| #28 As a developer, I need to verify that my python files pass the pep8 validation so that the code is executed correctly | When I pass my code into the validator, no errors are thrown. | To ensure that all Python files pass PEP8 validation and execute correctly, I used the CI Python Linter provided by Code Institute. After addressing issues such as removing lines that were too long, I confirmed that no errors were present. |
-| #29 As a developer, I want to implement python test procedures so that I can assess functionality, usability, responsiveness and data management throughout the web application. | All critical functionalities of the web application are covered by test cases. All tests are well documented | To ensure the functionality, usability, responsiveness, and data management of the web application, I conducted comprehensive manual testing. Although I didn't have time to implement automated tests, I thoroughly tested all critical functionalities of the project manually. Each test case was documented to ensure all aspects of the application were covered and performed as expected. |
-| #30 As a developer, I want to implement JavaScript test procedures so that I can assess functionality, usability, responsiveness and data management throughout the web application. | All critical functionalities of the web application are covered by test cases. All tests are well documented | As a developer, I aimed to assess the functionality, usability, responsiveness, and data management of the web application through JavaScript test procedures. While I didn't have the opportunity to implement automated tests, I conducted thorough manual testing to ensure all critical functionalities were covered by test cases. Each test was meticulously documented to verify the application's performance and adherence to requirements. |
-| #31 As a developer, I want to implement manual test cases so that I can assess functionality, usability, responsiveness and data management throughout the web application. | Document manual test cases for functionalities that require human assessment. All tests are well documented | To ensure thorough evaluation of functionality, usability, responsiveness, and data management across the web application, I implemented comprehensive manual test cases. I carefully documented these test cases, covering various functionalities that require human assessment. This involved creating a detailed manual test table that systematically evaluated each aspect of the application to ensure all requirements were met and properly documented. |
-
+| **User Story** | **Acceptance Criteria** | **Was achieved as follows** |
+|:---|:---|:---|
+| #6 As a new user I want to register an account so that I can fully interact with the website. | The registration page must include fields for necessary user information. Upon successful registration, the user should receive a confirmation message and be able to log in. | The registration page has fields for necessary information (username, password). Upon completion, the user receives a confirmation message and can log in. |
+| #7 As a user I can log in to the website so that I can use all the features of the website. | The login page should have fields for username and password. Successful login should redirect the user to the home page with access to all features. | The login page includes fields for username and password. Successful login redirects the user to the home page with access to all features. |
+| #8 As a logged-in user I am able to log out so that I can keep my account secure. | The user should have a visible 'Logout' option. After logging out, the user should be redirected to the login page, and the navigation should reflect the logged-out status. | The navigation bar includes a 'Logout' option. Logging out redirects the user to the login page, and the navigation bar updates to reflect the logged-out status. |
+| #10 As a logged-in user, I want to view my profile and the profiles of other users so that I can see profile information, their FriendVentures, and updates. | The profile page should display the user’s information and FriendVentures. Viewing other users' profiles should show their details and FriendVentures. | The profile page displays the user's information, FriendVentures, and updates. Other users' profiles also show their details and FriendVentures. |
+| #12 As a logged-in user I can follow or unfollow another user so that I can see their updates and FriendVentures in my feed. | The profile page should have 'Follow' and 'Unfollow' buttons that update based on the current following status. The feed should update to show the followed user's updates and FriendVentures. | 'Follow' and 'Unfollow' buttons are present and update based on the following status. The *explore* feed reflects updates and FriendVentures from followed users. |
+| #14 As a logged-in user I can create a new FriendVenture so that I can invite my friends to join the activity. | The 'Create FriendVenture' page must have required fields and validation. After creating, the user should be redirected to the FriendVentures detail page with a success message. | The 'Create FriendVenture' page has required fields with validation. Successful creation redirects to the FriendVentures Detail page with a success message. |
+| #15 As a logged-in user I want to edit my existing FriendVenture so that I can update details if plans change. | The 'Edit FriendVenture' page should pre-fill existing data. All fields should maintain the same validations. After updating, the user should be redirected to the FriendVenture detail page with a success message. | The 'Edit FriendVenture' page pre-fills existing data and maintains field validations. Successful update redirects to the detail page with a success message. |
+| #16 As a logged-in user I can delete my existing FriendVenture so that I can remove it if the event is cancelled. | Deletion must be confirmed through a modal. After confirmation, the FriendVenture should be removed from the database and overview, and the user redirected to the home page. | Deletion is confirmed through a modal. After confirmation, the FriendVenture is removed from the database and overview, and the user is redirected to the home page. |
+| #18 As a logged-in user I can comment on a FriendVenture so that I can share my thoughts or ask questions about the event. | The FriendVenture detail page should include a comment section where users can add comments. Comments should display with the commenter’s profile image and username. | The FriendVenture detail page includes a comment section where users can add comments. Comments are displayed with profile image and username. |
+| #20 As a logged-in user I can mark myself as participating in a FriendVenture so that others know I will be attending. | The FriendVenture detail page should have a 'Participate' button that updates the participation status. The number of participants should be updated accordingly. | The FriendVenture detail page includes a 'Participate' icon. Clicking it updates the participation status and the number of participants. |
+| #21 As a logged-in user I can bookmark a FriendVenture to remember so that I can easily find it later. | The FriendVenture detail page should include a 'Bookmark' icon. The icon should reflect the bookmark status, and bookmarked FriendVentures should be accessible from the bookmarks overview page. | The FriendVenture detail page has a 'Bookmark' icon that reflects the bookmark status. Bookmarked FriendVentures are accessible from the bookmarks overview page. |
+| #22 As a logged-in user I can like a comment on a FriendVenture so that I can show my appreciation for valuable comments. | Each comment should have a 'Like' button that updates the like count. The user’s like status should be reflected on the button. | This is a feature for the future. |
+| #19 As a logged-in user I can rate a FriendVenture so that I can show the creator of the event and other users how the event was. | The FriendVenture detail page should have a rating system. Users can select a rating, and the average rating should be displayed. | This is a feature for the future. |
+| #32 As a superuser I can see a list of all profiles so that I can see all profiles that have been set up. | The admin panel should include a list view of all user profiles. This view should display basic user information and be sortable. | The admin panel includes a list view of all user profiles, displaying basic information and allowing sorting. |
+| #32 As a superuser I can see details of a profile so that I can see a person's profile data. | Clicking on a profile in the admin panel should show detailed information about the user, including their FriendVentures and updates. | Clicking on a profile in the admin panel displays detailed user information, including FriendVentures and updates. |
+| #35 As a superuser I can see a list of all FriendVentures so that I can see all FriendVentures that have been set up. | The admin panel should include a list view of all FriendVentures. This view should display basic FriendVenture information and be sortable. | The admin panel includes a list view of all FriendVentures, displaying basic information and allowing sorting. |
+| #35 As a superuser I can see the details of a FriendVenture so that I can see all information about a specific FriendVenture. | Clicking on a FriendVenture in the admin panel should show detailed information about the FriendVenture, including participants and comments. | Clicking on a FriendVenture in the admin panel displays detailed information, including participants and comments. |
+| #35 As a superuser I can filter FriendVentures by category so that I can see only the FriendVentures associated with a specific category. | The admin panel should have a filter option to sort FriendVentures by category. | This is a feature for the future |
+| #36 As a superuser I can see a list of all comments related to a FriendVenture so that I can see all comments that have been created for a FriendVenture by ID. | The admin panel should include a section for viewing all comments related to a specific FriendVenture. | The admin panel includes a section for viewing all comments related to a specific FriendVenture. |
+| #37 As a superuser I can create a follow to another user so that I can follow other users. | The admin panel should include an option to follow other users. | The admin panel includes an option to follow other users. |
+| #38 As a superuser, I can view a list of all participants in a FriendVenture so that I can track who is joining each activity. | The FriendVenture details in the admin panel should include a list of all participants. | The FriendVenture details in the admin panel include a list of all participants. |
+| #38 As a superuser, I can view the participation details for a specific FriendVenture so that I can see which users are involved in that particular activity. | The admin panel should provide details about which users are participating in each FriendVenture. | The admin panel provides details about user participation in each FriendVenture. |
+| #39 As a superuser, I can view all FriendVentures that users have added to their bookmarks lists so that I can see which activities users are interested in revisiting. | The admin panel should include a section to view all FriendVentures bookmarked by users. | The admin panel includes a section to view all FriendVentures bookmarked by users. |
+| #39 As a superuser, I can view details of specific FriendVentures in a user’s bookmarks list so that I can understand user interests and preferences. | Clicking on a bookmarked FriendVenture in the admin panel should display detailed information about that FriendVenture. | Clicking on a bookmarked FriendVenture in the admin panel displays detailed information about the FriendVenture. |
+| #2 As a developer, I require a repository on GitHub for the front-end part of the project so that I have full control over the project versions. | A GitHub repository for the front-end should be created and accessible. | A GitHub repository for the front-end has been created and is accessible. |
+| #3 As a developer, I require a repository on Github for the API of the project so that I have full control over project versions. | A GitHub repository for the API should be created and accessible. | A GitHub repository for the API has been created and is accessible. |
+| #4 As a developer, I want to add a working kanban board to my repository so that I can track the tasks involved in creating the project. | A Kanban board should be set up in the repository to track tasks. | A Kanban board has been set up in the repository to track tasks. |
+| #24 As a developer, I want to implement python test procedures so that I can assess functionality, usability, responsiveness, and data management throughout the web application. | Python test procedures should be implemented to cover functionality, usability, responsiveness, and data management. | Python test procedures have been implemented for functionality, usability, responsiveness, and data management. |
+| #25 As a developer, I want to implement JavaScript test procedures so that I can assess functionality, usability, responsiveness, and data management throughout the web application. | JavaScript test procedures should be implemented to cover functionality, usability, responsiveness, and data management. | JavaScript test procedures have been implemented for functionality, usability, responsiveness, and data management. |
+| #26 As a developer, I want to implement manual test cases so that I can assess functionality, usability, responsiveness, and data management throughout the web application. | Manual test cases should be created and executed to cover functionality, usability, responsiveness, and data management. | Manual test cases have been created and executed for functionality, usability, responsiveness, and data management. |
+| #29 As a developer, I need to verify that my CSS files pass the W3C validation so that the code is executed correctly. | CSS files should be validated using the W3C validator to ensure compliance. | CSS files have been validated using the W3C validator. |
+| #30 As a developer, I need to verify that my JavaScript files pass the JSHint validation so that the code is executed correctly. | JavaScript files should be validated using JSHint to ensure code quality. | JavaScript files have been validated using JSHint. |
+| #31 As a developer, I need to verify that my Python files pass the PEP8 validation so that the code is executed correctly. | Python files should be validated using PEP8 to ensure compliance with coding standards. | Python files have been validated using PEP8. |
+| #8 As an admin, I want to access the site's administrative features so that I have access to the admin panel. | The admin panel should be accessible from the admin account with relevant features and controls. | The admin panel is accessible from the admin account with all relevant features and controls. |
 
 </details>
 
@@ -788,14 +842,8 @@ To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.
 
 ### Code
 
-- A great help and inspiration was the [*Django Recipe Sharing Tutorial*](https://www.youtube.com/playlist?list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) by Daisy Mc Girr. I especially used her help with the authentication and the class-based views. 
-- How to base field on another field by overwriting the save method, was found in an article in [Medium by Marco](https://marcolcl.medium.com/custom-django-model-field-based-on-default-primary-key-d5d13dd61a1c)
-- To override important CSS from bootstrap, I found a great article at [StackOverflow](https://stackoverflow.com/questions/70315624/how-to-add-remove-important-css-with-new-css)
-- How to redirect to the login template page with a message was found at [StackOverflow](https://stackoverflow.com/questions/39900679/django-permissionrequiredmixin-redirect-to-login-template-with-message)
-- How to get the current URL with a Django template (for the modal to share a link) was found at [StackOverflow](https://stackoverflow.com/questions/2882490/how-to-get-the-current-url-within-a-django-template)
-- How to copy to the clipboard with JavaScript was found [here](https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/) and at [Stack Overflow](https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript)
-- How to keep a modal window open if a validation error is raised was found at [reddit](https://www.reddit.com/r/django/comments/4souit/how_to_keep_a_modal_window_open_if_a_validation/)
-- How to override the get queryset method was found at [StackOvervflow](https://stackoverflow.com/questions/62976955/how-to-override-get-queryset-in-django)
+- Parts of the setup and overall design of this project were guided by the Code Institute's Moments walkthrough project. The core elements of the Profile, Friendventure, Follower, Bookmark, Participant, and Comment components, were derived from the walkthrough project and subsequently tailored to meet the unique requirements of this project. 
+- 
 - The following websites were used as a source of knowledge: <br>
   - [Google](www.google.com)
   - [mdn](https://developer.mozilla.org/en-US/)
@@ -805,8 +853,9 @@ To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.
   - [Stack Overflow](https://stackoverflow.com/)
   - [reddit](https://www.reddit.com/)
   - [forum djangoproject](https://forum.djangoproject.com/)
-  - Documentation for Bootstrap, Crispy Forms, Django
+  - Documentation for React, react-bootstrap, dj-rest-auth, Django, react-router-dom
   - Slack Community
+- For troubleshooting, [Google](www.google.com), [Phind](https://www.phind.com/search?home=true), and [ChatGPT](https://chatgpt.com/) were used, especially since the walkthrough project is completely outdated and many of the components no longer work as they should. However, I wanted to work with the latest versions as much as possible to demonstrate that I can adapt accordingly through proper research.
 
 ### ReadMe
 
@@ -814,10 +863,11 @@ To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.
 
 ### Acknowledgments
 
-- I would like to express my deepest gratitude to my excellent mentor Brian Macharia for his numerous tips and wonderful assistance during the creation of this project, especially his help with adding items to the wish list.  
-- A big thank you to [Dennis Schenkel](https://github.com/DennisSchenkel) for all his help on this project, be it brainstorming sessions to refine the code or emotional support. 
-- In addition, my sincerest gratitude goes out to [Niclas Hugdahl](https://github.com/NiclO1337), [Tomas Kubancik](https://github.com/tomik-z-cech) and [MilenTecle](https://github.com/MilenTecle). Their projects were a great source of inspiration.
-- Furthermore, I would like to thank [Lino Bollansee](https://github.com/linobollansee). I greatly appreciate his frequent comments during the creation of my project.
+- I would like to thank my wonderful mentor Gareth McGirr for his numerous tips and great assistance during the creation of this project.  
+- A big thank you to [Dennis Schenkel](https://github.com/DennisSchenkel) for all his help on this project, especially for assisting with setting up the project and getting the latest versions of React, React Router DOM, and React Bootstrap working with Vite. Thank you so much for all the brainstorming sessions to refine the code or your emotional support. 
+- Furthermore, I would like to give a shoutout to the wonderful tutor team who helped me numerous times when I was stuck and struggling to achieve the results I was aiming for. Your support and guidance have been amazing. Thank you!
+- And a big thank you goes out to Roman from Code Institute, who helped me with my participants component. I don’t know how I would have managed without his help!
+- In addition, my sincerest gratitude goes out to [Ronja Sjögren](https://github.com/Ajn0r), [Kelly Hutchison](https://github.com/quiltingcode) and [Johannes Bernet](https://github.com/nacht-falter). Their projects were a great source of inspiration.
 
 **This is for educational use.**
 
@@ -833,10 +883,8 @@ To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.
 
 
 
-features: 
-owner of friendventure is always participant
-success messages 
-datetime
+
+
 
 
 Bugs: 

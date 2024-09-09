@@ -7,7 +7,7 @@ const NotFound = () => {
     <div className="text-center">
         <Link  to={'/'}> 
         <Asset src={PageNotFound}/>
-        Boo! Looks like you’re lost! Come back to the homepage.</Link>
+        Boo! Looks like you’re lost! Come back to the &#187;homepage.</Link>
     </div>
   )
 }
