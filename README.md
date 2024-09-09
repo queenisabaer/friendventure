@@ -546,7 +546,7 @@ update image wasn't working. got an cors property error. forget trailing slash
 
 </details>
 
-## Technologies Used NEEDS UPDATE
+## Technologies Used
 
 ### Languages:
 - [CSS](https://en.wikipedia.org/wiki/CSS)
@@ -582,6 +582,7 @@ update image wasn't working. got an cors property error. forget trailing slash
 - [Axios](https://axios-http.com/docs/intro)
 - [React Infinite Scroll Component](https://www.npmjs.com/package/react-infinite-scroll-component)
 - [Moment](https://momentjs.com/)
+- [Mock Service Worker](https://mswjs.io/)
 
 ## Testing
 
@@ -624,8 +625,11 @@ To validate the Javascript code in my code editor I used [ESLint](https://eslint
 </details>
 
 ### Lighthouse Test
+I used Google Lighthouse in Chrome Developer Tools to test the pages for Performance, Accessibility, Best Practices and SEO for mobile view. The third part, especially cookies, downgraded my score. Overall, this is something I would like to improve in the future with more time. 
 
-
+![Lighthouse report for home page on mobile screens](src/documentation/validation/lighthouse-home.png)<br>
+![Lighthouse report for add a FriendVenture on mobile screens](src/documentation/validation/lighthouse-create-friedndventure.png)<br>
+![Lighthouse report for profile page on mobile screens](src/documentation/validation/lighthouse-profiles.png)<br>
 
 ### Manual Testing
 
@@ -810,12 +814,16 @@ Examples of automated tests:
 - Test opening and closing modals
 - Test error handling for failed requests 
 
-### Browser Compatibility NEEDS UPDATE
+### Browser Compatibility
   The tests were conducted using the following browser:
 
 - Google Chrome Version 128.0.6613.113 <br>
 Tests were also carried out for the following browsers using [browserling](https://www.browserling.com/) <br>
-- 
+- Firefox 128
+- Opera 112
+- Brave 1.68
+- Vivaldi 6.8
+- Safari 17.4.1 
 
 ## Deployment
 
