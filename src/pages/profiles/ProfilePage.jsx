@@ -76,13 +76,19 @@ function ProfilePage() {
   const mainProfile = (
     <>
       <span className={styles.EditProfile}>
-        {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+        {profile?.is_owner && (
+          <>
+            <span className={styles.SettingsLabel}>Profile Settings:</span>{" "}
+            <ProfileEditDropdown id={profile?.id} />
+          </>
+        )}
       </span>
       <Row className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
             roundedCircle
+            alt="user profile image"
             src={profile?.profile_image}
           />
         </Col>

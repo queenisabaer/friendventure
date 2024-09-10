@@ -10,12 +10,15 @@
   font-size: 1.5rem;
 }
 
-.EditProfile > div {
-  border-radius: 100px;
-  border: 1px solid #008281;
-  padding: 2px 2px;
-  margin-left: 5px;
-  margin-right: 2px;
+.EditProfile > div > i {
+  border-radius: 2px;
+  border: 1px solid #406277;
+  padding: 3px 10px;
+}
+
+.SettingsLabel{
+  font-size: 0.75rem;
+  color: #406277;
 }
 
 @media screen and (max-width: 991px) {

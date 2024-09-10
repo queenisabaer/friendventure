@@ -426,7 +426,7 @@ In mobile view, the most active profiles are displayed above the FriendVentures,
 
 
 Screenshot of FriendVenture overview page <br>
-![Screenshot ofwish list overview page](/documentation/features/screenshot_wishlist_overview.png)<br>
+![Screenshot of FriendVenture overview page](src/documentation/features/)<br>
 
 - **Displaying an overview of bookmarked FriendVentures**<br>
 When a user bookmarks a FriendVenture by clicking on the heart icon within the FriendVenture card, they can later access an overview page of all their bookmarked FriendVentures. This page can be reached through the navigation bar by selecting  *Bookmarks* in the FriendVentures dropdown menu. The bookmarked FriendVentures are displayed similarly to those on the homepage overview, with each FriendVenture presented in a card format. This includes the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments, as well as the last updated timestamp. The page also features infinite scroll functionality, where additional FriendVentures are loaded after scrolling through the first 10 entries, with a brief display of a spinner indicating the loading process. In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures. <br>
@@ -658,7 +658,7 @@ I used Google Lighthouse in Chrome Developer Tools to test the pages for Perform
 | User Profile Access - Logged In | Access the profile page via the navigation bar, "Most Active Profiles" section, participants section, or comments section by clicking on the username or profile picture. | The user should be able to access their profile page. | Pass |
 | Profile Picture Display | Access the profile page where the user has not uploaded a picture. | A placeholder image featuring the cute ghost should be displayed. | Pass |
 | Username Display | Access the profile page. | The username displayed should be the one created during the signup process. | Pass |
-| Follow/Unfollow Button Visibility | Access the profile page of a user who is not the currently logged-in user. | The follow/unfollow button should be visible. Access the profile page of the logged-in user. | The follow/unfollow button should not be visible. | Pass |
+| Follow/Unfollow Button Visibility | Access the profile page of a user who is not the currently logged-in user. | The follow/unfollow button should be visible. Access the profile page of the logged-in user. | Pass |
 | Profile page - overview of FriendVentures | Access the profile page. | The number of FriendVentures the user has created should be displayed accurately. | Pass |
 | Followers and Following Counts | Access the profile page. | The number of followers and the number of people the user is following should be displayed accurately. | Pass |
 | "That's Me" Description | Access the profile page where the user has provided a description. | The description should be displayed if it is filled out. If not, the field should be show placeholder text. | Pass |
@@ -761,8 +761,6 @@ I used Google Lighthouse in Chrome Developer Tools to test the pages for Perform
 <summary> Click here to see the testing table for User Stories</summary>
 <br>
 
-| **User Story** | **Acceptance Criteria** | **Was achieved as follows** |
-|:---|:---|:---|
 | **User Story** | **Acceptance Criteria** | **Was achieved as follows** |
 |:---|:---|:---|
 | #6 As a new user I want to register an account so that I can fully interact with the website. | The registration page must include fields for necessary user information. Upon successful registration, the user should receive a confirmation message and be able to log in. | The registration page has fields for necessary information (username, password). Upon completion, the user receives a confirmation message and can log in. |

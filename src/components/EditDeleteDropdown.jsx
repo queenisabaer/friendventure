@@ -65,7 +65,7 @@ export const EditDeleteDropdown = ({ handleEdit, handleDelete, confirmationMessa
 export function ProfileEditDropdown({ id }) {
   const navigate = useNavigate();
   return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
+    <Dropdown className={`ml-auto px-3`} drop="right">
       <Dropdown.Toggle as={DropdownIcon} />
       <Dropdown.Menu>
         <Dropdown.Item
