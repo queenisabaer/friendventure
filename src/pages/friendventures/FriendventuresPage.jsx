@@ -68,7 +68,9 @@ function FriendventuresPage({ message, filter = "" }) {
           className={styles.SearchBar}
           onSubmit={(event) => event.preventDefault()}
         >
+          <Form.Label htmlFor="search-input" className="sr-only">Searchbar</Form.Label>
           <Form.Control
+            id="search-input"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             type="text"
