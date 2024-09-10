@@ -113,9 +113,10 @@ function FriendventureCreateForm(props) {
 
   const textFields = (
     <div className="text-center">
-      <Form.Group className="mb-2">
+      <Form.Group className="mb-2" htmlFor="title">
         <Form.Label className="mb-1">Title<sup>*</sup></Form.Label>
         <Form.Control
+          id="title"
           className={styles.Input}
           type="text"
           name="title"
@@ -130,9 +131,10 @@ function FriendventureCreateForm(props) {
           </Alert>
         ))}
       </Form.Group>
-      <Form.Group className="mb-2">
+      <Form.Group className="mb-2" htmlFor="description">
         <Form.Label className="mb-1">Description</Form.Label>
         <Form.Control
+          id="description"
           className={styles.Input}
           as="textarea"
           placeholder="Descripe your FriendVenture"
@@ -150,8 +152,9 @@ function FriendventureCreateForm(props) {
       <Form.Group className="mb-2">
         <Row>
           <Col lg={6}>
-            <Form.Label className="mb-1">Date<sup>*</sup></Form.Label>
+            <Form.Label className="mb-1" htmlFor="date">Date<sup>*</sup></Form.Label>
             <Form.Control
+              id="date"
               type="date"
               name="date"
               value={date}
@@ -166,8 +169,9 @@ function FriendventureCreateForm(props) {
           </Col>
 
           <Col lg={6}>
-            <Form.Label className="mb-1">Time<sup>*</sup></Form.Label>
+            <Form.Label className="mb-1" htmlFor="time">Time<sup>*</sup></Form.Label>
             <Form.Control
+              id="time"
               type="time"
               name="time"
               value={time}
@@ -183,8 +187,9 @@ function FriendventureCreateForm(props) {
         </Row>
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Location<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1" htmlFor="location">Location<sup>*</sup></Form.Label>
         <Form.Control
+          id="location"
           type="text"
           name="place"
           placeholder="Enter the place to be"
@@ -199,8 +204,9 @@ function FriendventureCreateForm(props) {
         ))}
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Category<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1" htmlFor="category">Category<sup>*</sup></Form.Label>
         <Form.Control
+          id="category"
           as="select"
           name="category"
           value={category}
