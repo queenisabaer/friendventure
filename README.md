@@ -22,6 +22,7 @@ The FriendVenture frontend is the user interface component of the FriendVenture 
   - [Typography](#typography)
 - [Structure](#structure)
 - [Features](#features)
+- [Reusable Components](#reusable-components)
 - [Bugs](#bugs)
 - [Technologies Used](#technologies-used)
   - [Languages](#languages)
@@ -223,8 +224,25 @@ To learn more about each feature, please click on the respective headline
 
 To ensure uniformity and a sense of familiarity for users, all pages include the same header with navigation links depending on the authentication status of the user. 
 The header consists of the logo, which is always arranged on the left and acts as a link to return to the main page. On the right side is the navigation bar, which turns into a clickable burger menu on smaller screens. Depending on whether the user is logged in or not, the navigation elements adapt accordingly.<br>
+<br>
+**For Logged-Out Users:**<br>
+- *Home*: Redirects to the home page, displaying an overview of all active FriendVentures (those not in the past). <br>
+- *Sign Up*: Takes the user to the registration page to create an account and begin interacting with the site. <br>
+- *Log In*: Directs to the login page for returning users to access their accounts.<br>
+
+**For Logged-In Users:** <br>
+- *Home*: Same as the logged-out view, showing all active FriendVentures.
+- *FriendVentures*: A dropdown menu containing:
+  - *Add*: Directs to the page where the user can create a new FriendVenture.
+  - *Bookmarks*: Displays an overview of all FriendVentures that the currently logged-in user has bookmarked.
+  - *Upcoming*: Provides a list of all FriendVentures the user is participating in.
+  - *Explore*: Shows all FriendVentures created by users that the currently logged-in user follows.
+- *Profile Image and Username*: Clicking this will take the user to their profile page, where they can view and manage their details and activities.
+- *Log Out*: Allows the user to securely log out of their account.
+
 A particular challenge was implementing the dropdown menu within the navigation bar on smaller screens (as a burger menu) when the user is logged in. The dropdown menu needed to remain accessible even when the main dropdown item (FriendVentures) was clicked in the burger menu. In other cases, the burger menu should naturally close as soon as a link is clicked to ensure a better user experience. However, for the dropdown menu, it should first open when the dropdown item is selected, and only after a link within this menu is clicked should the burger menu close again. 
 The navigation menu also closes in mobile view when a click occurs outside of it.<br>
+
 <br>
 
 View for users who are not logged in:<br>
@@ -499,6 +517,50 @@ The application includes a redirect functionality to manage user access based on
 - *Star review for FriendVentures*: Implement a feature to display star ratings for FriendVentures. Users will be able to see how their FriendVentures have been rated by others, providing feedback and improving event quality.
 - *Creating a special start page for logged out user*: Develop a unique start page for users who are not logged in to provide a more engaging and informative experience tailored to their status. (as can be seen in the original wireframes)
 
+## Reusable Components
+
+Reusable components are a core principle in React, enabling developers to write modular, maintainable, and efficient code. Examples of reusbale components in this project:<br>
+
+**Assets.jsx**<br>
+ This component is designed to handle the display of a loading spinner, an image, or a message, depending on the props passed to it. <br>
+It was utilized in various parts of the application. Here's how it was employed across different components:
+- "Not Found" component: To display a placeholder image that provides a visual cue for the 404 error page.
+- FriendVentureCreateForm: To display a placeholder image encouraging the user to upload one, accompanied by a message.
+- FriendVenturePage: To load the spinner while the FriendVenture content is being retrieved.
+- FriendVenturesPage: To load the spinner during data retrieval and display a placeholder image with a corresponding message when no FriendVentures could be found.
+- FriendVentureParticipants: To load the spinner while the list of participants is being fetched.
+- ActiveProfiles Component: To display a spinner while the user profiles are being loaded.
+- ProfilePage: To load the spinner during profile retrieval and to display a placeholder image if the user hasn't created any FriendVentures yet.
+
+This widespread usage highlights the Asset component's role in providing consistent visual feedback and handling various states, such as loading and empty data scenarios, across the application.<br>
+
+**Avatar.jsx**<br>
+The Avatar component was utilized across various parts of the application to ensure a consistent and user-friendly display of profile images and related text. Here's how it was implemented in different components:
+- Profile: Displayed the user's avatar
+- FriendVenture Participants List: Showcased participant avatars, providing a quick visual reference for who is attending a particular FriendVenture.
+- FriendVenture Cards: Included the avatar of the event creator, helping users easily identify who organized the FriendVenture.
+- Comments Section: Displayed avatars next to each comment, allowing users to visually connect comments with the respective user.
+- ActiveProfiles Component: Highlighted active users' avatars, making it easy to recognize frequent contributors and follow/unfollow them.
+This component was crucial in maintaining a consistent and polished appearance across different parts of the application, ensuring that user avatars were displayed effectively in various contexts.
+
+**ConfirmationModal.jsx**<br>
+The ConfirmationModal component is designed to handle user confirmations within the application. This component plays a critical role in ensuring that users can make informed decisions before performing actions that might be irreversible, such as deleting a FriendVenture or a Comment. It was used in the EditDeleteDropdown component. <br>
+The modal's title and message are passed in as props, allowing for flexible use across different scenarios. This means the same modal can be used for various actions requiring confirmation, with the content tailored to the specific context. The modal includes two buttons *cancel* and *delete*. <br>
+This component enhances the application's user experience by providing a consistent and user-friendly way to manage critical actions, ensuring that users are always in control and informed about their decisions.<br>
+
+**EditDeleteDropdown.jsx**
+The EditDeleteDropdown component is designed to provide users with quick access to editing or deleting content within the application. This component utilizes Bootstrap's Dropdown and is paired with a ConfirmationModal to ensure that users confirm their actions before proceeding with potentially irreversible changes.<br> 
+The *ProfileEditDropdown* extends the functionality of the *EditDeleteDropdown* by offering profile-specific actions. This component provides options to edit the profile, change the username, or update the password. Each option redirects the user to the appropriate editing page, leveraging React Router's useNavigate hook for seamless navigation. It wwas used in the Comment, and the FriendVenture component, and in the ProfilePage.<br>
+The EditDeleteDropdown component enhances user experience by providing a consistent and intuitive way to manage content and profiles within the application, making it easy to access essential editing and deletion functionalities while ensuring that any critical actions are thoroughly confirmed before being executed.<br>
+
+**Message.jsx**<br>
+The Message component is a notification element that displays alert messages to users. It is designed to provide feedback or important information in a prominent, dismissible format. <br>
+
+**NavBar.jsx**<br>
+The Navbar component played a central role in the application's navigation, offering a consistent and intuitive user experience across the site. It was designed to adapt dynamically based on the user's authentication status, providing access to relevant features and pages.<br>
+
+**NotFound.jsx**<br>
+The NotFound component is a specialized component designed to handle 404 errors, providing users with a clear indication that the page they are trying to access does not exist.
 
 ## Bugs NEEDS UPDATE
 
