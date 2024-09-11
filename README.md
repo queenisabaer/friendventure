@@ -347,10 +347,10 @@ Screenshot of profile page with edit menu(desktop):<br>
 ![Screenshot of profile page with edit menu on larger screens ](src/documentation/features/profile-edit-desktop.png)<br>
 Screenshot of profile page with edit menu(mobile):<br>
 ![Screenshot of profile page with edit menu on mobile view](src/documentation/features/profile-edit-mobile.png)<br>
-Screenshot to edit the profile page and success message after editing:<br>:
+Screenshot to edit the profile page and success message after editing:<br>
 ![Screenshot of edit profile page](src/documentation/features/profile-editpage-desktop.png)<br>
 ![Screenshot of message after edititing profile](src/documentation/features/profile-edit-success.png)<br>
-Screenshot of error messages:<br>:
+Screenshot of error messages:<br>
 ![Screenshot of edit profile page with error for large image](src/documentation/features/profile-image-error.png)<br>
 ![Screenshot of edit profile page with error for telephone number](src/documentation/features/profile-telephone-error.png)<br>
 ![Screenshot of edit profile page with error for wrong email](src/documentation/features/profile-email-error.png)<br>
@@ -372,10 +372,10 @@ FriendVenture Management includes the following topics:<br>
 
 **Adding a new FriendVenture**: Users can create and submit new FriendVentures through a designated form.
 **FriendVenture Detail View**: Users can view detailed information about a specific FriendVenture by clicking on the title or the image in the friendventure card.<br>
-**Editing or deleting an existing FriendVenture**: Users can modify or remove their existing FriendVentures through an edit or delete option.
-**Overview of all existing FriendVentures on Homepage**: The home page displays a comprehensive list of all available FriendVentures.
-**Overview of FriendVentures created by the user on their profile page**: Users can view a summary of all FriendVentures they have created from their profile page.
-**Overview of bookmarked FriendVentures**: Users can access a list of FriendVentures they have bookmarked for quick reference.
+**Editing or deleting an existing FriendVenture**: Users can modify or remove their existing FriendVentures through an edit or delete option.<br>
+**Overview of all existing FriendVentures on Homepage**: The home page displays a comprehensive list of all available FriendVentures.<br>
+**Overview of FriendVentures created by the user on their profile page**: Users can view a summary of all FriendVentures they have created from their profile page.<br>
+**Overview of bookmarked FriendVentures**: Users can access a list of FriendVentures they have bookmarked for quick reference.<br>
 **Overview of upcoming FriendVentures as a Participant**: Users can view a list of upcoming FriendVentures they are participating in.  <br>
 
  - **Adding a new FriendVenture**<br>
@@ -395,17 +395,17 @@ Screenshot of error message for date validation:<br>
 
 - **FriendVenture detail view**<br>
 A FriendVenture contains several elements in its detailed view. The following elements are included for the owner of the FriendVenture:<br>
-- **Title**: The title of the FriendVenture. <br>
-- **Creator Information**: Displays the username of the creator with a link to their profile. <br>
-- **Image**: The image associated with the FriendVenture or the placeholder image <br>
-- **Description**: A brief description of the FriendVenture, if given by the user. <br>
-- **Date, Time, and Location**: Details about when and where the FriendVenture will take place.<br>
-- **Category**: Button styled representing categories for future feature use,(allowing FriendVentures to be filtered by category.)<br>
-- **Last Updated**: Information on when the FriendVenture was last updated. <br>
+  - *Title*: The title of the FriendVenture. <br>
+  - *Creator Information*: Displays the username of the creator with a link to their profile. <br>
+  - *Image*: The image associated with the FriendVenture or the placeholder image <br>
+  - *Description*: A brief description of the FriendVenture, if given by the user. <br>
+  - *Date, Time, and Location*: Details about when and where the FriendVenture will take place.<br>
+  - *Category*: Button styled representing categories for future feature use,(allowing FriendVentures to be filtered by category.)<br>
+  - *Last Updated*: Information on when the FriendVenture was last updated. <br>
 Below these elements, there are three icons in a row with numbers next to each for counting: <br>
-- **User Icon**: Displays the number of participants. If the currently logged-in user is a participant in the FriendVenture, the icon will have a small checkmark.<br>
-- **Heart Icon**: Displays the number of bookmarks. If the currently logged-in user has bookmarked the FriendVenture, the heart will be filled with red.<br>
-- **Comment Icon**: Shows the number of comments associated with the FriendVenture.<br>
+  - *User Icon*: Displays the number of participants. If the currently logged-in user is a participant in the FriendVenture, the icon will have a small checkmark.<br>
+  - *Heart Icon*: Displays the number of bookmarks. If the currently logged-in user has bookmarked the FriendVenture, the heart will be filled with red.<br>
+  - *Comment Icon*: Shows the number of comments associated with the FriendVenture.<br>
 Underneath these icons is the comments section.<br>
 **Participants List:**
 In mobile view, the list of participants is displayed underneath the comments section.
@@ -440,13 +440,13 @@ Screenshot of delete confirmation modal<br>
 
 
 - **Displaying an overview of all existing FriendVentures on the Homepage.**<br>
-The user can access the overview page of all FriendVentures that have been created by clicking on the homepage The user can access the overview page displaying all created FriendVentures by clicking on the "Home" link in the navigation bar or by clicking on the logo. This page presents FriendVentures sorted by the date they were added, with the most recent ones appearing first. Each FriendVenture is displayed in a card format that includes essential details such as the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments. Additionally, the last updated timestamp is shown. Furthermore, if a FriendVenture's date and time are in the past, it will automatically be deleted from the FriendVenture overview pages. The overview page features infinite scroll functionality: when the user scrolls through 10 FriendVentures, the next set of FriendVentures is automatically loaded. During this process, a spinner is briefly displayed to indicate that more content is being loaded. 
+The user can access the overview page of all FriendVentures that have been created by clicking on the homepage. The user can access the overview page displaying all created FriendVentures by clicking on the "Home" link in the navigation bar or by clicking on the logo. This page presents FriendVentures sorted by the date they were added, with the most recent ones appearing first. Each FriendVenture is displayed in a card format that includes essential details such as the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments. Additionally, the last updated timestamp is shown. Furthermore, if a FriendVenture's date and time are in the past, it will automatically be deleted from the FriendVenture overview pages. The overview page features infinite scroll functionality: when the user scrolls through 10 FriendVentures, the next set of FriendVentures is automatically loaded. During this process, a spinner is briefly displayed to indicate that more content is being loaded. 
 In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures.
  <br>
 
 
 Screenshot of FriendVenture overview page <br>
-![Screenshot of FriendVenture overview page](src/documentation/features/)<br>
+![Screenshot of FriendVenture overview page](src/documentation/features/friendventure_overview.png)<br>
 
 - **Displaying an overview of bookmarked FriendVentures**<br>
 When a user bookmarks a FriendVenture by clicking on the heart icon within the FriendVenture card, they can later access an overview page of all their bookmarked FriendVentures. This page can be reached through the navigation bar by selecting  *Bookmarks* in the FriendVentures dropdown menu. The bookmarked FriendVentures are displayed similarly to those on the homepage overview, with each FriendVenture presented in a card format. This includes the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments, as well as the last updated timestamp. The page also features infinite scroll functionality, where additional FriendVentures are loaded after scrolling through the first 10 entries, with a brief display of a spinner indicating the loading process. In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures. <br>
@@ -467,6 +467,7 @@ Users can interact with each other in the following ways:
 - Marking themselves as a participant to join the event by clicking on the person icon.
 - Bookmarking a FriendVenture by clicking on the heart icon.
 - Follow/Unfollow functionality by clicking on the Follow/Unfollow button, which is available in the "Most Active Users" section, the participants list, and the profile overview. This option is only available when the logged-in user is not viewing their own profile. <br>
+<br>
 
 **Participation and Bookmark Icons**: <br>
 The icons representing participation (person icon) and bookmarks (heart icon) dynamically change based on the user's status:<br>
@@ -550,7 +551,7 @@ The ConfirmationModal component is designed to handle user confirmations within 
 The modal's title and message are passed in as props, allowing for flexible use across different scenarios. This means the same modal can be used for various actions requiring confirmation, with the content tailored to the specific context. The modal includes two buttons *cancel* and *delete*. <br>
 This component enhances the application's user experience by providing a consistent and user-friendly way to manage critical actions, ensuring that users are always in control and informed about their decisions.<br>
 
-**EditDeleteDropdown.jsx**
+**EditDeleteDropdown.jsx**<br>
 The EditDeleteDropdown component is designed to provide users with quick access to editing or deleting content within the application. This component utilizes Bootstrap's Dropdown and is paired with a ConfirmationModal to ensure that users confirm their actions before proceeding with potentially irreversible changes.<br> 
 The *ProfileEditDropdown* extends the functionality of the *EditDeleteDropdown* by offering profile-specific actions. This component provides options to edit the profile, change the username, or update the password. Each option redirects the user to the appropriate editing page, leveraging React Router's useNavigate hook for seamless navigation. It wwas used in the Comment, and the FriendVenture component, and in the ProfilePage.<br>
 The EditDeleteDropdown component enhances user experience by providing a consistent and intuitive way to manage content and profiles within the application, making it easy to access essential editing and deletion functionalities while ensuring that any critical actions are thoroughly confirmed before being executed.<br>
@@ -579,14 +580,14 @@ The configuration of ESLint turned out to be more difficult because I set up the
 </details>
 
 <details>
-<summary> time </summary>
+<summary> Time was undefinied</summary>
 <br>
 While rendering the Friendventure component, a console error occurred stating: Time string is empty or undefined. This error appeared despite the time prop containing a valid time string in the format HH:MM:SS. The issue was triggered by the formatTime function, which was intended to format the time string by stripping the seconds for display. To resolve the issue, the formatTime function in the Friendventure component was updated to include a more robust check.
 
 </details>
 
 <details>
-<summary> currentUser tokens </summary>
+<summary> Current user tokens </summary>
 <br>
 When a user refreshed the page, they were sometimes logged out unexpectedly. This issue occurred because the token refresh process did not always complete before the application attempted to fetch the current user data, resulting in an invalid or expired token being used for the request. Consequently, the user was logged out and redirected to the login page, even if their session should still have been active. <br>
 The issue was resolved by ensuring that the token refresh process completes successfully before attempting to fetch the current user data.
@@ -597,6 +598,9 @@ The issue was resolved by ensuring that the token refresh process completes succ
 <summary> Upating an image </summary>
 <br>
 When attempting to update the details of a FriendVenture, all fields were updated successfully except for the image. A CORS header error appeared in the console when attempting to update the image. The image fails to update due to a missing trailing slash in the request. 
+
+![Screenshot of the error message in browser](src/documentation/bugs/bug_update_image.png)<br>
+![Screenshot of the error message in browser](src/documentation/bugs/bug_update_image2.png)<br>
 
 </details>
 
@@ -611,6 +615,7 @@ The avatar images were not displaying correctly in the FriendventureParticipants
 
 </details>
 
+<details>
 <summary> Unfixed </summary>
 <br>
 The isActive className intended to highlight the active navigation link in the navbar does not get applied as expected. The issue arises from the inability to override the default React-Bootstrap class and apply the correct style as classname. This bug has been acknowledged but left unfixed due to time constraints. The issue will be revisited and addressed in a future update.
@@ -645,7 +650,7 @@ The isActive className intended to highlight the active navigation link in the n
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools?hl=de) were used to check the application for responsiveness and errors. 
 
 ### Frameworks: 
-- [React](https://react.dev/) was initialized with [vite](https://vitejs.dev)/
+- [React](https://react.dev/) was initialized with [vite](https://vitejs.dev)
 - [React Bootstrap](https://react-bootstrap.netlify.app/)
 - [React Router Dom](https://reactrouter.com/en/main)
 
