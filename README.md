@@ -119,7 +119,7 @@ User Stories with their id:  <br>
 - As a developer, I need to verify that my python files pass the pep8 validation so that the code is executed correctly. [#31](https://github.com/queenisabaer/friendventure/issues/31)
 <br>
 
-- As an admin, I want to access the site's administrative features so that I have access to the admin panel. [#8](https://github.com/queenisabaer/wishlist/issues/8)
+- As an admin, I want to access the site's administrative features so that I have access to the admin panel. [#8](https://github.com/queenisabaer/friendventures/issues/8)
 
 ## Design
 
@@ -341,6 +341,8 @@ Screenshot of profile page(desktop):<br>
 ![Screenshot of profile page](src/documentation/features/profile-desktop.png)<br>
 
 **Edit a profile**<br>
+Screenshot of profile edit button:<br>
+![Screenshot of profile edit button](src/documentation/features/profile-edit-button.png)<br>
 Screenshot of profile page with edit menu(desktop):<br>
 ![Screenshot of profile page with edit menu on larger screens ](src/documentation/features/profile-edit-desktop.png)<br>
 Screenshot of profile page with edit menu(mobile):<br>
@@ -416,7 +418,7 @@ Screenshot of FriendVenture detail page for owner of the FriendVenture in mobile
 Screenshot of FriendVenture detail page for other users of the FriendVenture in mobile view:<br>
 ![Screenshot of friendventure detail page for other user of friendVenture](src/documentation/features/friendventure-detail-not-owner.png)<br>
 Screenshot of FriendVenture detail page for owner of the FriendVenture in desktop view:<br>
-![Screenshot of friendventure detail page for owner of friendVenture on larger screens](src/documentation/features/friendventure-detail-desktop.pngg)<br>
+![Screenshot of friendventure detail page for owner of friendVenture on larger screens](src/documentation/features/friendventure-detail-desktop.png)<br>
 Screenshot of FriendVenture detail page edit menu:<br>
 ![Screenshot of friendventure detail page edit menu](src/documentation/features/friendventure-detail-edit.png)<br>
 <br>
@@ -453,7 +455,7 @@ When a user bookmarks a FriendVenture by clicking on the heart icon within the F
 When a user marks themselves as a participant in a FriendVenture by clicking on the person icon within the FriendVenture card, they can later access an overview page of all FriendVentures they are participating in. This page can be accessed through the navigation bar by selecting *Upcoming* in the FriendVentures dropdown menu. The participating FriendVentures are displayed similarly to those on the homepage overview, with each FriendVenture presented in a card format. This includes the title, description, date, time, location, category, creator information (with a link to the creator's profile), and counts of participants, bookmarks, and comments, as well as the last updated timestamp. The page also features infinite scroll functionality, where additional FriendVentures are loaded after scrolling through the first 10 entries, with a brief display of a spinner indicating the loading process. In mobile view, the most active profiles are displayed above the FriendVentures, while in desktop view, they are displayed alongside the FriendVentures.
 
 - **Displaying an overview of all FriendVentures created by user**<br>
-As already explained in the profile feature, all FriendVentures created by the user are listed on their profile
+As already explained in the profile feature, all FriendVentures created by the user are listed on their profile.
 
 </details>
 
@@ -562,7 +564,7 @@ The Navbar component played a central role in the application's navigation, offe
 **NotFound.jsx**<br>
 The NotFound component is a specialized component designed to handle 404 errors, providing users with a clear indication that the page they are trying to access does not exist.
 
-## Bugs NEEDS UPDATE
+## Bugs
 
 <details>
 <summary> ESLint Configuration </summary>
@@ -579,34 +581,41 @@ The configuration of ESLint turned out to be more difficult because I set up the
 <details>
 <summary> time </summary>
 <br>
-time (was undefinied, had to update friendventure.jsx)
-<br>
-
-![Screenshot of the error message in browser](/documentation/bugs)<br>
-![Screenshot of the login html file section](/documentation/bugs)<br>
+While rendering the Friendventure component, a console error occurred stating: Time string is empty or undefined. This error appeared despite the time prop containing a valid time string in the format HH:MM:SS. The issue was triggered by the formatTime function, which was intended to format the time string by stripping the seconds for display. To resolve the issue, the formatTime function in the Friendventure component was updated to include a more robust check.
 
 </details>
 
 <details>
 <summary> currentUser tokens </summary>
 <br>
-xxx<br>
-
-![Screenshot of the error message in browser](/documentation/bugs)<br>
-![Screenshot of the login html file section](/documentation/bugs)<br>
+When a user refreshed the page, they were sometimes logged out unexpectedly. This issue occurred because the token refresh process did not always complete before the application attempted to fetch the current user data, resulting in an invalid or expired token being used for the request. Consequently, the user was logged out and redirected to the login page, even if their session should still have been active. <br>
+The issue was resolved by ensuring that the token refresh process completes successfully before attempting to fetch the current user data.
 
 </details>
 
 <details>
 <summary> Upating an image </summary>
 <br>
-update image wasn't working. got an cors property error. forget trailing slash
-<br>
-
-![Screenshot of the error message in browser](/documentation/bugs)<br>
-![Screenshot of the login html file section](/documentation/bugs)<br>
+When attempting to update the details of a FriendVenture, all fields were updated successfully except for the image. A CORS header error appeared in the console when attempting to update the image. The image fails to update due to a missing trailing slash in the request. 
 
 </details>
+
+<details>
+<summary> Avatar Display Issue </summary>
+<br>
+The avatar images were not displaying correctly in the FriendventureParticipants component. The component was designed to use the ProfilDataContext to display participants properly. However, during implementation, it was discovered that the data retrieved for participants only included usernames. To access the owner’s profile image, I had to modify the data handling process. Now, the participants' data is matched with the user data, and only the filtered data is output. This allowed access to the owner’s profile image.
+
+<br>
+
+![Screenshot of the error message in browser](src/documentation/bugs/bug-avatar-picture.png)<br>
+
+</details>
+
+<summary> Unfixed </summary>
+<br>
+The isActive className intended to highlight the active navigation link in the navbar does not get applied as expected. The issue arises from the inability to override the default React-Bootstrap class and apply the correct style as classname. This bug has been acknowledged but left unfixed due to time constraints. The issue will be revisited and addressed in a future update.
+</details>
+
 
 ## Technologies Used
 
@@ -671,7 +680,7 @@ I passed my deployed html files through the [HTML Validator](https://validator.w
 <summary> CSS Validation</summary>
 <br>
 
-I passed m deployed css file through the [CSS Validator](https://jigsaw.w3.org/css-validator/) and no errors were found.<br>
+I passed my deployed css file through the [CSS Validator](https://jigsaw.w3.org/css-validator/) and no errors were found.<br>
      
 ![CSS result](src/documentation/validation/css-validation.png)
   
@@ -689,9 +698,12 @@ To validate the Javascript code in my code editor I used [ESLint](https://eslint
 ### Lighthouse Test
 I used Google Lighthouse in Chrome Developer Tools to test the pages for Performance, Accessibility, Best Practices and SEO for mobile view. The third part, especially cookies, downgraded my score. Overall, this is something I would like to improve in the future with more time. 
 
+Home page: <br>
 ![Lighthouse report for home page on mobile screens](src/documentation/validation/lighthouse-home.png)<br>
-![Lighthouse report for add a FriendVenture on mobile screens](src/documentation/validation/lighthouse-create-friedndventure.png)<br>
-![Lighthouse report for profile page on mobile screens](src/documentation/validation/lighthouse-profiles.png)<br>
+Add(Create a FriendVenture):<br>
+![Lighthouse report for add a FriendVenture on mobile screens](src/documentation/validation/lighthouse-add.png)<br>
+Profile:<Br>
+![Lighthouse report for a profile page on mobile screens](src/documentation/validation/lighthouse-profiles.png)<br>
 
 ### Manual Testing
 
@@ -862,15 +874,13 @@ I used Google Lighthouse in Chrome Developer Tools to test the pages for Perform
 
 </details>
 
-### Automated Testing NEEDS UPDATE
-Originally, automated tests (e.g. with jest and unittes) were planned. Unfortunately, I did not have enough time in this version to perform the corresponding tests. However, this is intended for future versions. 
-Examples of automated tests:
-- Ensure wish list and wish list item models are correctly defined and behave as expected. Test relationship between them.
+### Automated Testing
+Originally, automated tests (e.g. with jest) were planned. A first setup was created. Unfortunately, I did not have enough time in this version to perform the corresponding tests. However, this is intended for future versions. 
+Examples of automated tests: <br>
+- Ensure navbar elements behave as expecte - depending on whether the user is logged in or not
 - Verify that forms handle data correctly
-- Ensure views return the correct pages in project
-- Test CRUD operations on wish list
-- Test rendering of components like wish list details
-- Test adding and removing items from the wish list.
+- Ensure routes return the correct components in project
+- Test CRUD operations on FriendVenture and Comment
 - Test opening and closing modals
 - Test error handling for failed requests 
 
@@ -890,16 +900,15 @@ Tests were also carried out for the following browsers using [browserling](https
 ### Heroku
 This site is deployed using Heroku. To deploy it from its GitHub repository to Heroku, I took the following steps:
 
-1. Create a list of requirements in the requirements.txt file by using the command _pip3 freeze > requirements.txt_
-2. Log in (or sign up) to Heroku
-3. Click on the _New_ button and select _Create new app_
-4. Give it a unique name and choose the region _Europe_
-5. Click the *Deploy* tab, go to the _Deployment method_ section, select _GitHub_ and confirm this selection by clicking on the _Connect to Github_ button
-6. Search for the repository name on github _friendventure_ and click the _Connect_ button
-7. Inside the src folder add an api folder and create an axiosDefault.jsx
-8. Add the link to the deployed version of the api as baseURL
-9. Create a _Procfile_ in the root directory and add *web: npm run start*
-10. In Heroku enable the automatic deploy or manually deploy the code from the main branch
+1. Log in (or sign up) to Heroku
+2. Click on the _New_ button and select _Create new app_
+3. Give it a unique name and choose the region _Europe_
+4. Click the *Deploy* tab, go to the _Deployment method_ section, select _GitHub_ and confirm this selection by clicking on the _Connect to Github_ button
+5. Search for the repository name on github _friendventure_ and click the _Connect_ button
+6. Inside the src folder add an api folder and create an axiosDefault.jsx
+7. Add the link to the deployed version of the api as baseURL
+8. Create a _Procfile_ in the root directory and add *web: npm run start*
+9. In Heroku enable the automatic deploy or manually deploy the code from the main branch
 
 To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.com/) click on the _Open app_ button in the top right corner or, if you enabled automatic deploy (step 10), log in to GitHub, navigate to the repository for this project by selecting [*queenisabaer/friendventure*](https://github.com/queenisabaer/friendventure), click on _Deployment_ and choose in the _Environments_ section _friendventure_. On top of the latest deployment is the link to the [live site](https://friendventure-702f1b6ed9cf.herokuapp.com/).<br>
 
@@ -921,7 +930,7 @@ To see the [view of the live site](https://friendventure-702f1b6ed9cf.herokuapp.
 
 ### Content
 
-- The background image was found at Pixabay and was created by [blickpixel](https://pixabay.com/de/photos/geschenk-p%C3%A4ckchen-%C3%BCberraschung-548296/)
+- The ghost that can be seen on all placeholder images is from pixabay by [madebytin](https://pixabay.com/de/illustrations/geist-boo-halloween-niedlich-8250317/)
 
 ### Code
 
