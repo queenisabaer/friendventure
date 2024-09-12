@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Alert from "react-bootstrap/Alert";
-import styles from "../App.module.css"
-
+import styles from "../App.module.css";
 
 const Message = (props) => {
   const { type, text } = props;

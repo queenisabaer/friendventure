@@ -28,7 +28,7 @@ function FriendventuresPage({ message, filter = "" }) {
     const parsedDate = moment(dateString, "DD MMM YYYY HH:mm");
     return parsedDate.isValid() ? parsedDate.utc().valueOf() : null;
   };
-  
+
   useEffect(() => {
     const fetchFriendventures = async () => {
       try {
@@ -39,8 +39,12 @@ function FriendventuresPage({ message, filter = "" }) {
         const now = moment().utc().valueOf();
 
         const filteredData = data.results.filter((friendventure) => {
-          const friendventureTimestamp = combineDateTime(friendventure.datetime);
-          return friendventureTimestamp !== null && friendventureTimestamp >= now;
+          const friendventureTimestamp = combineDateTime(
+            friendventure.datetime
+          );
+          return (
+            friendventureTimestamp !== null && friendventureTimestamp >= now
+          );
         });
 
         setFriendventures({ ...data, results: filteredData });
@@ -62,13 +66,15 @@ function FriendventuresPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        < ActiveProfiles mobile />
+        <ActiveProfiles mobile />
         <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
           onSubmit={(event) => event.preventDefault()}
         >
-          <Form.Label htmlFor="search-input" className="sr-only">Searchbar</Form.Label>
+          <Form.Label htmlFor="search-input" className="sr-only">
+            Searchbar
+          </Form.Label>
           <Form.Control
             id="search-input"
             value={query}

@@ -7,7 +7,7 @@
   margin-left: 2px;
   margin-right: 2px;
   min-width: 75px;
-  background-color: #008281!important;
+  background-color: #008281 !important;
   letter-spacing: 0.05rem;
   color: #fff;
 }
@@ -20,12 +20,12 @@
 }
 
 .Button:hover:active {
-  background-color: #406277!important;
+  background-color: #406277 !important;
   border-color: transparent;
 }
 
 .Button:active {
-  background-color: #406277!important;
+  background-color: #406277 !important;
   border-color: transparent;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .Red {
-  background-color: #ff3131!important;
+  background-color: #ff3131 !important;
 }
 
 .Red:hover {
@@ -48,7 +48,7 @@
 }
 
 .RedLight {
-  background-color: #ff3131!important;
+  background-color: #ff3131 !important;
   opacity: 0.8;
 }
 

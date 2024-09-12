@@ -5,7 +5,7 @@ import Profile from "./Profile";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 
 const ActiveProfiles = ({ mobile }) => {
-  const {activeProfiles} = useProfileData()
+  const { activeProfiles } = useProfileData();
 
   return (
     <Container
@@ -25,8 +25,7 @@ const ActiveProfiles = ({ mobile }) => {
           ) : (
             activeProfiles.results
               .slice(0, 5)
-              .map((profile) => <Profile key={profile.id} profile={profile} />
-            )
+              .map((profile) => <Profile key={profile.id} profile={profile} />)
           )}
         </>
       ) : (

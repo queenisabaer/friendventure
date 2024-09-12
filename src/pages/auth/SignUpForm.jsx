@@ -19,7 +19,7 @@ import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
 
 const SignUpForm = (props) => {
-  useRedirect('loggedIn')
+  useRedirect("loggedIn");
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
@@ -45,7 +45,7 @@ const SignUpForm = (props) => {
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       navigate("/login");
-      showMessage("success", "You signed up successfully, and can now log in.")
+      showMessage("success", "You signed up successfully, and can now log in.");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -118,7 +118,11 @@ const SignUpForm = (props) => {
                 Sign me up
               </Button>
               {errors.non_field_errors?.map((message, idx) => (
-                <Alert variant="warning" key={idx} className={`${appStyles.Alert} mt-3`}>
+                <Alert
+                  variant="warning"
+                  key={idx}
+                  className={`${appStyles.Alert} mt-3`}
+                >
                   {message}
                 </Alert>
               ))}

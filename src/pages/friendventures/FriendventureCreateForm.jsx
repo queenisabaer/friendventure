@@ -21,7 +21,7 @@ import { axiosRequest } from "../../api/axiosDefault";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function FriendventureCreateForm(props) {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [friendventureData, setFriendventureData] = useState({
     title: "",
     description: "",
@@ -114,7 +114,9 @@ function FriendventureCreateForm(props) {
   const textFields = (
     <div className="text-center">
       <Form.Group className="mb-2" htmlFor="title">
-        <Form.Label className="mb-1">Title<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1">
+          Title<sup>*</sup>
+        </Form.Label>
         <Form.Control
           id="title"
           className={styles.Input}
@@ -152,7 +154,9 @@ function FriendventureCreateForm(props) {
       <Form.Group className="mb-2">
         <Row>
           <Col lg={6}>
-            <Form.Label className="mb-1" htmlFor="date">Date<sup>*</sup></Form.Label>
+            <Form.Label className="mb-1" htmlFor="date">
+              Date<sup>*</sup>
+            </Form.Label>
             <Form.Control
               id="date"
               type="date"
@@ -169,7 +173,9 @@ function FriendventureCreateForm(props) {
           </Col>
 
           <Col lg={6}>
-            <Form.Label className="mb-1" htmlFor="time">Time<sup>*</sup></Form.Label>
+            <Form.Label className="mb-1" htmlFor="time">
+              Time<sup>*</sup>
+            </Form.Label>
             <Form.Control
               id="time"
               type="time"
@@ -187,7 +193,9 @@ function FriendventureCreateForm(props) {
         </Row>
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1" htmlFor="location">Location<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1" htmlFor="location">
+          Location<sup>*</sup>
+        </Form.Label>
         <Form.Control
           id="location"
           type="text"
@@ -204,7 +212,9 @@ function FriendventureCreateForm(props) {
         ))}
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1" htmlFor="category">Category<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1" htmlFor="category">
+          Category<sup>*</sup>
+        </Form.Label>
         <Form.Control
           id="category"
           as="select"
@@ -236,7 +246,9 @@ function FriendventureCreateForm(props) {
       <Button className={`${btnStyles.Button}`} type="submit">
         create
       </Button>
-      <div className={`${styles.SmallText} mt-2`}><sup>*</sup>required</div>
+      <div className={`${styles.SmallText} mt-2`}>
+        <sup>*</sup>required
+      </div>
     </div>
   );
 

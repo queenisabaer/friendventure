@@ -9,14 +9,14 @@ import { useSetProfileData } from "../../contexts/ProfileDataContext";
 import { useRedirect } from "../../hooks/useRedirect";
 
 const Profile = (props) => {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const { profile, mobile, imageSize = 55 } = props;
   const { id, following_id, profile_image, owner } = profile;
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
-  const {handleFollow, handleUnfollow} = useSetProfileData();
-  
+  const { handleFollow, handleUnfollow } = useSetProfileData();
+
   return (
     <div
       className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
@@ -27,27 +27,29 @@ const Profile = (props) => {
         </Link>
       </div>
       <Link className={appStyles.NoUnderline} to={`/profiles/${id}/`}>
-      <div className={`mx-2 ${styles.WordBreak}`}>
-        <strong>{owner}</strong>
-      </div>
+        <div className={`mx-2 ${styles.WordBreak}`}>
+          <strong>{owner}</strong>
+        </div>
       </Link>
       <div className={`ms-auto ${mobile && "mt-2"}`}>
         {!mobile &&
           currentUser &&
-          !is_owner && (
-            following_id ? (
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.RedLight}`}
-                onClick={() => handleUnfollow(profile)}
-              >
-                unfollow
-              </Button>
-            ) : (
-              <Button className={`${btnStyles.Button}`} onClick={() => handleFollow(profile)}>
-                follow
-              </Button>
-            )
-          )}
+          !is_owner &&
+          (following_id ? (
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.RedLight}`}
+              onClick={() => handleUnfollow(profile)}
+            >
+              unfollow
+            </Button>
+          ) : (
+            <Button
+              className={`${btnStyles.Button}`}
+              onClick={() => handleFollow(profile)}
+            >
+              follow
+            </Button>
+          ))}
       </div>
     </div>
   );

@@ -16,7 +16,6 @@ import Asset from "../../components/Asset";
 import FriendVentureParticipants from "../participants/FriendventureParticipants";
 import { useSetFriendventureId } from "../../contexts/ProfileDataContext";
 
-
 function FriendventurePage() {
   const { id } = useParams();
   const setFriendventureId = useSetFriendventureId();
@@ -33,10 +32,12 @@ function FriendventurePage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: friendventure }, {data: comments}] = await Promise.all([
-          axiosRequest.get(`/friendventures/${id}`),
-          axiosRequest.get(`/comments/?friendventure=${id}`)
-        ]);
+        const [{ data: friendventure }, { data: comments }] = await Promise.all(
+          [
+            axiosRequest.get(`/friendventures/${id}`),
+            axiosRequest.get(`/comments/?friendventure=${id}`),
+          ]
+        );
         setFriendventure({ results: [friendventure] });
         setComments(comments);
       } catch (err) {
@@ -67,26 +68,27 @@ function FriendventurePage() {
             "Comments"
           ) : null}
           {comments.results.length ? (
-           <InfiniteScroll
-           children={comments.results.map((comment) => (
-             <Comment 
-               key={comment.id}
-               {...comment}
-               setFriendventure={setFriendventure}
-               setComments={setComments}/>
-           ))}
-           dataLength={comments.results.length}
-           loader={<Asset spinner />}
-           hasMore={!!comments.next}
-           next={() => fetchMoreData(comments, setComments)}
-         />
+            <InfiniteScroll
+              children={comments.results.map((comment) => (
+                <Comment
+                  key={comment.id}
+                  {...comment}
+                  setFriendventure={setFriendventure}
+                  setComments={setComments}
+                />
+              ))}
+              dataLength={comments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!comments.next}
+              next={() => fetchMoreData(comments, setComments)}
+            />
           ) : currentUser ? (
             <span>No comment yet, be the first to do</span>
           ) : (
             <span>No comments yet.</span>
           )}
         </Container>
-        <FriendVentureParticipants mobile/>
+        <FriendVentureParticipants mobile />
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <FriendVentureParticipants />

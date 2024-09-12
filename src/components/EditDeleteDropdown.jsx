@@ -15,7 +15,11 @@ const DropdownIcon = forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const EditDeleteDropdown = ({ handleEdit, handleDelete, confirmationMessage }) => {
+export const EditDeleteDropdown = ({
+  handleEdit,
+  handleDelete,
+  confirmationMessage,
+}) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
@@ -30,7 +34,10 @@ export const EditDeleteDropdown = ({ handleEdit, handleDelete, confirmationMessa
     <>
       <Dropdown>
         <Dropdown.Toggle as={DropdownIcon} />
-        <Dropdown.Menu className="text-center" popperConfig={{ strategy: "absolute" }}>
+        <Dropdown.Menu
+          className="text-center"
+          popperConfig={{ strategy: "absolute" }}
+        >
           <Dropdown.Item
             className={styles.DropdownItem}
             onClick={handleEdit}

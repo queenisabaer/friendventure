@@ -1,10 +1,9 @@
 import appStyles from "../../App.module.css";
-import styles from "../../styles/FriendventureParticipants.module.css"
+import styles from "../../styles/FriendventureParticipants.module.css";
 import { Container } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import Profile from "../profiles/Profile";
 import { useProfileData } from "../../contexts/ProfileDataContext";
-
 
 const FriendVentureParticipants = ({ mobile }) => {
   const { friendventureParticipants } = useProfileData();

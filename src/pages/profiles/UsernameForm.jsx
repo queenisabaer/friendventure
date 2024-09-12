@@ -23,7 +23,7 @@ const UsernameForm = (props) => {
 
   const navigate = useNavigate();
   const { id } = useParams();
-  const {showMessage} = props;
+  const { showMessage } = props;
 
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
@@ -46,7 +46,7 @@ const UsernameForm = (props) => {
         ...prevUser,
         username,
       }));
-      showMessage("success", "Your username has been updated!")
+      showMessage("success", "Your username has been updated!");
       navigate(-1);
     } catch (err) {
       console.log(err);
@@ -80,10 +80,7 @@ const UsernameForm = (props) => {
             >
               cancel
             </Button>
-            <Button
-              className={`${btnStyles.Button}`}
-              type="submit"
-            >
+            <Button className={`${btnStyles.Button}`} type="submit">
               save
             </Button>
           </Form>

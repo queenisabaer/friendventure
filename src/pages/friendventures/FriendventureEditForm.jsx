@@ -102,7 +102,7 @@ function FriendventureEditForm(props) {
     // Image size validation
     if (imageInput.current.files.length > 0) {
       const imageFile = imageInput.current.files[0];
-  
+
       if (imageFile.size > 1024 * 1024 * 2) {
         setErrors({ image: ["Image can't be larger than 2MB"] });
         return;
@@ -118,8 +118,8 @@ function FriendventureEditForm(props) {
     formData.append("place", place);
     formData.append("category", category);
     if (imageInput?.current?.files[0]) {
-        formData.append("image", imageInput.current.files[0]);
-      }
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     try {
       await axiosRequest.put(`/friendventures/${id}/`, formData);
@@ -136,7 +136,9 @@ function FriendventureEditForm(props) {
   const textFields = (
     <div className="text-center">
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Title<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1">
+          Title<sup>*</sup>
+        </Form.Label>
         <Form.Control
           className={styles.Input}
           type="text"
@@ -172,7 +174,9 @@ function FriendventureEditForm(props) {
       <Form.Group className="mb-2">
         <Row>
           <Col lg={6}>
-            <Form.Label className="mb-1">Date<sup>*</sup></Form.Label>
+            <Form.Label className="mb-1">
+              Date<sup>*</sup>
+            </Form.Label>
             <Form.Control
               type="date"
               name="date"
@@ -188,7 +192,9 @@ function FriendventureEditForm(props) {
           </Col>
 
           <Col lg={6}>
-            <Form.Label className="mb-1">Time<sup>*</sup></Form.Label>
+            <Form.Label className="mb-1">
+              Time<sup>*</sup>
+            </Form.Label>
             <Form.Control
               type="time"
               name="time"
@@ -205,7 +211,9 @@ function FriendventureEditForm(props) {
         </Row>
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Location<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1">
+          Location<sup>*</sup>
+        </Form.Label>
         <Form.Control
           type="text"
           name="place"
@@ -221,7 +229,9 @@ function FriendventureEditForm(props) {
         ))}
       </Form.Group>
       <Form.Group className="mb-2">
-        <Form.Label className="mb-1">Category<sup>*</sup></Form.Label>
+        <Form.Label className="mb-1">
+          Category<sup>*</sup>
+        </Form.Label>
         <Form.Control
           as="select"
           name="category"
@@ -252,7 +262,9 @@ function FriendventureEditForm(props) {
       <Button className={`${btnStyles.Button}`} type="submit">
         update
       </Button>
-      <div className={`${styles.SmallText} mt-2`}><sup>*</sup>required</div>
+      <div className={`${styles.SmallText} mt-2`}>
+        <sup>*</sup>required
+      </div>
     </div>
   );
 
@@ -269,19 +281,19 @@ function FriendventureEditForm(props) {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
+              <>
+                <figure>
+                  <Image className={appStyles.Image} src={image} rounded />
+                </figure>
+                <div>
+                  <Form.Label
+                    className={`${btnStyles.Button} btn`}
+                    htmlFor="image-upload"
+                  >
+                    Change the image
+                  </Form.Label>
+                </div>
+              </>
               <Form.Control
                 type="file"
                 accept="image/*"
@@ -291,10 +303,10 @@ function FriendventureEditForm(props) {
                 ref={imageInput}
               />
               {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx} className={appStyles.Alert}>
-                {message}
-              </Alert>
-            ))}
+                <Alert variant="warning" key={idx} className={appStyles.Alert}>
+                  {message}
+                </Alert>
+              ))}
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
           </Container>

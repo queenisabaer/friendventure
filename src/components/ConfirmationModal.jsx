@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import buttonStyles from "../styles/Button.module.css"
-import styles from "../App.module.css"
+import buttonStyles from "../styles/Button.module.css";
+import styles from "../App.module.css";
 
 function ConfirmationModal({
   show,
@@ -21,7 +21,10 @@ function ConfirmationModal({
           <Button className={buttonStyles.Button} onClick={handleClose}>
             Cancel
           </Button>
-          <Button className={`${buttonStyles.Button} ${buttonStyles.Red}`} onClick={handleConfirm}>
+          <Button
+            className={`${buttonStyles.Button} ${buttonStyles.Red}`}
+            onClick={handleConfirm}
+          >
             Delete
           </Button>
         </Modal.Footer>

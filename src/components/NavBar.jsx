@@ -149,7 +149,11 @@ const NavBar = (props) => {
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
         />
-        <Navbar.Collapse ref={ref} id="basic-navbar-nav" className="justify-content-end">
+        <Navbar.Collapse
+          ref={ref}
+          id="basic-navbar-nav"
+          className="justify-content-end"
+        >
           <Nav className="ml-auto text-center">
             <Nav.Link
               end

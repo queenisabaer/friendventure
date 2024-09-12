@@ -20,13 +20,13 @@ import {
 import { useRedirect } from "../../hooks/useRedirect";
 
 const ProfileEditForm = (props) => {
-  useRedirect('loggedOut');
+  useRedirect("loggedOut");
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
   const navigate = useNavigate();
   const imageFile = useRef();
-  const {showMessage} = props;
+  const { showMessage } = props;
 
   const [profileData, setProfileData] = useState({
     name: "",
@@ -87,7 +87,7 @@ const ProfileEditForm = (props) => {
       });
       setErrors((prevErrors) => ({ ...prevErrors, image: [] }));
     }
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -100,7 +100,7 @@ const ProfileEditForm = (props) => {
     // image validation with 2 MB limit
     if (imageFile?.current?.files[0]) {
       const image = imageFile.current.files[0];
-      if (image.size > 1024 * 1024 * 2) { 
+      if (image.size > 1024 * 1024 * 2) {
         setErrors({ image: ["Image can't be larger than 2MB"] });
         return;
       }
@@ -113,7 +113,7 @@ const ProfileEditForm = (props) => {
         ...currentUser,
         profile_image: data.profile_image,
       }));
-      showMessage("success", "Your profile has been updated!")
+      showMessage("success", "Your profile has been updated!");
       navigate(-1);
     } catch (err) {
       console.log(err);

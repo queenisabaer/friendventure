@@ -118,7 +118,7 @@ function App() {
               path="/profiles/:id/edit"
               element={<ProfileEditForm showMessage={showMessage} />}
             />
-            <Route path="*" element={< NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
       </div>

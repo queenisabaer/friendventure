@@ -166,8 +166,14 @@ const Friendventure = (props) => {
             md={8}
             className="d-flex flex-column justify-content-center order-2 order-md-1"
           >
-            <Link to={`/friendventures/${id}`} className={appStyles.NoUnderline}>
-            {title && <Card.Title className={styles.Title}>{title}</Card.Title>}</Link>
+            <Link
+              to={`/friendventures/${id}`}
+              className={appStyles.NoUnderline}
+            >
+              {title && (
+                <Card.Title className={styles.Title}>{title}</Card.Title>
+              )}
+            </Link>
           </Col>
           <Col
             md={4}
@@ -195,7 +201,11 @@ const Friendventure = (props) => {
         <Row>
           <Col md={6}>
             <Link to={`/friendventures/${id}`}>
-              <Card.Img src={image} className={styles.Image} alt="Image that is related to FriendVenture" />
+              <Card.Img
+                src={image}
+                className={styles.Image}
+                alt="Image that is related to FriendVenture"
+              />
             </Link>
           </Col>
           <Col md={6}>
@@ -230,9 +240,7 @@ const Friendventure = (props) => {
         </Row>
         <Row>
           <Col>
-            <div className={styles.Category}>
-              {category}
-            </div>
+            <div className={styles.Category}>{category}</div>
           </Col>
           <Col>
             <div>
