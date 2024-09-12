@@ -20,13 +20,14 @@ export const CurrentUserProvider = ({ children }) => {
     } catch (err) {
       console.log("Token refresh failed", err);
       if (currentUser) {
-        setCurrentUser(null);
-        navigate("/login");
+        setCurrentUser(null); // If token refresh fails, log out the user
+        navigate("/login"); // Redirect to login page
       }
       return false;
     }
   };
 
+  // Fetch current user data when the component mounts if the token is valid
   const handleMount = async () => {
     const tokenValid = await refreshAuthToken();
     if (tokenValid) {
@@ -44,6 +45,7 @@ export const CurrentUserProvider = ({ children }) => {
     handleMount();
   }, []);
 
+  // Set up Axios interceptors to handle token refresh before requests and on 401 responses
   useEffect(() => {
     const requestInterceptor = axiosRequest.interceptors.request.use(
       async (config) => {
@@ -56,15 +58,15 @@ export const CurrentUserProvider = ({ children }) => {
     );
 
     const responseInterceptor = axiosResponse.interceptors.response.use(
-      (response) => response,
+      (response) => response, // Let the response pass through if successful
       async (err) => {
-        if (err.response?.status === 401) {
+        if (err.response?.status === 401) { // If unauthorized, refresh token
           const tokenValid = await refreshAuthToken();
           if (tokenValid) {
             return axios(err.config);
           }
         }
-        return Promise.reject(err);
+        return Promise.reject(err); // Retry the failed request with a new token
       }
     );
 
